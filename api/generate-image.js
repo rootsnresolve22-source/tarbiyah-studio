@@ -1,5 +1,6 @@
-// Membuat GAMBAR. Mendukung model Gemini (Nano Banana / 2 / Pro) lewat :generateContent
-// dan Imagen lewat :predict. Coba-ulang otomatis saat sibuk, sadar-waktu agar tak timeout.
+// Membuat GAMBAR. Gemini (:generateContent) + Imagen (:predict).
+// Tiap percobaan dibatasi waktu (AbortController) agar tidak menabrak batas 60s Vercel;
+// timeout dikembalikan sebagai JSON rapi, bukan halaman 504 mentah.
 module.exports = async (req, res) => {
   if (req.method !== 'POST') { res.status(405).json({ error: 'Gunakan metode POST.' }); return; }
   const key = process.env.GEMINI_API_KEY;
@@ -9,7 +10,7 @@ module.exports = async (req, res) => {
     if (typeof body === 'string') body = JSON.parse(body || '{}');
     body = body || {};
     const prompt = body.prompt ? String(body.prompt) : '';
-    const model = body.model ? String(body.model) : 'gemini-3.1-flash-image';
+    const model = body.model ? String(body.model) : 'gemini-2.5-flash-image';
     if (!prompt) { res.status(400).json({ error: 'Prompt masih kosong.' }); return; }
 
     const isImagen = model.indexOf('imagen') >= 0;
@@ -19,31 +20,41 @@ module.exports = async (req, res) => {
       : JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { responseModalities: ['TEXT', 'IMAGE'] } });
 
     const start = Date.now();
-    const RETRY_UNTIL_MS = 22000;
-    const waits = [4000, 8000];
-    let data = {}, lastErr = '', attempts = 0;
-    for (let i = 0; ; i++) {
-      attempts = i + 1;
-      const wait = waits[Math.min(i, waits.length - 1)];
-      let r;
+    const DEADLINE = 55000;                       // selesaikan sebelum batas fungsi 60 dtk
+    const left = () => DEADLINE - (Date.now() - start);
+    const slowMsg = 'Model "' + model + '" terlalu lama merespons (kemungkinan sedang sibuk). Model jenis thinking seperti Nano Banana 2 dan Pro memang lebih lambat dan dapat melewati batas waktu. Pilih Nano Banana (gemini-2.5-flash-image) atau Imagen 4 yang lebih cepat, atau ulangi sebentar lagi.';
+
+    let data = {}, lastErr = '', attempts = 0, timedOut = false;
+    while (true) {
+      attempts++;
+      const rem = left();
+      if (rem < 6000) { timedOut = true; break; }
+      const perAttempt = Math.min(42000, rem - 1500);
+      const ac = new AbortController();
+      const timer = setTimeout(() => ac.abort(), perAttempt);
+      let r = null, hung = false;
       try {
-        r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key }, body: payload });
+        r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key }, body: payload, signal: ac.signal });
       } catch (fe) {
-        lastErr = 'Gagal menghubungi Google: ' + String((fe && fe.message) || fe);
-        if ((Date.now() - start + wait) < RETRY_UNTIL_MS) { await new Promise(s => setTimeout(s, wait)); continue; }
-        res.status(502).json({ error: lastErr, percobaan: attempts }); return;
-      }
+        if (fe && fe.name === 'AbortError') { hung = true; }
+        else { lastErr = 'Gagal menghubungi Google: ' + String((fe && fe.message) || fe); }
+      } finally { clearTimeout(timer); }
+
+      if (hung) { if (left() > 12000) { continue; } timedOut = true; break; }
+      if (!r) { if (left() > 10000) { await new Promise(s => setTimeout(s, 3000)); continue; } res.status(502).json({ error: lastErr || 'Gagal menghubungi Google.', percobaan: attempts }); return; }
+
       data = await r.json().catch(() => ({}));
       if (r.ok) { lastErr = ''; break; }
       lastErr = (data && data.error && (data.error.message || data.error)) || ('HTTP ' + r.status);
       const busy = (r.status === 503 || r.status === 429 || r.status === 500);
-      if (busy && (Date.now() - start + wait) < RETRY_UNTIL_MS) { await new Promise(s => setTimeout(s, wait)); continue; }
+      if (busy && left() > 12000) { await new Promise(s => setTimeout(s, 4000)); continue; }
       const info = busy
-        ? ('Model "' + model + '" sedang penuh/terbatas di sisi Google (dicoba ' + attempts + 'x). Coba model lain di menu (mis. Nano Banana 2 atau Imagen 4). Untuk model Pro, pastikan billing API Google Anda aktif.')
+        ? ('Model "' + model + '" sedang penuh/terbatas di sisi Google (dicoba ' + attempts + 'x). Coba Nano Banana (2.5 flash) atau Imagen 4, atau pastikan billing API aktif untuk Pro.')
         : undefined;
-      res.status(r.status).json({ error: lastErr, info: info, percobaan: attempts });
-      return;
+      res.status(r.status).json({ error: lastErr, info: info, percobaan: attempts }); return;
     }
+
+    if (timedOut) { res.status(200).json({ error: 'Model timeout (terlalu lama merespons).', info: slowMsg, percobaan: attempts }); return; }
 
     let img = null, mime = 'image/png', text = '';
     if (isImagen) {
