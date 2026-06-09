@@ -1,5 +1,5 @@
-// Membuat GAMBAR dengan Google Gemini (Nano Banana / Nano Banana Pro).
-// Versi ini: COBA-ULANG OTOMATIS saat model sibuk (503/429/500). Kunci API dari server (aman).
+// Membuat GAMBAR (Nano Banana / Nano Banana Pro).
+// Coba-ulang OTOMATIS saat model sibuk, tetapi SADAR-WAKTU agar tidak menyebabkan timeout fungsi.
 module.exports = async (req, res) => {
   if (req.method !== 'POST') { res.status(405).json({ error: 'Gunakan metode POST.' }); return; }
   const key = process.env.GEMINI_API_KEY;
@@ -18,24 +18,28 @@ module.exports = async (req, res) => {
       generationConfig: { responseModalities: ['TEXT', 'IMAGE'] }
     });
 
-    // Jeda antar percobaan (ms). Total tunggu maksimal ~19 detik, aman di bawah batas fungsi 60 detik.
-    const waits = [3000, 6000, 10000];
-    let data = {}, lastErr = '', lastStatus = 0, attempts = 0;
-    for (let i = 0; i <= waits.length; i++) {
+    const start = Date.now();
+    const RETRY_UNTIL_MS = 22000;   // hanya ulangi bila waktu berjalan < 22 dtk (sisakan ruang untuk 1 percobaan lambat)
+    const waits = [4000, 8000];     // jeda antar percobaan
+    let data = {}, lastErr = '', attempts = 0;
+    for (let i = 0; ; i++) {
       attempts = i + 1;
-      const r = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key },
-        body: payload
-      });
-      lastStatus = r.status;
+      const wait = waits[Math.min(i, waits.length - 1)];
+      let r;
+      try {
+        r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key }, body: payload });
+      } catch (fe) {
+        lastErr = 'Gagal menghubungi Google: ' + String((fe && fe.message) || fe);
+        if ((Date.now() - start + wait) < RETRY_UNTIL_MS) { await new Promise(s => setTimeout(s, wait)); continue; }
+        res.status(502).json({ error: lastErr, percobaan: attempts }); return;
+      }
       data = await r.json().catch(() => ({}));
       if (r.ok) { lastErr = ''; break; }
       lastErr = (data && data.error && (data.error.message || data.error)) || ('HTTP ' + r.status);
       const busy = (r.status === 503 || r.status === 429 || r.status === 500);
-      if (busy && i < waits.length) { await new Promise(s => setTimeout(s, waits[i])); continue; }
+      if (busy && (Date.now() - start + wait) < RETRY_UNTIL_MS) { await new Promise(s => setTimeout(s, wait)); continue; }
       const info = busy
-        ? ('Model "' + model + '" sedang sangat ramai di sisi Google. Sudah dicoba ulang ' + attempts + 'x otomatis tapi masih penuh. Coba lagi beberapa saat (idealnya di jam sepi), atau sementara pakai Nano Banana biasa.')
+        ? ('Model "' + model + '" sedang penuh di sisi Google (sudah dicoba ' + attempts + 'x otomatis). Coba lagi sebentar — idealnya di jam sepi — atau sementara pakai Nano Banana biasa.')
         : undefined;
       res.status(r.status).json({ error: lastErr, info: info, percobaan: attempts });
       return;
