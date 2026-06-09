@@ -26,6 +26,7 @@ select,textarea{width:100%;font-family:Spectral,serif;font-size:1rem;color:var(-
 textarea{min-height:104px;resize:vertical}
 .fname{margin-top:8px;font-size:.86rem;color:var(--sci);background:var(--sci-bg);border:1px solid #C6E4DC;border-radius:10px;padding:7px 11px;display:none}
 .fname b{color:#155}
+.fname-in{width:100%;font-family:Spectral,serif;font-size:.95rem;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:8px 11px;margin-top:4px}
 .btn{font-family:Fraunces,serif;font-weight:600;font-size:1rem;color:#fff;background:var(--deep);border:none;border-radius:999px;padding:11px 22px;cursor:pointer;margin-top:14px}
 .btn:disabled{opacity:.5;cursor:default}
 .btn.alt{background:#fff;color:var(--deep);border:1.5px solid var(--line)}
@@ -54,7 +55,7 @@ textarea{min-height:104px;resize:vertical}
   </select>
   <label for="imgPrompt">Prompt gambar (boleh diedit)</label>
   <textarea id="imgPrompt" placeholder="Ketuk tombol di atas, atau tulis sendiri..."></textarea>
-  <div class="fname" id="imgFile"></div>
+  <label for="imgFile">Nama berkas saat diunduh (otomatis terisi, boleh diedit)</label><input class="fname-in" id="imgFile" placeholder="mis. t3-02.png">
   <button class="btn" id="imgBtn" onclick="genImage()">Buat Gambar</button>
   <div class="err" id="imgErr"></div>
   <div class="out" id="imgOut"></div>
@@ -73,7 +74,7 @@ textarea{min-height:104px;resize:vertical}
   </select>
   <label for="vidPrompt">Prompt video (boleh diedit)</label>
   <textarea id="vidPrompt" placeholder="Ketuk salah satu alternatif di atas..."></textarea>
-  <div class="fname" id="vidFile"></div>
+  <label for="vidFile">Nama berkas saat diunduh (otomatis terisi, boleh diedit)</label><input class="fname-in" id="vidFile" placeholder="mis. t3-02.mp4">
   <button class="btn" id="vidBtn" onclick="genVideo()">Buat Video</button>
   <div class="muted" id="vidStat" style="margin-top:10px"></div>
   <div class="err" id="vidErr"></div>
@@ -94,7 +95,7 @@ const VID=[["Sampul & Tokoh", "Sampul / Intro", "sampul.mp4", ["Warm 2D storyboo
    const h=document.createElement('div');h.className='grp';h.textContent=g;lib.appendChild(h);
    const row=document.createElement('div');row.className='chips';
    groups[g].forEach(it=>{const b=document.createElement('button');b.className='chip';b.textContent=it[1];
-     b.onclick=()=>{document.getElementById('imgPrompt').value=it[3];const f=document.getElementById('imgFile');f.style.display='block';f.innerHTML='Simpan sebagai: <b>'+it[2]+'</b>';};
+     b.onclick=()=>{document.getElementById('imgPrompt').value=it[3];document.getElementById('imgFile').value=it[2];};
      row.appendChild(b);});
    lib.appendChild(row);});
 })();
@@ -107,7 +108,7 @@ const VID=[["Sampul & Tokoh", "Sampul / Intro", "sampul.mp4", ["Warm 2D storyboo
    groups[g].forEach(it=>{const sc=document.createElement('div');sc.className='scene';
      const nm=document.createElement('b');nm.textContent=it[1];sc.appendChild(nm);
      it[3].forEach((p,i)=>{const b=document.createElement('button');b.className='mini';b.textContent='Alt '+(i+1);
-       b.onclick=()=>{document.getElementById('vidPrompt').value=p;const f=document.getElementById('vidFile');f.style.display='block';f.innerHTML='Simpan sebagai: <b>'+it[2]+'</b>';};
+       b.onclick=()=>{document.getElementById('vidPrompt').value=p;document.getElementById('vidFile').value=it[2];};
        sc.appendChild(b);});
      lib.appendChild(sc);});
  });
@@ -127,7 +128,8 @@ async function genImage(){
     const d=res.d;
     if(!res.ok||d.error){showErr('imgErr',d);out.innerHTML='';return;}
     const src='data:'+(d.mimeType||'image/png')+';base64,'+d.image;
-    out.innerHTML='<img alt="hasil" src="'+src+'"><div style="margin-top:10px"><a class="btn alt" download="tarbiyah.png" href="'+src+'">Unduh gambar</a></div>'+(d.text?'<div class="muted" style="margin-top:8px">'+d.text+'</div>':'');
+    const fn=(document.getElementById('imgFile').value.trim()||'tarbiyah.png');
+    out.innerHTML='<img alt="hasil" src="'+src+'"><div style="margin-top:10px"><a class="btn alt" download="'+fn+'" href="'+src+'">Unduh gambar</a></div>'+(d.text?'<div class="muted" style="margin-top:8px">'+d.text+'</div>':'');
   }catch(e){showErr('imgErr',String(e&&e.message||e));out.innerHTML='';}
   finally{btn.disabled=false;}
 }
@@ -155,7 +157,8 @@ async function genVideo(){
         if(!pd.done){if(tries>40){showErr('vidErr','Terlalu lama. Coba lagi atau pakai klip lebih pendek.');stat.textContent='';btn.disabled=false;polling=false;return;}setTimeout(tick,10000);return;}
         if(pd.error){showErr('vidErr',pd.error);stat.textContent='';btn.disabled=false;polling=false;return;}
         const src='data:'+(pd.mimeType||'video/mp4')+';base64,'+pd.video;
-        out.innerHTML='<video controls src="'+src+'"></video><div style="margin-top:10px"><a class="btn alt" download="tarbiyah.mp4" href="'+src+'">Unduh video</a></div>';
+        const fn=(document.getElementById('vidFile').value.trim()||'tarbiyah.mp4');
+        out.innerHTML='<video controls src="'+src+'"></video><div style="margin-top:10px"><a class="btn alt" download="'+fn+'" href="'+src+'">Unduh video</a></div>';
         stat.textContent='';btn.disabled=false;polling=false;
       }catch(e){showErr('vidErr',String(e&&e.message||e));stat.textContent='';btn.disabled=false;polling=false;}
     };
