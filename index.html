@@ -1,0 +1,145 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TARBIYAH Studio — Gambar & Video (Gemini)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Spectral:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg0:#FFF6FA;--bg1:#FCE9F2;--surface:#FFF;--ink:#3E1E30;--soft:#6B3F56;--faint:#8A5C72;--pink:#E0589A;--deep:#C23C7E;--line:#F0CADC;--sci:#1F7A66;--sci-bg:#DBEFEA;--honest:#BC4327;--honest-bg:#FBDED3}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(160deg,var(--bg0),var(--bg1));color:var(--ink);font-family:Spectral,Georgia,serif;line-height:1.6;padding:26px 16px 60px}
+.wrap{max-width:760px;margin:0 auto}
+.kicker{color:var(--deep);font-family:Fraunces,serif;font-weight:600;letter-spacing:.02em;font-size:.82rem;text-transform:uppercase}
+h1{font-family:Fraunces,serif;font-weight:600;font-size:1.7rem;margin:.1em 0}
+.sub{color:var(--faint);margin:0 0 18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px 18px 20px;box-shadow:0 18px 40px -28px rgba(194,60,126,.5);margin-bottom:20px}
+h2{font-family:Fraunces,serif;font-weight:600;font-size:1.18rem;margin:0 0 4px}
+.note{color:var(--faint);font-size:.9rem;margin:.2em 0 12px}
+label{display:block;font-family:Fraunces,serif;font-size:.9rem;color:var(--soft);margin:12px 0 5px}
+select,textarea{width:100%;font-family:Spectral,serif;font-size:1rem;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px}
+textarea{min-height:96px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:6px 0 2px}
+.chip{font-family:Fraunces,serif;font-size:.86rem;color:var(--deep);background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:6px 13px;cursor:pointer}
+.chip:hover{border-color:var(--pink)}
+.btn{font-family:Fraunces,serif;font-weight:600;font-size:1rem;color:#fff;background:var(--deep);border:none;border-radius:999px;padding:11px 22px;cursor:pointer;margin-top:14px}
+.btn:disabled{opacity:.5;cursor:default}
+.btn.alt{background:#fff;color:var(--deep);border:1.5px solid var(--line)}
+.out{margin-top:16px;text-align:center}
+.out img,.out video{max-width:100%;border-radius:14px;border:1px solid var(--line);background:#fff}
+.muted{color:var(--faint);font-size:.86rem}
+.err{display:none;margin-top:14px;background:var(--honest-bg);border:1px solid #F3C3B4;border-radius:12px;padding:12px 14px;font-size:.9rem;white-space:pre-wrap;word-break:break-word}
+.err b{color:var(--honest)}
+.exp{background:var(--honest-bg);border:1px solid #F3C3B4;border-radius:12px;padding:8px 12px;font-size:.86rem;color:var(--honest);display:inline-block;margin-bottom:6px}
+.foot{color:var(--faint);font-size:.82rem;border-top:1px solid var(--line);padding-top:14px;margin-top:6px}
+.spin{display:inline-block;width:16px;height:16px;border:2.5px solid #F3C3D8;border-top-color:var(--deep);border-radius:50%;vertical-align:-3px;margin-right:7px;animation:s .8s linear infinite}
+@keyframes s{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation:none}}
+</style></head>
+<body><div class="wrap">
+<div class="kicker">TARBIYAH</div>
+<h1>Studio Gambar &amp; Video</h1>
+<p class="sub">Dibuat oleh model Google (Nano Banana untuk gambar, Veo untuk video). Kunci API Anda tersimpan aman di server — tidak pernah tampil di sini.</p>
+
+<!-- ============ GAMBAR ============ -->
+<div class="card">
+  <h2>Buat Gambar</h2>
+  <p class="note">Pilih contoh cepat atau tulis sendiri. Untuk hasil rapi, sebutkan gaya: “clean vector illustration, cherry-blossom pink palette, children's-book style, white background, no text”.</p>
+  <label>Contoh cepat</label>
+  <div class="chips" id="imgChips"></div>
+  <label for="imgModel">Model gambar</label>
+  <select id="imgModel">
+    <option value="gemini-2.5-flash-image">Nano Banana (cepat &amp; murah) — gemini-2.5-flash-image</option>
+    <option value="gemini-3-pro-image">Nano Banana Pro (lebih tajam, lebih mahal) — gemini-3-pro-image</option>
+  </select>
+  <label for="imgPrompt">Deskripsi gambar (prompt)</label>
+  <textarea id="imgPrompt" placeholder="Tulis deskripsi gambar di sini..."></textarea>
+  <button class="btn" id="imgBtn" onclick="genImage()">Buat Gambar</button>
+  <div class="err" id="imgErr"></div>
+  <div class="out" id="imgOut"></div>
+</div>
+
+<!-- ============ VIDEO ============ -->
+<div class="card">
+  <h2>Buat Video</h2>
+  <div class="exp">Eksperimental — lambat (beberapa menit) &amp; memakai lebih banyak kredit. Pakai seperlunya.</div>
+  <p class="note">Veo membuat klip pendek (sekitar 8 detik). Sebutkan gerak kamera dan suasana.</p>
+  <label for="vidModel">Model video</label>
+  <select id="vidModel">
+    <option value="veo-3.0-generate-preview">Veo 3 — veo-3.0-generate-preview</option>
+    <option value="veo-3.1-generate-preview">Veo 3.1 — veo-3.1-generate-preview</option>
+    <option value="veo-2.0-generate-001">Veo 2 — veo-2.0-generate-001</option>
+  </select>
+  <label for="vidPrompt">Deskripsi video (prompt)</label>
+  <textarea id="vidPrompt" placeholder="Contoh: Lembut, gerak kamera pelan mendekat ke seekor kucing oranye gemuk yang mengeong, latar merah jambu cherry-blossom, gaya kartun."></textarea>
+  <button class="btn" id="vidBtn" onclick="genVideo()">Buat Video</button>
+  <div class="muted" id="vidStat" style="margin-top:10px"></div>
+  <div class="err" id="vidErr"></div>
+  <div class="out" id="vidOut"></div>
+</div>
+
+<div class="foot">
+  Kunci API hanya tersimpan di Environment Variables Vercel (server), tidak pernah dikirim ke browser. Jangan pernah menempelkan kunci di percakapan chat.
+  Biaya memakai kredit Google Anda: gambar relatif murah; video (Veo) jauh lebih mahal.
+</div>
+</div>
+
+<script>
+const PRESETS=[
+ ["Janin (Trimester 3)","A gentle clean vector illustration of a late-term human fetus curled in fetal position inside a soft cross-section of the womb: large rounded head, closed peaceful eyes, arms folded with one hand near the face, knees tucked up, spiraling umbilical cord to a placenta on the womb wall, soft cherry-blossom pink palette, warm skin tones, subtle soft shading, white background, warm children's-book medical illustration style, no text, no words"],
+ ["Ibu (hamil, hijab)","A warm clean vector character illustration of a kind pregnant Muslim mother wearing a soft pink hijab, gentle smile, hands resting on her belly, cherry-blossom pink palette, children's-book style, full body, plain white background, no text"],
+ ["Ayah","A warm clean vector character illustration of a kind Muslim father wearing a black peci cap and a neat koko shirt, gentle smile, cherry-blossom pink palette, children's-book style, full body, plain white background, no text"],
+ ["Ananda (batita)","A cute clean vector illustration of a happy Muslim toddler with big sparkly eyes and chubby cheeks, a little hair tuft, soft romper, cherry-blossom pink palette, children's-book style, plain white background, no text"],
+ ["Si Oranye (kucing)","A cute chubby flat-vector orange tabby cat: big round head, fluffy white cheeks, big friendly green eyes, tabby M stripes on forehead, small rounded ears, clean uniform dark outline, kawaii sticker style, cherry-blossom pink background, no text"]
+];
+const chips=document.getElementById('imgChips');
+PRESETS.forEach(([name,prompt])=>{const b=document.createElement('button');b.className='chip';b.textContent=name;b.onclick=()=>{document.getElementById('imgPrompt').value=prompt;};chips.appendChild(b);});
+document.getElementById('imgPrompt').value=PRESETS[0][1];
+
+function showErr(id,obj){const e=document.getElementById(id);e.style.display='block';e.innerHTML='<b>Ada masalah — salin teks ini dan kirim ke Claude:</b>\n'+ (typeof obj==='string'?obj:JSON.stringify(obj,null,2));}
+function clearErr(id){const e=document.getElementById(id);e.style.display='none';e.textContent='';}
+
+async function genImage(){
+  const btn=document.getElementById('imgBtn'),out=document.getElementById('imgOut');
+  clearErr('imgErr'); out.innerHTML='';
+  const prompt=document.getElementById('imgPrompt').value.trim();
+  const model=document.getElementById('imgModel').value;
+  if(!prompt){showErr('imgErr','Prompt masih kosong.');return;}
+  btn.disabled=true; out.innerHTML='<span class="spin"></span><span class="muted">Membuat gambar… (beberapa detik)</span>';
+  try{
+    const r=await fetch('/api/generate-image',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt,model})});
+    const d=await r.json();
+    if(!r.ok||d.error){showErr('imgErr',d);out.innerHTML='';return;}
+    const src='data:'+(d.mimeType||'image/png')+';base64,'+d.image;
+    out.innerHTML='<img alt="hasil" src="'+src+'"><div style="margin-top:10px"><a class="btn alt" download="tarbiyah.png" href="'+src+'">Unduh gambar</a></div>'+(d.text?'<div class="muted" style="margin-top:8px">'+d.text+'</div>':'');
+  }catch(e){showErr('imgErr',String(e&&e.message||e));out.innerHTML='';}
+  finally{btn.disabled=false;}
+}
+
+let polling=false;
+async function genVideo(){
+  const btn=document.getElementById('vidBtn'),out=document.getElementById('vidOut'),stat=document.getElementById('vidStat');
+  clearErr('vidErr'); out.innerHTML=''; if(polling)return;
+  const prompt=document.getElementById('vidPrompt').value.trim();
+  const model=document.getElementById('vidModel').value;
+  if(!prompt){showErr('vidErr','Prompt masih kosong.');return;}
+  btn.disabled=true; polling=true; stat.innerHTML='<span class="spin"></span>Mengirim permintaan video…';
+  try{
+    const r=await fetch('/api/generate-video',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt,model})});
+    const d=await r.json();
+    if(!r.ok||d.error||!d.name){showErr('vidErr',d);stat.textContent='';btn.disabled=false;polling=false;return;}
+    const name=d.name; let tries=0;
+    const tick=async()=>{
+      tries++; stat.innerHTML='<span class="spin"></span>Memproses video… (cek ke-'+tries+', total bisa beberapa menit)';
+      try{
+        const pr=await fetch('/api/video-status',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name})});
+        const pd=await pr.json();
+        if(!pr.ok){showErr('vidErr',pd);stat.textContent='';btn.disabled=false;polling=false;return;}
+        if(!pd.done){ if(tries>40){showErr('vidErr','Terlalu lama. Coba lagi atau klip lebih pendek.');stat.textContent='';btn.disabled=false;polling=false;return;} setTimeout(tick,10000); return; }
+        if(pd.error){showErr('vidErr',pd.error);stat.textContent='';btn.disabled=false;polling=false;return;}
+        const src='data:'+(pd.mimeType||'video/mp4')+';base64,'+pd.video;
+        out.innerHTML='<video controls src="'+src+'"></video><div style="margin-top:10px"><a class="btn alt" download="tarbiyah.mp4" href="'+src+'">Unduh video</a></div>';
+        stat.textContent=''; btn.disabled=false; polling=false;
+      }catch(e){showErr('vidErr',String(e&&e.message||e));stat.textContent='';btn.disabled=false;polling=false;}
+    };
+    setTimeout(tick,8000);
+  }catch(e){showErr('vidErr',String(e&&e.message||e));stat.textContent='';btn.disabled=false;polling=false;}
+}
+</script></body></html>
