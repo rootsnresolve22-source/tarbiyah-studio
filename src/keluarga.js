@@ -4,7 +4,16 @@
 (function(){
 "use strict";
 var RM=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches; if(RM)return;
-var scrolly=document.getElementById("scrolly"); if(!scrolly)return;
+var scrolly=document.getElementById("scrolly");
+if(!scrolly&&window.TB_SCENE_ID==="PP"){
+  var ank=document.querySelector("figure.hero-art");
+  if(ank){scrolly=document.createElement("section");
+    var st0=document.createElement("div");st0.className="sticky";
+    var sw0=document.createElement("div");sw0.className="stage-wrap";
+    var sg0=document.createElement("div");sg0.className="stage";
+    sw0.appendChild(sg0);st0.appendChild(sw0);scrolly.appendChild(st0);
+    ank.parentNode.insertBefore(scrolly,ank.nextSibling);}}
+if(!scrolly)return;
 var stage=scrolly.querySelector(".stage"); if(!stage)return;
 var sticky=scrolly.querySelector(".sticky")||stage.parentNode.parentNode;
 var wrapEl=scrolly.querySelector(".stage-wrap")||stage.parentNode;
@@ -83,7 +92,35 @@ var CFG={
   ["Pendayung kanan","Sepakati hal besar di belakang layar, tampil satu suara di depan anak."],
   ["Perahu","Pernikahan yang dirawat adalah dek paling aman bagi anak."],
   ["Mercusuar","Tujuan bersama membuat kayuhan kecil tetap berarti."]],
- petik:"Anak tumbuh paling tenang di perahu yang kedua dayungnya berbalasan."}
+ petik:"Anak tumbuh paling tenang di perahu yang kedua dayungnya berbalasan."},
+"T3-02":{hold:"Tahan \u00b7 telapak menetap hangat",slider:["sentuhan tergesa","telapak tenang"],done:"Sapaan berbalas",
+ beats:[{t:"Kulit dan dinding rahim menghantar tekanan serta hangat \u2014 sentuhanmu sungguh sampai.",s:""},
+  {t:"Ketuk lembut perut bunda, lalu tunggu sejenak \u2026 ananda menjawab dengan gerakan kecil.",s:""},
+  {t:"Ajak ayah meletakkan telapaknya: suara dan sentuhan berdua adalah perkenalan keluarga.",s:""}],
+ hs:[["Telapak","Tekanan lembut yang menetap lebih terasa daripada tepukan cepat."],
+  ["Dinding rahim","Di trimester akhir, ananda dapat menanggapi sentuhan dari luar."],
+  ["Ananda","Jawaban tak selalu seketika \u2014 beri jeda, ulangi di titik yang sama."],
+  ["Ayah","Ritual telapak ayah tiap malam membangun ikatan sejak dini."]],
+ petik:"Percakapan pertama kalian tidak memakai kata \u2014 cukup telapak yang menetap."},
+"T3-04":{hold:"Tahan \u00b7 minum air & istirahat",slider:["asupan seadanya","gizi seimbang"],done:"Tersalur penuh",
+ beats:[{t:"Plasenta adalah jembatan: yang bunda makan hari ini ikut membangun otak ananda.",s:""},
+  {t:"Ketuk tiap hidangan \u2014 saksikan cahayanya berjalan menyalakan satu wilayah otak.",s:""},
+  {t:"Tak harus mahal: ikan lokal, telur, sayur hijau, kurma, dan air putih sudah kaya.",s:""}],
+ hs:[["Ikan","Sumber DHA \u2014 bahan utama sel otak yang sedang dirakit."],
+  ["Sayur hijau","Folat menjaga tabung saraf sejak pekan-pekan awal."],
+  ["Plasenta","Jembatan satu arah penuh amanah \u2014 jaga yang melintasinya."],
+  ["Air","Cairan cukup melancarkan seluruh kiriman."]],
+ petik:"Setiap suapan bunda adalah kiriman bahan bangunan ke langit otak ananda."},
+"T3-06":{hold:"Tahan \u00b7 jangkar malam: gelapkan kamar",slider:["hari acak","ritme terjaga"],done:"Ritme menurun padanya",
+ beats:[{t:"Ananda belum melihat matahari \u2014 ia membaca siang-malam lewat ritme tubuh bunda.",s:""},
+  {t:"Seret matahari melintasi jendela: subuh, siang, sore, malam \u2014 perhatikan ananda mengikut.",s:""},
+  {t:"Saat malam, tahan tombol: kamar yang gelap dan tenang mengajarinya kapan terlelap.",s:""}],
+ hs:[["Subuh","Bangun di waktu sama tiap hari \u2014 sinyal paling kuat."],
+  ["Cahaya pagi","Paparan terang pagi menata jam tubuh bunda dan ananda."],
+  ["Perut","Gerak ananda condong mengikuti pola aktif-rehat bunda."],
+  ["Malam","Redup, tenang, tilawah pelan \u2014 ritual yang ia kenali kelak."]],
+ petik:"Ritme harimu hari ini adalah jam tidur ananda setelah lahir."}
+
 }[ID]; if(!CFG)return;
 
 var firstChip=document.querySelector(".tb-dlk[data-d]");
@@ -133,7 +170,7 @@ kick.textContent=(oldTitle&&oldTitle.textContent.trim())||CFG.kick||"";
 var beads=document.createElement("div");beads.className="dio-beads";
 var beadEls=CFG.beats.map(function(){var b=document.createElement("i");b.className="dio-bead";beads.appendChild(b);return b;});
 var beat=document.createElement("p");beat.className="dio-beat";
-var stat=document.createElement("p");stat.className="dio-stat";
+var stat=document.createElement("p");stat.className="dio-stat";stat.setAttribute("aria-live","polite");
 head.appendChild(kick);head.appendChild(beads);head.appendChild(beat);head.appendChild(stat);
 sticky.insertBefore(head,wrapEl);
 var curBeat=-1;
@@ -183,6 +220,7 @@ function buatSosok(x,y,sc,opt){
   var legR=E("path",{d:"M 10 "+hipY+" q 3 "+(dws?22:16)+" 6 "+(footY-hipY),fill:"none",stroke:"url(#tSkin)","stroke-width":dws?12:11,"stroke-linecap":"round"},g);
   E("ellipse",{cx:-16,cy:footY+2,rx:8,ry:5,fill:"#C9627F"},g);E("ellipse",{cx:16,cy:footY+2,rx:8,ry:5,fill:"#C9627F"},g);
   E("path",{d:"M -"+(dws?22:20)+" "+bodyTop+" Q -"+(dws?27:24)+" "+hipY+" 0 "+(hipY+6)+" Q "+(dws?27:24)+" "+hipY+" "+(dws?22:20)+" "+bodyTop+" Q 12 "+(bodyTop-12)+" 0 "+(bodyTop-12)+" Q -12 "+(bodyTop-12)+" -"+(dws?22:20)+" "+bodyTop+" Z",fill:opt.baju||"url(#tBaju)"},g);
+  if(opt.hamil)E("ellipse",{cx:7,cy:hipY-10,rx:17,ry:20,fill:opt.baju||"url(#tBaju)",stroke:"rgba(255,255,255,.5)","stroke-width":2},g);
   var armL=E("g",{},g);E("path",{d:"M -"+(dws?20:18)+" "+(bodyTop+4)+" q -14 8 -18 "+(dws?24:18),fill:"none",stroke:"url(#tSkin)","stroke-width":10,"stroke-linecap":"round"},armL);
   var armR=E("g",{},g);E("path",{d:"M "+(dws?20:18)+" "+(bodyTop+4)+" q 14 8 18 "+(dws?24:18),fill:"none",stroke:"url(#tSkin)","stroke-width":10,"stroke-linecap":"round"},armR);
   var headG=E("g",{},g);
@@ -295,7 +333,7 @@ function confetti(x,y,n){for(var i=0;i<(n||10);i++){var a=Math.random()*6.283,v=
 
 var holding=false,holdT0=0,holdDur=0;
 function holdStart(e){e.preventDefault();holding=true;holdT0=performance.now();hold.classList.add("holding");hold.classList.remove("invite");touched=true;if(SC.onHoldStart)SC.onHoldStart();}
-function holdEnd(){if(!holding)return;holding=false;holdDur=performance.now()-holdT0;hold.classList.remove("holding");if(SC.onHoldEnd)SC.onHoldEnd(holdDur);}
+function holdEnd(){if(!holding)return;holding=false;holdDur=performance.now()-holdT0;hold.classList.remove("holding");hold.style.backgroundImage="";if(SC.onHoldEnd)SC.onHoldEnd(holdDur);}
 hold.addEventListener("pointerdown",holdStart);
 hold.addEventListener("pointerup",holdEnd);hold.addEventListener("pointercancel",holdEnd);hold.addEventListener("pointerleave",holdEnd);
 
@@ -620,11 +658,154 @@ IMPL["PP"]=function(c){
   }};
 };
 
+/* T3-02 Sentuhan Pertama */
+IMPL["T3-02"]=function(c){
+  var CX=190,CY=300,R=168;
+  E("circle",{cx:CX,cy:CY,r:R,fill:"url(#tSkin)",filter:"url(#tSoft)"},Lmid);
+  E("circle",{cx:CX,cy:CY,r:R-16,fill:"#FBE3EF",opacity:.92},Lmid);
+  E("circle",{cx:CX,cy:CY,r:R-16,fill:"url(#tHalo)",opacity:.5},Lmid);
+  var fet=E("g",{},Lact);
+  E("path",{d:"M 18 -30 C 40 -16 44 16 20 34 C 2 46 -26 40 -34 22 C -40 6 -32 -10 -18 -18 C -8 -23 6 -30 18 -30 Z",fill:"url(#tSkin)",stroke:"#E0A98C","stroke-width":1.4},fet);
+  E("circle",{cx:16,cy:-30,r:21,fill:"url(#tSkin)",stroke:"#E0A98C","stroke-width":1.4},fet);
+  E("path",{d:"M 30 -32 q 6 2 4 9",fill:"none",stroke:"#D89878","stroke-width":2,"stroke-linecap":"round"},fet);
+  E("path",{d:"M 6 -33 q 5 3 9 0",fill:"none",stroke:"#B07858","stroke-width":2,"stroke-linecap":"round"},fet);
+  E("path",{d:"M 2 -16 q 12 2 16 -9",fill:"none",stroke:"url(#tSkin)","stroke-width":8,"stroke-linecap":"round"},fet);
+  var legG=E("g",{},fet);
+  E("path",{d:"M -2 28 q -18 6 -24 22",fill:"none",stroke:"url(#tSkin)","stroke-width":10,"stroke-linecap":"round"},legG);
+  E("ellipse",{cx:-28,cy:52,rx:7,ry:5,fill:"#F0B998"},legG);
+  var tangan=E("g",{opacity:0},Lfx);
+  E("ellipse",{cx:0,cy:0,rx:17,ry:23,fill:"#F6CDB4",stroke:"#E0A98C","stroke-width":1.6},tangan);
+  E("ellipse",{cx:-1,cy:-24,rx:6,ry:10,fill:"#F6CDB4"},tangan);
+  var halo=E("circle",{cx:CX,cy:CY,r:0,fill:"url(#tHalo)",opacity:0},Lfx);
+  var sapa=0,telapak=0,kick=0,fetRot=0,bump=null;
+  function skor(){c.status("Sapaan berbalas "+sapa+"/4 \u00b7 telapak hangat "+telapak+"/1");
+    if(sapa>=4&&telapak>=1)c.unlock();}
+  c.onTap=function(x,y){var dx=x-CX,dy=y-CY,d=Math.hypot(dx,dy);if(d>R+24)return;
+    var ux=dx/(d||1),uy=dy/(d||1),sx=CX+ux*(R-2),sy=CY+uy*(R-2);
+    tangan.setAttribute("opacity",1);
+    tangan.setAttribute("transform","translate("+(CX+ux*(R+12))+","+(CY+uy*(R+12))+") rotate("+(Math.atan2(uy,ux)*57.3+90)+")");
+    c.ripple(sx,sy,"#EE8CB6",36);c.getar(12);
+    var jawab=Math.random()<(.35+c.calm()*.6);
+    setTimeout(function(){
+      if(jawab){kick=1;fetRot=Math.atan2(uy,ux)*8;sapa++;
+        bump={x:CX+ux*(R-22),y:CY+uy*(R-22),t:0,el:E("ellipse",{cx:0,cy:0,rx:11,ry:7,fill:"#F6A8B8",opacity:.85},Lfx)};
+        bump.el.setAttribute("transform","translate("+bump.x+","+bump.y+") rotate("+(Math.atan2(uy,ux)*57.3)+")");
+        c.chime(sapa%5,.06);skor();}
+      else c.status("Belum menjawab \u2014 telapak yang tenang & menetap lebih terasa");
+      setTimeout(function(){tangan.setAttribute("opacity",0);},700);
+    },420+(1-c.calm())*700);};
+  c.onHoldStart=function(){halo.setAttribute("opacity",.55);};
+  c.onHoldEnd=function(d){halo.setAttribute("opacity",0);
+    if(d>1600){telapak=1;kick=1;c.chime(1,.05);c.chime(3,.05);fetRot=10;
+      c.ripple(CX,CY,"#E8B86A",R);skor();}};
+  skor();c.hot([[330,120],[60,210],[190,300],[400,330]]);
+  return {tick:function(dt,now){
+    var br=1+Math.sin(now/1400)*.018;
+    fet.setAttribute("transform","translate("+CX+","+(CY+8)+") scale("+br+") rotate("+fetRot+")");
+    fetRot*=(1-dt*1.8);
+    if(kick>0){kick-=dt*2.2;legG.setAttribute("transform","rotate("+(Math.sin(kick*9)*16*kick)+" -2 28)");
+      if(kick<=0)legG.removeAttribute("transform");}
+    if(bump){bump.t+=dt;var o=Math.max(0,.85-bump.t*1.1);bump.el.setAttribute("opacity",o);
+      if(o<=0){bump.el.remove();bump=null;}}
+    if(holding){var hp=Math.min(1,(now-holdT0)/1600);halo.setAttribute("r",40+hp*(R-40));}
+  }};
+};
+
+/* T3-04 Dapur Cahaya */
+IMPL["T3-04"]=function(c){
+  E("rect",{x:30,y:316,width:190,height:12,rx:6,fill:"url(#tKayu)"},Lmid);
+  E("rect",{x:44,y:328,width:10,height:60,fill:"#CDA070"},Lmid);E("rect",{x:196,y:328,width:10,height:60,fill:"#CDA070"},Lmid);
+  E("circle",{cx:336,cy:226,r:88,fill:"url(#tSkin)",filter:"url(#tSoft)"},Lmid);
+  E("path",{d:"M 354 -36 q 8 4 6 12",fill:"none",stroke:"#D89878","stroke-width":2,transform:"translate(0,262)"},Lmid);
+  var otak=E("path",{d:"M286 196 q 4 -34 44 -38 q 44 -4 54 30 q 8 28 -12 44 q -22 18 -54 8 q -32 -10 -32 -44 Z",fill:"#F4D7E6",stroke:"#D8A0BE","stroke-width":2,opacity:.9},Lact);
+  var REG=[[306,196],[346,182],[372,210],[346,236],[312,228]];
+  var glows=REG.map(function(p){return E("circle",{cx:p[0],cy:p[1],r:11,fill:"#F4C46A",opacity:.12},Lact);});
+  var P0=[150,310],P1=[210,250],P2=[260,300],P3=[300,250];
+  E("path",{d:"M"+P0[0]+" "+P0[1]+" C "+P1[0]+" "+P1[1]+" "+P2[0]+" "+P2[1]+" "+P3[0]+" "+P3[1],fill:"none",stroke:"#EE8CB6","stroke-width":5,"stroke-linecap":"round",opacity:.55,"stroke-dasharray":"2 9"},Lmid);
+  function bez(t){var u=1-t;
+    return [u*u*u*P0[0]+3*u*u*t*P1[0]+3*u*t*t*P2[0]+t*t*t*P3[0],
+            u*u*u*P0[1]+3*u*u*t*P1[1]+3*u*t*t*P2[1]+t*t*t*P3[1]];}
+  var ITEM=[["Ikan","M-14 0 q14 -12 26 0 q-12 12 -26 0 Z M12 0 l8 -7 v14 Z","#A9C8F0"],
+   ["Telur","M0 -10 a9 11 0 1 0 .1 0 Z","#FFF6E2"],
+   ["Sayur","M0 10 q-14 -6 -10 -22 q12 2 10 22 Z M0 10 q14 -6 10 -22 q-12 2 -10 22 Z","#9FCB8C"],
+   ["Kurma","M-8 -6 a8 10 30 1 0 .1 0 Z M6 2 a8 10 -20 1 0 .1 0 Z","#C98C5A"],
+   ["Air","M0 -12 q10 12 0 22 q-10 -10 0 -22 Z","#BFE0EE"]];
+  var motes=[],salur=0,boost=0;
+  ITEM.forEach(function(it,i){var g=E("g",{cursor:"pointer"},Lact);var x=66+i*38,y=300;
+    E("circle",{cx:0,cy:0,r:16,fill:"#FFF",stroke:"#EDCBDC","stroke-width":1.6,filter:"url(#tSoft)"},g);
+    E("path",{d:it[1],fill:it[2],stroke:"#9A8290","stroke-width":1},g);
+    E("text",{x:0,y:30,"text-anchor":"middle","font-size":"8.5","font-weight":"700",fill:"#8E3D68"},g).textContent=it[0];
+    g.setAttribute("transform","translate("+x+","+y+")");
+    g.addEventListener("click",function(e){e.stopPropagation();if(g._ok)return;g._ok=1;g.setAttribute("opacity",.5);
+      for(var k=0;k<8;k++)motes.push({t:-k*.07,i:i,el:E("circle",{r:3.2,fill:"#F4C46A",opacity:0},Lfx)});
+      c.chime(i,.05);});});
+  function skor(){c.status("Gizi tersalur "+salur+"/5"+(boost>0?" \u00b7 aliran lancar":""));if(salur>=5)c.unlock();}
+  c.onHoldEnd=function(d){if(d>1200){boost=3;c.ripple(230,280,"#BFE0EE",70);
+    c.setBeat(curBeat,{t:"Air cukup dan rehat sejenak \u2014 seluruh kiriman melaju lebih lancar.",s:""});}};
+  skor();c.hot([[66,300],[142,300],[230,278],[336,226]]);
+  return {tick:function(dt,now){
+    if(boost>0)boost-=dt;
+    var sp=dt*(.42+(boost>0?.5:0));
+    for(var k=motes.length-1;k>=0;k--){var m=motes[k];m.t+=sp;
+      if(m.t<0)continue;
+      if(m.t>=1){var g=glows[m.i],cur=+g.getAttribute("opacity");
+        var goal=.35+c.calm()*.6;
+        if(cur<goal){g.setAttribute("opacity",Math.min(goal,cur+.12));}
+        if(cur+ .12>=goal&&!g._done){g._done=1;salur++;c.ripple(REG[m.i][0],REG[m.i][1],"#F4C46A",26);c.chime(m.i,.05);skor();}
+        m.el.remove();motes.splice(k,1);continue;}
+      var p=bez(m.t);m.el.setAttribute("cx",p[0]);m.el.setAttribute("cy",p[1]);
+      m.el.setAttribute("opacity",.9);}
+  }};
+};
+
+/* T3-06 Matahari Bunda */
+IMPL["T3-06"]=function(c){
+  E("rect",{x:288,y:108,width:150,height:172,rx:10,fill:"#FFF",stroke:"#D8A0BE","stroke-width":3,filter:"url(#tSoft)"},Lmid);
+  var langit=E("rect",{x:296,y:116,width:134,height:156,rx:6,fill:"url(#tSky)"},Lmid);
+  E("line",{x1:363,y1:116,x2:363,y2:272,stroke:"#EDCBDC","stroke-width":3},Lmid);
+  var sun=E("circle",{cx:0,cy:0,r:13,fill:"#F8CD64",stroke:"#E0A93C","stroke-width":2},Lact);
+  var stars=E("g",{opacity:0},Lact);
+  for(var i=0;i<7;i++)E("circle",{cx:302+(i*19)%128,cy:126+(i*37)%70,r:1.8,fill:"#FFF"},stars);
+  var bunda=c.sosok(140,316,1.3,{dewasa:1,hamil:1});bunda.face("senang");
+  E("rect",{x:108,y:236,width:64,height:9,rx:4.5,fill:"#FFF",stroke:"#EDCBDC","stroke-width":1.4},Lui);
+  var meter=E("rect",{x:110,y:238,width:20,height:5,rx:2.5,fill:"#C23C7E"},Lui);
+  E("text",{x:140,y:230,"text-anchor":"middle","font-size":"8.5","font-weight":"700",fill:"#A0617E"},Lui).textContent="gerak ananda";
+  var dim=E("rect",{x:0,y:0,width:460,height:460,rx:26,fill:"#3A2F52",opacity:0},Lfx);
+  var arcT=.06,fetal=.4,visited={},jangkar=0,cur=-1;
+  var FASE=[["subuh",.35,"#FDE9F2"],["siang",.85,"url(#tSky)"],["sore",.6,"#FBD9C4"],["malam",.14,"url(#tMalam)"]];
+  function fase(){return arcT<.22?0:arcT<.55?1:arcT<.78?2:3;}
+  function skor(){c.status("Fase diikuti "+Object.keys(visited).length+"/4 \u00b7 jangkar malam "+jangkar+"/1");
+    if(Object.keys(visited).length>=4&&jangkar)c.unlock();}
+  c.onDrag=function(inc){arcT=Math.max(0,Math.min(1,arcT+inc*.0035));};
+  c.onHoldStart=function(){if(fase()===3){dim.setAttribute("opacity",.45);bunda.face("tidur");}};
+  c.onHoldEnd=function(d){dim.setAttribute("opacity",0);
+    if(fase()===3&&d>1800){jangkar=1;c.chime(0,.05);c.confetti(363,150,10);skor();}
+    bunda.face(fase()===3?"tidur":"senang");};
+  skor();c.hot([[316,140],[410,140],[140,266],[140,380]]);
+  return {tick:function(dt,now){
+    var f=fase(),F=FASE[f];
+    var a=Math.PI*(1-arcT);
+    sun.setAttribute("cx",363+Math.cos(a)*56);sun.setAttribute("cy",250-Math.sin(a)*110);
+    sun.setAttribute("opacity",f===3?0:1);
+    langit.setAttribute("fill",F[2]);stars.setAttribute("opacity",f===3?.95:0);
+    var ritme=c.calm(),rate=.25+ritme*1.1;
+    fetal+=(F[1]-fetal)*dt*rate;
+    meter.setAttribute("width",6+fetal*54);
+    if(f!==cur){cur=f;bunda.face(f===3?"tidur":"senang");
+      bunda.P.aL=f===0?-70:f===2?-30:0;bunda.P.aR=f===0?70:f===2?30:0;
+      c.chime(f,.04);}
+    if(Math.abs(fetal-F[1])<.1&&!visited[f]){visited[f]=1;c.ripple(140,250,"#EE8CB6",30);skor();}
+    else if(ritme<.4&&Math.abs(fetal-F[1])>.3)c.status("Ananda telat mengikuti \u2014 hari yang acak sulit ia baca");
+    bunda.P.lean=tilt.x*2;bunda.apply();
+  }};
+};
+
 var SC=IMPL[ID]?IMPL[ID](ctx):null; if(!SC)return;
 ["onTap","onDrag","onCalm","onHoldStart","onHoldEnd"].forEach(function(k){if(!SC[k]&&ctx[k])SC[k]=ctx[k];});
 function loop(now){requestAnimationFrame(loop);
   if(!visible||document.hidden){lastT=now;return;}
   var dt=Math.min(.05,(now-lastT)/1000);lastT=now;bobT+=dt;
+  if(holding){var hpp=Math.min(1,(now-holdT0)/2200);hold.style.backgroundImage="linear-gradient(90deg,rgba(232,184,106,.55) "+(hpp*100)+"%,rgba(232,184,106,.12) "+(hpp*100)+"%)";}
   if(!gyroOn&&!dragging)tilt.tx*=(1-dt*1.4);
   tilt.x+=(tilt.tx-tilt.x)*Math.min(1,dt*5);
   [Lbg,Lmid,Lact,Lchar,Lfx].forEach(function(L){L.setAttribute("transform","translate("+(tilt.x*14*L._d)+",0)");});

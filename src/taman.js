@@ -145,7 +145,7 @@ kick.textContent=(oldTitle&&oldTitle.textContent.trim())||"";
 var beads=document.createElement("div");beads.className="dio-beads";
 var beadEls=CFG.beats.map(function(){var b=document.createElement("i");b.className="dio-bead";beads.appendChild(b);return b;});
 var beat=document.createElement("p");beat.className="dio-beat";
-var stat=document.createElement("p");stat.className="dio-stat";
+var stat=document.createElement("p");stat.className="dio-stat";stat.setAttribute("aria-live","polite");
 head.appendChild(kick);head.appendChild(beads);head.appendChild(beat);head.appendChild(stat);
 sticky.insertBefore(head,wrapEl);
 var curBeat=-1;
@@ -307,7 +307,7 @@ function confetti(x,y,n){for(var i=0;i<(n||10);i++){var a=Math.random()*6.283,v=
 
 var holding=false,holdT0=0,holdDur=0;
 function holdStart(e){e.preventDefault();holding=true;holdT0=performance.now();hold.classList.add("holding");hold.classList.remove("invite");touched=true;if(SC.onHoldStart)SC.onHoldStart();}
-function holdEnd(){if(!holding)return;holding=false;holdDur=performance.now()-holdT0;hold.classList.remove("holding");if(SC.onHoldEnd)SC.onHoldEnd(holdDur);}
+function holdEnd(){if(!holding)return;holding=false;holdDur=performance.now()-holdT0;hold.classList.remove("holding");hold.style.backgroundImage="";if(SC.onHoldEnd)SC.onHoldEnd(holdDur);}
 hold.addEventListener("pointerdown",holdStart);
 hold.addEventListener("pointerup",holdEnd);hold.addEventListener("pointercancel",holdEnd);hold.addEventListener("pointerleave",holdEnd);
 
@@ -657,6 +657,7 @@ var SC=IMPL[ID]?IMPL[ID](ctx):null; if(!SC)return;
 function loop(now){requestAnimationFrame(loop);
   if(!visible||document.hidden){lastT=now;return;}
   var dt=Math.min(.05,(now-lastT)/1000);lastT=now;bobT+=dt;
+  if(holding){var hpp=Math.min(1,(now-holdT0)/2200);hold.style.backgroundImage="linear-gradient(90deg,rgba(232,184,106,.55) "+(hpp*100)+"%,rgba(232,184,106,.12) "+(hpp*100)+"%)";}
   if(!gyroOn&&!dragging)tilt.tx*=(1-dt*1.4);
   tilt.x+=(tilt.tx-tilt.x)*Math.min(1,dt*5);
   [Lbg,Lmid,Lact,Lchar,Lfx].forEach(function(L){L.setAttribute("transform","translate("+(tilt.x*14*L._d)+",0)");});

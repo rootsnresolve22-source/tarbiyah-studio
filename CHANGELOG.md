@@ -1,5 +1,11 @@
 # CHANGELOG — TARBIYAH
 
+## v3.5.0 · 11 Juni 2026 — Gelombang penutup: 23/23 panggung hidup
+- Tiga adegan prenatal terakhir: Sentuhan Pertama — ketuk perut bunda, ananda menjawab dengan tendangan kecil (T3-02); Dapur Cahaya — gizi mengalir lewat plasenta menyalakan wilayah otak (T3-04); Matahari Bunda — ritme sirkadian bunda dibaca ananda lewat meter gerak (T3-06).
+- PP Dua Dayung terpasang lewat alt-mount: mesin membangun seksi panggungnya sendiri tepat di bawah hero “Berjalan Bersama”.
+- Poles lintas-mesin (taman.js & keluarga.js): isian kemajuan amber pada tombol tahan dan aria-live pada baris status.
+- Service worker tb-v3-8.
+
 ## v3.4.0 · 11 Juni 2026 — Gelombang 3: Dunia Orang Tua (P-01..P-07)
 - Mesin keluarga.js: sasis benchmark penuh + sosok dewasa parametrik (proporsi ortu, ekspresi, pose) dan instrumen ukur hidup.
 - Delapan adegan: akar & angin uji badai (P-01), sembilan lentera ranah (P-02), perancah ZPD topang-lalu-lepas (P-03), timbangan kabar cek-sumber (P-04), dua termostat ko-regulasi (P-05), cangkir bocor tambal-isi-tuang (P-06), mozaik amal menyatu (P-07), dua dayung perahu pasangan — PP menyusul (modul berfigur khusus) (PP).
