@@ -1,5 +1,12 @@
 # CHANGELOG — TARBIYAH
 
+## v4.0.0 · 11 Juni 2026 — ROMBAK TOTAL: anti-macet, satu-berkas, siluet premium
+- AKAR MASALAH MOBILE DICABUT: service worker lama bisa gagal instal diam-diam (precache addAll) lalu menyajikan data lama selamanya. SW v4: tanpa precache yang bisa membunuh instalasi, dokumen & JSON network-first, skipWaiting+claim, dan halaman memuat-ulang otomatis saat versi baru mengambil alih. Plus palu kas di index: registrasi lama & cache asing dibersihkan sekali.
+- SATU BERKAS: index.html kini aplikasi utuh (23 modul + mesin tertanam). Folder data/ tidak dipakai lagi — kelas bug “JSON basi” musnah permanen. Pembaruan = unggah satu index.html.
+- METODE FIGUR DIGANTI TOTAL: karakter kartun lama dibuang; masuk siluet satu-kurva bergradien dalam dengan cahaya tepi, halo lembut, dan napas mikro — anak, dewasa, dan ibu hamil (profil).
+- Hotspot lingkaran melayang diganti barisan chip kaca berlabel di kaki panggung; baris status dipendekkan & anti-meluap; bingkai ranting sakura di tiap panggung; bedah komposisi 2Y-08 (gelembung adab), P-03 (bukit, bintang, status), P-07 (keping lurus tertata di lingkar hati).
+- Service worker tb-v4-0.
+
 ## v3.5.0 · 11 Juni 2026 — Gelombang penutup: 23/23 panggung hidup
 - Tiga adegan prenatal terakhir: Sentuhan Pertama — ketuk perut bunda, ananda menjawab dengan tendangan kecil (T3-02); Dapur Cahaya — gizi mengalir lewat plasenta menyalakan wilayah otak (T3-04); Matahari Bunda — ritme sirkadian bunda dibaca ananda lewat meter gerak (T3-06).
 - PP Dua Dayung terpasang lewat alt-mount: mesin membangun seksi panggungnya sendiri tepat di bawah hero “Berjalan Bersama”.

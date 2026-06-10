@@ -1,30 +1,33 @@
-/* TARBIYAH service worker — cache-first untuk aset, SWR untuk dokumen. */
-const VER = "tb-v3-8";
-const CORE = ["./","index.html","manifest.json","fonts/fonts.css",
- "fonts/fraunces-var.woff2","fonts/spectral-300.woff2","fonts/spectral-400.woff2","fonts/spectral-400i.woff2","fonts/spectral-500.woff2","fonts/spectral-600.woff2","fonts/amiri-400.woff2","fonts/amiri-700.woff2",
- "ikon/icon-192.png","ikon/icon-512.png","ikon/icon-512-maskable.png","gambar/sampul.webp"];
-self.addEventListener("install", e => {
-  e.waitUntil(caches.open(VER).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
-});
+/* TARBIYAH service worker v4 — anti-macet.
+   Prinsip: TIDAK ADA precache yang bisa menggagalkan instalasi;
+   dokumen & JSON selalu network-first; aset berat stale-while-revalidate;
+   skipWaiting + clients.claim agar versi baru langsung berkuasa. */
+const VER = "tb-v4-0";
+self.addEventListener("install", e => { self.skipWaiting(); });
 self.addEventListener("activate", e => {
-  e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== VER).map(k => caches.delete(k)))).then(() => self.clients.claim()));
+  e.waitUntil(caches.keys()
+    .then(ks => Promise.all(ks.filter(k => k !== VER).map(k => caches.delete(k))))
+    .then(() => self.clients.claim()));
 });
 self.addEventListener("fetch", e => {
   const req = e.request;
   if (req.method !== "GET") return;
   const url = new URL(req.url);
-  if (url.origin !== location.origin) return; // CDN murottal dsb. langsung ke jaringan
-  const isAsset = /\/(gambar|video|audio|fonts|ikon|data)\//.test(url.pathname);
-  if (isAsset) {
-    e.respondWith(caches.match(req).then(hit => hit || fetch(req).then(res => {
-      if (res.ok) { const cp = res.clone(); caches.open(VER).then(c => c.put(req, cp)); }
-      return res;
-    })));
-  } else if (req.mode === "navigate" || url.pathname.endsWith(".html")) {
+  if (url.origin !== location.origin) return;
+  const dokumen = req.mode === "navigate" || url.pathname.endsWith(".html") || url.pathname.endsWith(".json");
+  if (dokumen) {
     e.respondWith(fetch(req).then(res => {
       if (res.ok) { const cp = res.clone(); caches.open(VER).then(c => c.put(req, cp)); }
       return res;
     }).catch(() => caches.match(req).then(h => h || caches.match("index.html"))));
+  } else {
+    e.respondWith(caches.match(req).then(hit => {
+      const net = fetch(req).then(res => {
+        if (res.ok) { const cp = res.clone(); caches.open(VER).then(c => c.put(req, cp)); }
+        return res;
+      }).catch(() => hit);
+      return hit || net;
+    }));
   }
 });
 /* Web Push — aktif (backend Supabase: kirim-push + cron 07.00 WIB) */
