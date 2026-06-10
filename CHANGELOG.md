@@ -1,5 +1,15 @@
 # CHANGELOG — TARBIYAH
 
+## v3.2.0 · 11 Juni 2026 — "Kontrak Benchmark" (pilot: T3-01)
+Mesin Diorama ditulis ulang sebagai sasis v2 dengan lima hukum yang membuat cacat tata letak mustahil secara konstruksi:
+- Pengambilalihan panggung penuh: judul, narasi-beat (3 takarir asli + sumber ilmiahnya), stage, dan dok kendali menjadi SATU komposisi milik mesin — takarir modul disembunyikan, tabrakan tak punya ruang lahir.
+- Teks ukur-diri: kelopak pengetahuan kini foreignObject HTML yang mengukur dirinya sendiri — luber teks selesai by-construction.
+- Geometri deterministik: ukuran panggung dihitung dari tinggi layar nyata dikurangi kepala+dok (ResizeObserver), bukan coba-susut.
+- Fidelitas: siluet janin bergradien dengan telinga, lengan ber-gerak-sekunder, napas mikro, vignette + gumpalan cahaya ketuban, jantung ber-aura, pil bpm berbingkai, dok kaca satu-kesatuan.
+- Hiasan yang mengajar (T3-01): gelombang suara tampak TEREDAM saat menembus dinding rahim (atenuasi akustik digambar dua-lapis), dan saat menahan "lantunkan", janin menoleh, telinga berpendar, not emas merambat, detaknya turun ±10 — deselerasi-menyimak (DeCasper & Fifer 1980) dengan beat narasi yang menjelaskannya; bising kelabu muncul saat tuas ke "tergesa".
+- Skala napas/tendangan dikomposisikan mengelilingi pusat janin (atribut transform SVG mengabaikan transform-origin).
+- T3-03 & T3-05 otomatis mewarisi sasis v2 (mekanik napas/doa tetap). Service worker tb-v3-4.
+
 ## v3.1.1 · 10 Juni 2026 (hotfix)
 - Diorama: bilah kendali kini kompak ber-latar kaca dan TIDAK lagi menimpa takarir panggung (sistem muat-pas sadar-grid: panggung mengecil otomatis sampai semua muat di jalurnya).
 - Kalimat hikmah pasca-napas dipindah dari teks SVG (meluber/terpotong) ke catatan HTML yang melipat rapi di bilah.
