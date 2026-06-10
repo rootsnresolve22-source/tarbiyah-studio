@@ -23,7 +23,7 @@ const RM_STYLE = '<style>@media (prefers-reduced-motion:reduce){*{animation:none
 const RE_AUDIO = /data:audio\/mpeg;base64,([A-Za-z0-9+/=]+)/;
 
 /* v3.1 — Diorama Hidup: suntik mesin adegan interaktif ke modul terpilih */
-const SCENE_MODULES = { "T3-01":"diorama.js","T3-03":"diorama.js","T3-05":"diorama.js","2Y-01":"taman.js","2Y-02":"taman.js","2Y-03":"taman.js","2Y-04":"taman.js","2Y-05":"taman.js","2Y-06":"taman.js","2Y-07":"taman.js","2Y-08":"taman.js","2Y-09":"taman.js" };
+const SCENE_MODULES = { "T3-01":"diorama.js","T3-03":"diorama.js","T3-05":"diorama.js","2Y-01":"taman.js","2Y-02":"taman.js","2Y-03":"taman.js","2Y-04":"taman.js","2Y-05":"taman.js","2Y-06":"taman.js","2Y-07":"taman.js","2Y-08":"taman.js","2Y-09":"taman.js","P-01":"keluarga.js","P-02":"keluarga.js","P-03":"keluarga.js","P-04":"keluarga.js","P-05":"keluarga.js","P-06":"keluarga.js","P-07":"keluarga.js" };
 const ENG = {};
 function engineSrc(f){
   if(!ENG[f]){

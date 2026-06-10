@@ -1,5 +1,10 @@
 # CHANGELOG — TARBIYAH
 
+## v3.4.0 · 11 Juni 2026 — Gelombang 3: Dunia Orang Tua (P-01..P-07)
+- Mesin keluarga.js: sasis benchmark penuh + sosok dewasa parametrik (proporsi ortu, ekspresi, pose) dan instrumen ukur hidup.
+- Delapan adegan: akar & angin uji badai (P-01), sembilan lentera ranah (P-02), perancah ZPD topang-lalu-lepas (P-03), timbangan kabar cek-sumber (P-04), dua termostat ko-regulasi (P-05), cangkir bocor tambal-isi-tuang (P-06), mozaik amal menyatu (P-07), dua dayung perahu pasangan — PP menyusul (modul berfigur khusus) (PP).
+- Service worker tb-v3-7.
+
 ## v3.3.0 · 11 Juni 2026 — Gelombang 2: Dunia Balita (2Y-01..09)
 - Mesin baru taman.js di atas sasis benchmark penuh: scroll bebas pan-y, tanpa penyematan, ukuran rumus viewport dua orientasi, dok lipat, kelopak ukur-diri, beat otomatis + manik ketuk, dalil otomatis.
 - Karakter balita ber-pose (lengan, kaki, kepala, ekspresi senang/waw/tidur/sedih) hadir di semua adegan.
