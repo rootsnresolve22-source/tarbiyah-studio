@@ -22,6 +22,14 @@ const RM_STYLE = '<style>@media (prefers-reduced-motion:reduce){*{animation:none
 
 const RE_AUDIO = /data:audio\/mpeg;base64,([A-Za-z0-9+/=]+)/;
 
+/* v3.1 — Diorama Hidup: suntik mesin adegan interaktif ke modul terpilih */
+const SCENE_MODULES = { "T3-01": 1, "T3-03": 1, "T3-05": 1 };
+const DIO_PATH = fs.existsSync(path.join(ROOT, "src_new", "diorama.js"))
+  ? path.join(ROOT, "src_new", "diorama.js")
+  : path.join(ROOT, "src", "diorama.js");
+const DIO = fs.readFileSync(DIO_PATH, "utf8");
+if (/<\/script/i.test(DIO)) throw new Error("diorama.js mengandung penutup script literal");
+
 const codes = fs.readdirSync(IN).filter(f => f.endsWith(".html")).map(f => f.replace(/\.html$/, "")).sort();
 if (codes.length !== 23) throw new Error("modul masukan ≠ 23: " + codes.length);
 
@@ -36,6 +44,13 @@ for (const c of codes) {
   h = h.replace(RE_BRIDGE, BRIDGE);
 
   h = h.replace("</head>", RM_STYLE + "\n</head>");
+
+  if (SCENE_MODULES[c]) {
+    if (!h.includes("</body>")) throw new Error(c + ": </body> tidak ditemukan untuk injeksi diorama");
+    h = h.replace("</body>",
+      '<script>window.TB_SCENE_ID=' + JSON.stringify(c) + ';</scr' + 'ipt>\n' +
+      '<script>\n' + DIO + '\n</scr' + 'ipt>\n</body>');
+  }
 
   // edisi offline: apa adanya (audio tetap tertanam)
   fs.writeFileSync(path.join(O, c + ".html"), h);

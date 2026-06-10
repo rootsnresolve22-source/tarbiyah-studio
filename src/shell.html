@@ -382,6 +382,10 @@ body.sheet-on #toast.on{transform:translate(-50%,0)}
         <div class="si"><b>Impor progres</b><span>Tempel kode cadangan dari perangkat lama</span></div>
         <button class="btn ghost" style="padding:.45em 1em;font-size:.8rem" id="btnImport">Tempel</button>
       </div>
+      <div class="setrow" id="rowPush">
+        <div class="si"><b>Pengingat harian</b><span>Notifikasi lembut tiap pagi 07.00 WIB</span></div>
+        <button class="btn ghost" style="padding:.45em 1em;font-size:.8rem" id="btnPush">Aktifkan</button>
+      </div>
       <div class="setrow">
         <div class="si"><b>Unduh edisi offline</b><span>Satu berkas lengkap untuk dibuka tanpa internet</span></div>
         <a class="btn ghost" style="padding:.45em 1em;font-size:.8rem;text-decoration:none" id="btnOffline" href="tarbiyah.html" download>Unduh</a>
@@ -462,11 +466,12 @@ var ICONS={
  seed:'<svg viewBox="0 0 24 24"><path d="M12 21v-7M12 14c-4.5 0-7-2.7-7-7 4.5 0 7 2.7 7 7zm0 0c0-3.5 2-5.6 5.6-5.6 0 3.6-2.1 5.6-5.6 5.6z"/></svg>'};
 
 // ---------- state ----------
-var APP_VERSION="3.0.0";
+var APP_VERSION="3.1.0";
+var PUSH_CFG={url:"https://soxirtpifyomksjsxixt.supabase.co",anon:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNveGlydHBpZnlvbWtzanN4aXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAyMjg2MzUsImV4cCI6MjA5NTgwNDYzNX0.iVQr9V84e0x9FIw1dUH0REf9w8BT7MDWW1GdIlIZtP0",vapid:"BLinsJMu3Z71kJd1k2QrYGXI4EX4B6BnvMcQLJZOwd_f3MLWwBEOtUoloyoPpgjEsg-RHiXlk49MttMsOVSDgLw"};
 var SPLIT_BUILD=/*__SPLIT__*/false;
 var KEY="tarbiyah.v2";
 var S=load();
-function blank(){return {xp:0,seen:{},streak:0,lastDate:"",badges:[],dalil:[],onboard:0,unlockAll:0,lastMod:"",theme:"",sr:[],amal:{},amalDate:"",phasePick:-1};}
+function blank(){return {xp:0,seen:{},streak:0,lastDate:"",badges:[],dalil:[],onboard:0,unlockAll:0,lastMod:"",theme:"",sr:[],amal:{},amalDate:"",phasePick:-1,push:0};}
 function load(){
   try{
     var raw=localStorage.getItem(KEY);
@@ -670,6 +675,32 @@ function renderProfile(){
   var vl=$("#verLine"); if(vl)vl.textContent="v"+APP_VERSION;
 }
 $("#swUnlock").addEventListener("change",function(){ S.unlockAll=this.checked?1:0; save(); renderMap(); toast(this.checked?"Semua modul terbuka.":"Urutan kunci aktif kembali."); });
+/* ---- Pengingat harian (Web Push, tanpa akun) ---- */
+function pushOK(){return ("serviceWorker" in navigator)&&("PushManager" in window)&&("Notification" in window)&&(location.protocol==="https:"||location.hostname==="localhost");}
+function b64ToU8(s){var p="=".repeat((4-s.length%4)%4),b=(s+p).replace(/-/g,"+").replace(/_/g,"/"),r=atob(b),u=new Uint8Array(r.length);for(var i=0;i<r.length;i++)u[i]=r.charCodeAt(i);return u;}
+function pushLabel(){var b=$("#btnPush");if(!b)return;b.textContent=S.push?"Aktif \u2713":"Aktifkan";b.classList.toggle("ghost",!S.push);}
+function initPush(){var row=$("#rowPush");if(!row)return;if(!pushOK()){row.style.display="none";return;}pushLabel();}
+$("#btnPush")&&$("#btnPush").addEventListener("click",function(){
+  var btn=this;btn.disabled=true;
+  (async function(){
+    try{
+      var reg=await navigator.serviceWorker.ready;
+      if(S.push){ /* matikan di perangkat ini */
+        var old=await reg.pushManager.getSubscription(); if(old)await old.unsubscribe();
+        S.push=0;save();pushLabel();toast("Pengingat dimatikan di perangkat ini");return;
+      }
+      var izin=await Notification.requestPermission();
+      if(izin!=="granted"){toast(izin==="denied"?"Notifikasi diblokir \u2014 izinkan lewat ikon gembok di bilah alamat":"Izin belum diberikan");return;}
+      var sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64ToU8(PUSH_CFG.vapid)});
+      var res=await fetch(PUSH_CFG.url+"/rest/v1/tarbiyah_push",{method:"POST",
+        headers:{"apikey":PUSH_CFG.anon,"Authorization":"Bearer "+PUSH_CFG.anon,"Content-Type":"application/json","Prefer":"return=minimal"},
+        body:JSON.stringify({subscription:sub})});
+      if(res.ok||res.status===409){S.push=1;save();pushLabel();toast("Pengingat aktif \u2014 sampai jumpa pukul 07.00");}
+      else{toast("Gagal mendaftar pengingat ("+res.status+") \u2014 coba lagi");try{await sub.unsubscribe();}catch(_){}}
+    }catch(e){toast("Pengingat tidak didukung di sini");}
+    finally{btn.disabled=false;}
+  })();
+});
 $("#btnReset").addEventListener("click",function(){
   if(confirm("Mulai ulang perjalanan? Seluruh XP, progres, dan lencana akan dihapus.")){
     S=blank(); S.onboard=1; save(); renderAll(); toast("Perjalanan dimulai ulang. Bismillah.");
@@ -782,6 +813,7 @@ function stepRead(body){
   var f=document.createElement("iframe");
   f.setAttribute("title","Materi "+c);
   if(SPLIT_BUILD) f.setAttribute("sandbox","allow-scripts");
+  f.setAttribute("allow","accelerometer; gyroscope");
   body.appendChild(bar); fw.appendChild(f); body.appendChild(fw);
   f.srcdoc='<p style="font-family:serif;padding:2em;color:#8A6275">Memuat materi\u2026</p>';
   getModule(c,function(html){
@@ -1153,6 +1185,7 @@ function renderAll(){ renderStats(); renderMap(); if(!$("#viewExplore").classLis
   // mulai dari fase modul terakhir
   if(S.lastMod){ PHASES.forEach(function(ph,i){ if(ph.mods.indexOf(S.lastMod)>=0)curPhase=i; }); }
   renderAll();
+  initPush();
   routeFromHash(false);
   if("serviceWorker" in navigator && (location.protocol==="https:"||location.hostname==="localhost")){
     try{ navigator.serviceWorker.register("sw.js"); }catch(e){}

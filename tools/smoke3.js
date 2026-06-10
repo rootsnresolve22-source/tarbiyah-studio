@@ -139,6 +139,14 @@ function boot(file, { withFetch } = {}) {
   ok((fr.getAttribute("srcdoc") || "").includes("Modul T3-03") || (fr.srcdoc || "").includes("T3-03"), "modul termuat via fetch data/*.json");
   ok(d2.documentElement.outerHTML.includes('manifest.json'), "tautan manifest PWA ada");
 
+  // — v3.1 —
+  ok(w2.PUSH_CFG && /^https:\/\/.+supabase\.co$/.test(w2.PUSH_CFG.url) && w2.PUSH_CFG.vapid.length > 60, "PUSH_CFG tertanam (url+vapid)");
+  ok(d2.querySelector("#rowPush") && d2.querySelector("#rowPush").style.display === "none", "baris Pengingat tersembunyi anggun saat push tak didukung");
+  const t303 = JSON.parse(fs.readFileSync(path.join(ROOT, "release", "data", "T3-03.json"), "utf8")).html;
+  ok(t303.includes('TB_SCENE_ID="T3-03"') && t303.includes("Diorama Hidup"), "diorama tertanam di T3-03 (web)");
+  const offHtml = fs.readFileSync(path.join(ROOT, "release", "tarbiyah.html"), "utf8");
+  ok((offHtml.match(/TB_SCENE_ID=/g) || []).length === 3, "tiga adegan diorama tertanam di edisi offline");
+
   console.log("\nHASIL:", pass, "lulus ·", fail, "gagal");
   process.exit(fail ? 1 : 0);
 })().catch(e => { console.error("UJI GAGAL:", e); process.exit(1); });

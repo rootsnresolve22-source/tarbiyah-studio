@@ -1,5 +1,5 @@
 /* TARBIYAH service worker — cache-first untuk aset, SWR untuk dokumen. */
-const VER = "tb-v3-1";
+const VER = "tb-v3-2";
 const CORE = ["./","index.html","manifest.json","fonts/fonts.css",
  "fonts/fraunces-var.woff2","fonts/spectral-300.woff2","fonts/spectral-400.woff2","fonts/spectral-400i.woff2","fonts/spectral-500.woff2","fonts/spectral-600.woff2","fonts/amiri-400.woff2","fonts/amiri-700.woff2",
  "ikon/icon-192.png","ikon/icon-512.png","ikon/icon-512-maskable.png","gambar/sampul.webp"];
@@ -27,7 +27,7 @@ self.addEventListener("fetch", e => {
     }).catch(() => caches.match(req).then(h => h || caches.match("index.html"))));
   }
 });
-/* Web Push (Gelombang 3 — aktif setelah backend Supabase dideploy):
+/* Web Push — aktif (backend Supabase: kirim-push + cron 07.00 WIB) */
 self.addEventListener("push", e => {
   const d = e.data ? e.data.json() : {};
   e.waitUntil(self.registration.showNotification(d.title || "TARBIYAH", {
@@ -35,4 +35,3 @@ self.addEventListener("push", e => {
   }));
 });
 self.addEventListener("notificationclick", e => { e.notification.close(); e.waitUntil(clients.openWindow(".")); });
-*/

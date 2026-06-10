@@ -1,5 +1,14 @@
 # CHANGELOG — TARBIYAH
 
+## v3.1.0 · 10 Juni 2026
+### Diorama Hidup
+- Diagram statis pada panggung scrollytelling tiga modul prenatal (T3-01, T3-03, T3-05) digantikan adegan interaktif sungguhan: paralaks kemiringan (seret layar; gyroscope bila diizinkan), janin dengan fisika apung yang merespons, dua detak jantung edukatif (±70 ibu / ±140 janin, bpm hidup), partikel fisiologi yang berubah bersama tuas "tekanan ⟷ tenang", mekanik tahan-untuk-bernapas tiga tarikan yang membuka chip dalil modul, empat hotspot kelopak pengetahuan, dan detak audio opsional (WebAudio, tanpa berkas). prefers-reduced-motion tetap dihormati: diagram asli dipertahankan utuh.
+- Tiga tema satu mesin: Resonansi Suara (T3-01, gelombang lantunan), Resonansi Sakinah (T3-03, napas), Doa yang Menyelimuti (T3-05, serpih cahaya).
+### Pengingat harian (Web Push)
+- Tombol "Aktifkan pengingat" di Profil: izin notifikasi → langganan VAPID → tersimpan tanpa akun (sisip-anonim ber-RLS, anti-duplikat, membersihkan-diri). Backend kirim-push + cron 07.00 WIB sudah aktif sejak v3.0.
+- Service worker tb-v3-2: handler push & klik-notifikasi aktif.
+- Edisi offline/file:// menyembunyikan baris pengingat secara anggun.
+
 ## v3.0.0 · 10 Juni 2026
 Rilis besar tiga gelombang sekaligus (hasil audit gabungan kode × live).
 
