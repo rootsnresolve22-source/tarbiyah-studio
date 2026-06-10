@@ -149,7 +149,7 @@ function boot(file, { withFetch } = {}) {
   const t301 = JSON.parse(fs.readFileSync(path.join(ROOT, "release", "data", "T3-01.json"), "utf8")).html;
   ok(t301.includes("dio-dock") && t301.includes("foreignObject") && t301.includes("dMaskOut") && t301.includes("pan-y"), "benchmark v2 di T3-01: dok + kelopak ukur-diri + atenuasi gelombang");
   const offHtml = fs.readFileSync(path.join(ROOT, "release", "tarbiyah.html"), "utf8");
-  ok((offHtml.match(/TB_SCENE_ID=/g) || []).length === 3, "tiga adegan diorama tertanam di edisi offline");
+  ok((offHtml.match(/TB_SCENE_ID=/g) || []).length === 12, "tiga adegan diorama tertanam di edisi offline");
 
   console.log("\nHASIL:", pass, "lulus ·", fail, "gagal");
   process.exit(fail ? 1 : 0);

@@ -1,5 +1,11 @@
 # CHANGELOG — TARBIYAH
 
+## v3.3.0 · 11 Juni 2026 — Gelombang 2: Dunia Balita (2Y-01..09)
+- Mesin baru taman.js di atas sasis benchmark penuh: scroll bebas pan-y, tanpa penyematan, ukuran rumus viewport dua orientasi, dok lipat, kelopak ukur-diri, beat otomatis + manik ketuk, dalil otomatis.
+- Karakter balita ber-pose (lengan, kaki, kepala, ekspresi senang/waw/tidur/sedih) hadir di semua adegan.
+- Sembilan mekanik unik: benih kata & pohon balasan (01), papan keseimbangan miring + bintang (02), kotak ajaib morf 4 wujud (03), kelereng 1-2-3 → lonceng sebab-akibat (04), gema pola tetes-nada (05), matahari seret → cuaca & indra (06), badai hati & ko-regulasi napas (07), cermin adab dua figur (08), roda hari + jangkar tidur (09).
+- Service worker tb-v3-6.
+
 ## v3.2.1 · 11 Juni 2026 — scroll bebas, dua orientasi, bingkai game standar
 - Panggung diorama TIDAK lagi membajak scroll: touch-action pan-y (vertikal = scroll halaman seperti biasa; miring cukup dari seretan horizontal atau gyroscope; ayunan vertikal lembut otomatis).
 - Penyematan 280vh dilepas: panggung kini blok normal yang mengalir — sumber "menutupi gambar" dan beda-bentuk-antar-perangkat hilang by-construction; beat narasi berjalan otomatis tiap 6,5 dtk dan manik progres bisa diketuk.

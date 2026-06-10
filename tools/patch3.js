@@ -23,12 +23,16 @@ const RM_STYLE = '<style>@media (prefers-reduced-motion:reduce){*{animation:none
 const RE_AUDIO = /data:audio\/mpeg;base64,([A-Za-z0-9+/=]+)/;
 
 /* v3.1 — Diorama Hidup: suntik mesin adegan interaktif ke modul terpilih */
-const SCENE_MODULES = { "T3-01": 1, "T3-03": 1, "T3-05": 1 };
-const DIO_PATH = fs.existsSync(path.join(ROOT, "src_new", "diorama.js"))
-  ? path.join(ROOT, "src_new", "diorama.js")
-  : path.join(ROOT, "src", "diorama.js");
-const DIO = fs.readFileSync(DIO_PATH, "utf8");
-if (/<\/script/i.test(DIO)) throw new Error("diorama.js mengandung penutup script literal");
+const SCENE_MODULES = { "T3-01":"diorama.js","T3-03":"diorama.js","T3-05":"diorama.js","2Y-01":"taman.js","2Y-02":"taman.js","2Y-03":"taman.js","2Y-04":"taman.js","2Y-05":"taman.js","2Y-06":"taman.js","2Y-07":"taman.js","2Y-08":"taman.js","2Y-09":"taman.js" };
+const ENG = {};
+function engineSrc(f){
+  if(!ENG[f]){
+    const p = fs.existsSync(path.join(ROOT,"src_new",f)) ? path.join(ROOT,"src_new",f) : path.join(ROOT,"src",f);
+    ENG[f] = fs.readFileSync(p,"utf8");
+    if(/<\/script/i.test(ENG[f])) throw new Error(f+" mengandung penutup script literal");
+  }
+  return ENG[f];
+}
 
 const codes = fs.readdirSync(IN).filter(f => f.endsWith(".html")).map(f => f.replace(/\.html$/, "")).sort();
 if (codes.length !== 23) throw new Error("modul masukan ≠ 23: " + codes.length);
@@ -49,7 +53,7 @@ for (const c of codes) {
     if (!h.includes("</body>")) throw new Error(c + ": </body> tidak ditemukan untuk injeksi diorama");
     h = h.replace("</body>",
       '<script>window.TB_SCENE_ID=' + JSON.stringify(c) + ';</scr' + 'ipt>\n' +
-      '<script>\n' + DIO + '\n</scr' + 'ipt>\n</body>');
+      '<script>\n' + engineSrc(SCENE_MODULES[c]) + '\n</scr' + 'ipt>\n</body>');
   }
 
   // edisi offline: apa adanya (audio tetap tertanam)
