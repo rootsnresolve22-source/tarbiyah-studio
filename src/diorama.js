@@ -57,7 +57,8 @@ var DALIL = firstChip ? firstChip.getAttribute("data-d") : "";
 var css = document.createElement("style");
 css.textContent =
 ".dio-stage{touch-action:none;cursor:grab}.dio-stage:active{cursor:grabbing}"+
-".dio-bar{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;margin-top:10px}"+
+".dio-bar{display:flex;flex-wrap:wrap;gap:6px 8px;justify-content:center;align-items:center;margin:8px auto 0;padding:7px 10px;border-radius:16px;background:rgba(255,250,252,.9);backdrop-filter:blur(5px);box-shadow:0 4px 14px rgba(194,60,126,.10);max-width:min(92vw,430px);position:relative;z-index:4}"+
+".dio-note{flex:1 1 100%;text-align:center;font:600 .72rem/1.5 inherit;color:#8E3D68;display:none;padding:2px 4px 0}.dio-note.show{display:block}"+
 ".dio-pill{font:600 .78rem/1 inherit;letter-spacing:.02em;border:1px solid #E9B7CF;border-radius:999px;"+
  "padding:.62em 1.05em;background:linear-gradient(180deg,#FFF9FC,#FBE3EF);color:#8E3D68;cursor:pointer;"+
  "user-select:none;-webkit-user-select:none;box-shadow:0 1px 3px rgba(194,60,126,.12);transition:transform .12s,box-shadow .12s}"+
@@ -66,13 +67,13 @@ css.textContent =
 ".dio-pill.invite{animation:dioInv 1.6s ease-in-out infinite}"+
 "@keyframes dioInv{0%,100%{box-shadow:0 1px 3px rgba(194,60,126,.12)}50%{box-shadow:0 0 0 8px rgba(232,184,106,.22)}}"+
 ".dio-ic{width:34px;height:34px;display:grid;place-items:center;font-size:1rem;padding:0}"+
-".dio-range{appearance:none;-webkit-appearance:none;width:min(46vw,190px);height:6px;border-radius:99px;outline:none;"+
+".dio-range{appearance:none;-webkit-appearance:none;width:min(56vw,200px);height:6px;border-radius:99px;outline:none;"+
  "background:linear-gradient(90deg,#B8B0BC,#E8B86A);}"+
 ".dio-range::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#fff;border:2px solid #C23C7E;box-shadow:0 1px 4px rgba(0,0,0,.18);cursor:pointer}"+
 ".dio-lbl{font-size:.66rem;color:#9C8090;letter-spacing:.02em}"+
 ".dio-chip-dim{opacity:.42;filter:grayscale(.5);pointer-events:none}"+
 ".dio-chip-lit{animation:dioLit .9s ease}@keyframes dioLit{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.12)}100%{transform:scale(1)}}"+
-".dio-bpm{font:700 10px/1 inherit;fill:#A9778F;letter-spacing:.04em}"+
+".dio-bpm{font:700 10px/1 inherit;fill:#A9778F;letter-spacing:.04em;paint-order:stroke;stroke:#FFFDFE;stroke-width:3px;stroke-linejoin:round}"+
 ".dio-hslbl{font:700 10.5px/1 inherit;fill:#8E3D68;letter-spacing:.05em}"+
 ".dio-petal-t{font:700 11.5px/1.2 inherit;fill:#7A2F55}.dio-petal-b{font:500 10.3px/1.35 inherit;fill:#6E5260}";
 document.head.appendChild(css);
@@ -130,20 +131,22 @@ HS.forEach(function(p,idx){
   (function pulse(){halo.animate?halo.animate([{r:9,opacity:.45},{r:16,opacity:0}],{duration:1900,iterations:Infinity}):0;})();
   g.addEventListener("click",function(ev){ev.stopPropagation();togglePetal(idx,p);});
 });
+function closePetal(){petal.setAttribute("opacity",0);petalOpen=-1;bpmM.setAttribute("opacity",1);bpmB.setAttribute("opacity",1);}
 function togglePetal(i,p){
-  if(petalOpen===i){petal.setAttribute("opacity",0);petalOpen=-1;return;}
+  if(petalOpen===i){closePetal();return;}
   petalOpen=i; touched=true;
+  bpmM.setAttribute("opacity",.12);bpmB.setAttribute("opacity",.12);
   var t=CFG.hs[i][0], lines=CFG.hs[i][1].split("\n");
   petalT.textContent=t; petalB1.textContent=lines[0]||""; petalB2.textContent=lines[1]||"";
-  var w=Math.max(t.length*7.4,(lines[0]||"").length*5.6,(lines[1]||"").length*5.6)+26, h=lines[1]?58:44;
-  var x=Math.min(Math.max(p[0]-w/2,8),452-w), y=p[1]-h-16; if(y<6)y=p[1]+16;
+  var w=Math.min(308,Math.max(t.length*7.8,(lines[0]||"").length*6.2,(lines[1]||"").length*6.2)+30), h=lines[1]?60:46;
+  var x=Math.min(Math.max(p[0]-w/2,8),452-w), y=p[1]-h-18; if(y<8)y=p[1]+18; if(y+h>450)y=Math.max(8,p[1]-h-18);
   petalBg.setAttribute("x",x);petalBg.setAttribute("y",y);petalBg.setAttribute("width",w);petalBg.setAttribute("height",h);
   petalT.setAttribute("x",x+13);petalT.setAttribute("y",y+18);
   petalB1.setAttribute("x",x+13);petalB1.setAttribute("y",y+33);
   petalB2.setAttribute("x",x+13);petalB2.setAttribute("y",y+46);
   petal.setAttribute("opacity",1);
 }
-svg.addEventListener("click",function(){if(petalOpen>-1){petal.setAttribute("opacity",0);petalOpen=-1;}});
+svg.addEventListener("click",function(){if(petalOpen>-1)closePetal();});
 
 /* ---------- bilah kendali ---------- */
 var bar=document.createElement("div");bar.className="dio-bar";
@@ -161,7 +164,22 @@ if(typeof DeviceOrientationEvent!=="undefined" && typeof DeviceOrientationEvent.
 var chip=null;
 if(DALIL && firstChip){ chip=firstChip.cloneNode(true); chip.classList.add("dio-chip-dim"); chip.title=CFG.done; }
 bar.appendChild(hold);bar.appendChild(sWrap);bar.appendChild(aud);if(tiltBtn)bar.appendChild(tiltBtn);if(chip)bar.appendChild(chip);
+var note=document.createElement("div");note.className="dio-note";bar.appendChild(note);
 wrap.appendChild(bar);
+
+/* muat-pas: panggung+bilah harus tinggal di jalurnya sendiri, tak menimpa takarir */
+var capEl=document.getElementById("cap");
+function fit(){
+  var w=Math.min(window.innerWidth*.82,400);
+  for(var g=0;g<14;g++){
+    stage.style.width=w+"px";
+    var b=bar.getBoundingClientRect(), bad=false;
+    if(capEl){var cr=capEl.getBoundingClientRect(); if(cr.height>0 && b.bottom>cr.top-6)bad=true;}
+    if(wrap.scrollHeight>wrap.clientHeight+6)bad=true;
+    if(!bad||w<=248)break; w-=12;
+  }
+}
+fit(); setTimeout(fit,90); addEventListener("resize",fit);
 
 /* ---------- keadaan & fisika ---------- */
 var calm=slider.value/100, calmT=calm, touched=false, breaths=0, unlocked=false;
@@ -224,9 +242,9 @@ hold.addEventListener("pointerup",holdEnd);hold.addEventListener("pointercancel"
 
 function unlock(){unlocked=true;babyHalo.setAttribute("opacity",.9);
   if(chip){chip.classList.remove("dio-chip-dim");chip.classList.add("dio-chip-lit");chip.title="";}
-  var t=E("text",{x:215,y:96,"text-anchor":"middle","class":"dio-hslbl",opacity:0},Lui);t.textContent=CFG.petik;
-  t.animate&&t.animate([{opacity:0},{opacity:1}],{duration:900,fill:"forwards"});
-  hold.textContent=CFG.done.replace(" \u2014 buka dalilnya","");hold.disabled=true;hold.style.opacity=.7;}
+  note.textContent=CFG.petik;note.classList.add("show");
+  hold.textContent=CFG.done.replace(" \u2014 buka dalilnya","");hold.disabled=true;hold.style.opacity=.7;
+  fit();}
 
 /* audio detak — dua osilator lembut, tanpa berkas */
 var AC=null,audOn=false;

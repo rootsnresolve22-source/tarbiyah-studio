@@ -1,5 +1,13 @@
 # CHANGELOG — TARBIYAH
 
+## v3.1.1 · 10 Juni 2026 (hotfix)
+- Diorama: bilah kendali kini kompak ber-latar kaca dan TIDAK lagi menimpa takarir panggung (sistem muat-pas sadar-grid: panggung mengecil otomatis sampai semua muat di jalurnya).
+- Kalimat hikmah pasca-napas dipindah dari teks SVG (meluber/terpotong) ke catatan HTML yang melipat rapi di bilah.
+- Kelopak pengetahuan: lebar dihitung benar, posisi dijepit dalam bingkai, label bpm meredup saat kelopak terbuka lalu pulih.
+- Label bpm diberi halo putih agar terbaca di atas elemen apa pun; tuas sedikit dilebarkan.
+- PETA_DIORAMA.md: audit 22 panggung + usulan 23 adegan + rencana G2–G4 + keputusan perkakas (registry: tanpa konektor Rive/Lottie).
+- Service worker tb-v3-3 (paksa segarkan modul yang diperbaiki).
+
 ## v3.1.0 · 10 Juni 2026
 ### Diorama Hidup
 - Diagram statis pada panggung scrollytelling tiga modul prenatal (T3-01, T3-03, T3-05) digantikan adegan interaktif sungguhan: paralaks kemiringan (seret layar; gyroscope bila diizinkan), janin dengan fisika apung yang merespons, dua detak jantung edukatif (±70 ibu / ±140 janin, bpm hidup), partikel fisiologi yang berubah bersama tuas "tekanan ⟷ tenang", mekanik tahan-untuk-bernapas tiga tarikan yang membuka chip dalil modul, empat hotspot kelopak pengetahuan, dan detak audio opsional (WebAudio, tanpa berkas). prefers-reduced-motion tetap dihormati: diagram asli dipertahankan utuh.
