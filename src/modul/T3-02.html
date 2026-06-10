@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Sentuhan &amp; Gerak · Modul T3-02</title>
+<meta name="description" content="Modul produksi TARBIYAH T3-02 — ikatan lewat sentuhan &amp; gerak janin. Tema cherry blossom." />
+<meta name="theme-color" content="#FFF6FA" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&amp;family=Spectral:ital,wght@0,300;0,400;0,500;1,400&amp;display=swap" rel="stylesheet" />
+<style>
+  /* MODUL PRODUKSI T3-02 — "Sentuhan dan Gerak" · v1.0 (Cherry Blossom)
+     Di atas Sistem Desain TARBIYAH. Kontras: teks/info penting = plum gelap. */
+  :root{
+    --bg-0:#FFF6FA; --bg-1:#FCE9F2; --bg-2:#F8D6E6;
+    --surface:#FFFFFF; --surface-2:#FFF1F7;
+    --ink:#3E1E30; --ink-soft:#6B3F56; --ink-faint:#8A5C72;
+    --pink:#E0589A; --pink-deep:#C23C7E; --fuchsia:#ED6CB6; --blossom:#F8C9DD; --blossom-soft:#FBE0EC;
+    --sci:#1F7A66; --sci-bg:#DBEFEA;
+    --faith:#8A5E12; --faith-accent:#D9A441; --faith-bg:#F7E8C9;
+    --honest:#BC4327; --honest-bg:#FBDED3;
+    --ok:#4C7A3F; --ok-bg:#E3EFD8;
+    --line:#F2CFE0; --line-strong:#E7B3CD;
+    --shadow:0 2px 8px rgba(176,60,110,.08),0 14px 34px rgba(176,60,110,.10);
+    --s-1:.5rem; --s0:.75rem; --s1:1rem; --s2:1.5rem; --s3:2rem; --s4:3rem;
+    --r-sm:10px; --r:16px; --r-lg:22px; --r-pill:999px;
+    --ease:cubic-bezier(.22,.7,.2,1); --dur:.5s; --dur-slow:.8s;
+    --maxw:42rem;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Spectral",Georgia,serif;color:var(--ink);background:var(--bg-0);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+
+  .bg{position:fixed;inset:0;z-index:0;overflow:hidden;background:radial-gradient(120% 80% at 50% -6%,#FFFFFF,var(--bg-0) 55%,var(--bg-1) 100%)}
+  .blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5;will-change:transform}
+  .blob.a{width:60vmax;height:60vmax;left:-20vmax;top:-22vmax;background:var(--blossom);animation:drift 28s ease-in-out infinite}
+  .blob.b{width:52vmax;height:52vmax;right:-18vmax;bottom:-16vmax;background:#E9D6F2;animation:drift 34s ease-in-out infinite reverse}
+  @keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(7vmax,5vmax) scale(1.1)}}
+  .girih{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;background-size:84px 84px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84'%3E%3Cg fill='none' stroke='%23C23C7E' stroke-width='1'%3E%3Cpath d='M42 6 L78 42 L42 78 L6 42 Z'/%3E%3Crect x='24' y='24' width='36' height='36'/%3E%3Cpath d='M42 6 L42 78 M6 42 L78 42'/%3E%3C/g%3E%3C/svg%3E")}
+  .petals{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+  .petal{position:absolute;top:-10vh;width:15px;height:12px;background:linear-gradient(135deg,var(--blossom),var(--fuchsia));border-radius:100% 0 100% 0 / 72% 40% 60% 30%;opacity:.55;animation:fall linear infinite}
+  @keyframes fall{0%{transform:translateY(-12vh) translateX(0) rotate(0)}100%{transform:translateY(114vh) translateX(7vw) rotate(240deg)}}
+
+  #bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--fuchsia),var(--pink-deep));z-index:30;transition:width .12s linear}
+
+  main{position:relative;z-index:10}
+  section{max-width:var(--maxw);margin:0 auto;padding:0 var(--s2)}
+
+  .kicker{font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--pink-deep);font-weight:600}
+  h1{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:clamp(2.4rem,9vw,3.8rem);line-height:1.02;letter-spacing:-.02em;margin:var(--s1) 0 var(--s0);color:var(--ink)}
+  h2{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:clamp(1.7rem,6.2vw,2.5rem);line-height:1.08;letter-spacing:-.015em;margin:0 0 var(--s0);color:var(--ink)}
+  .lead{font-size:clamp(1.05rem,4.2vw,1.3rem);color:var(--ink-soft);font-weight:400}
+  p{margin:0 0 var(--s0)} .muted{color:var(--ink-soft)} .faint{color:var(--ink-faint)} .small{font-size:.88rem}
+  em.warm{color:var(--pink-deep);font-style:normal;font-weight:500} em.cool{color:var(--sci);font-style:normal;font-weight:500}
+
+  .beat{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:var(--s4);padding-bottom:var(--s4)}
+  .chip{display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;padding:.36rem .8rem;border-radius:var(--r-pill);background:var(--blossom-soft);border:1px solid var(--line-strong);color:var(--ink-soft)}
+  .chip.screen{color:var(--honest);border-color:rgba(188,67,39,.35);background:var(--honest-bg)}
+  .chip.confirm{color:var(--faith);border-color:var(--faith-accent);background:var(--faith-bg)}
+  .chip svg{width:15px;height:15px}
+  .chip-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:var(--s1)}
+
+  .pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:var(--s1)}
+  .pill{font-size:.85rem;padding:.32rem .7rem;border-radius:var(--r-pill);background:var(--blossom-soft);color:var(--pink-deep);border:1px solid var(--line-strong);font-weight:500}
+  .pill.heart{background:var(--faith-bg);color:var(--faith);border-color:var(--faith-accent)}
+
+  .note{margin-top:var(--s1);font-size:.95rem;color:var(--ink-soft);border-left:3px solid var(--faith-accent);padding-left:var(--s1)}
+  .src-inline{color:var(--ink-faint);font-style:italic;font-size:.85em}
+
+  .callout{border-radius:var(--r);padding:1rem 1.15rem;border:1px solid;display:flex;gap:.7rem;align-items:flex-start;margin-top:var(--s1)}
+  .callout .ci{flex:0 0 auto;width:22px;height:22px;margin-top:.15rem}
+  .callout.safety{background:var(--honest-bg);border-color:rgba(188,67,39,.4);color:#7E2E18}
+  .callout.safety .label{font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:.72rem;display:block;margin-bottom:.2rem}
+  .callout.safety b{color:#7E2E18}
+
+  .scrollcue{margin-top:var(--s3);color:var(--ink-soft);font-size:.82rem;display:flex;align-items:center;gap:.5rem}
+  .scrollcue .m{width:22px;height:34px;border:1.5px solid var(--pink);border-radius:12px;position:relative}
+  .scrollcue .m::after{content:"";position:absolute;left:50%;top:6px;width:3px;height:6px;border-radius:2px;background:var(--pink);transform:translateX(-50%);animation:wheel 1.7s var(--ease) infinite}
+  @keyframes wheel{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}100%{opacity:0;transform:translate(-50%,10px)}}
+
+  .layer{border-left:3px solid var(--line-strong);padding:.1rem 0 .1rem .9rem;margin:var(--s0) 0}
+  .layer .l{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;margin-bottom:.2rem}
+  .layer.iman{border-color:var(--faith-accent)} .layer.iman .l{color:var(--faith)}
+
+  .qa{border-top:1px solid var(--line)}
+  .qa button{width:100%;text-align:left;background:none;border:0;cursor:pointer;font-family:"Fraunces",serif;font-size:1.08rem;color:var(--ink);font-weight:500;padding:var(--s0) 0;display:flex;gap:.7rem;align-items:center;justify-content:space-between}
+  .qa button:hover{color:var(--pink-deep)}
+  .qa .mk{flex:0 0 auto;width:1.5rem;height:1.5rem;border-radius:7px;background:var(--surface-2);border:1px solid var(--line-strong);color:var(--pink-deep);display:grid;place-items:center;transition:transform .3s var(--ease)}
+  .qa.open .mk{transform:rotate(45deg);background:var(--pink);color:#fff;border-color:var(--pink)}
+  .qa .ans{max-height:0;overflow:hidden;transition:max-height .42s var(--ease)}
+  .qa .ans-in{padding:0 0 var(--s0);color:var(--ink-soft)}
+
+  .cards{display:grid;gap:.7rem;margin-top:var(--s1)}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.1rem;box-shadow:var(--shadow);display:flex;gap:.8rem;align-items:flex-start}
+  .card .n{font-family:"Fraunces",serif;color:var(--pink-deep);font-size:1.1rem;flex:0 0 auto;font-weight:600}
+  .card p{margin:0;color:var(--ink)}
+
+  details.sources{margin-top:var(--s2);border-top:1px solid var(--line)}
+  details.sources summary{cursor:pointer;list-style:none;padding:var(--s0) 0;font-size:.92rem;color:var(--pink-deep);font-weight:500;display:flex;align-items:center;gap:.5rem}
+  details.sources summary::-webkit-details-marker{display:none}
+  details.sources .cv{transition:transform .3s var(--ease)}
+  details.sources[open] .cv{transform:rotate(180deg)}
+  details.sources .body{font-size:.85rem;color:var(--ink-soft);line-height:1.55}
+  details.sources .body p{margin:.4rem 0} details.sources .body b{color:var(--ink)}
+
+  .scrolly{position:relative;height:280vh}
+  .sticky{position:sticky;top:0;height:100vh;display:grid;grid-template-rows:auto 1fr auto;gap:var(--s1);align-items:center;padding-top:4.5rem;padding-bottom:var(--s4)}
+  .stage-title{text-align:center}
+  .stage-wrap{display:grid;place-items:center;min-height:0}
+  .stage{width:min(82vw,400px);aspect-ratio:1/1}
+  .stage svg{width:100%;height:100%;overflow:visible}
+  .caption{max-width:30rem;margin:0 auto;text-align:center;font-size:clamp(1.05rem,4.2vw,1.26rem);color:var(--ink);font-weight:400;min-height:3.6em;transition:opacity .45s var(--ease)}
+  .caption .src{display:block;margin-top:var(--s-1);font-size:.8rem;color:var(--ink-faint);font-style:italic}
+
+  .womb{fill:url(#wombG);stroke:rgba(194,60,126,.38);stroke-width:1.5;animation:wb 6s ease-in-out infinite}
+  @keyframes wb{0%,100%{transform:scale(1)}50%{transform:scale(1.022)}}
+  .wombwrap{transform-origin:215px 238px;transform-box:fill-box}
+  .embrace{fill:none;stroke:rgba(217,164,65,.34);stroke-width:16;stroke-linecap:round}
+  .baby{fill:url(#babyG);stroke:rgba(194,60,126,.40);stroke-width:.75} .cord{fill:none;stroke:rgba(62,30,48,.32);stroke-width:2.2;stroke-linecap:round}
+  .babywrap{transform-origin:226px 236px;transform-box:fill-box}
+  .babywrap.resp{animation:wig 1.9s ease-in-out infinite}
+  @keyframes wig{0%,100%{transform:rotate(0)}30%{transform:rotate(-4deg)}70%{transform:rotate(5deg)}}
+  .ring{fill:none;stroke:var(--pink-deep);stroke-width:1.6;transform-box:fill-box;transform-origin:center;opacity:0}
+  .wavewrap{transform-origin:96px 150px;transform-box:fill-box}
+  .wavewrap .ring{animation:ripple 3s ease-out infinite}
+  .wavewrap .ring:nth-child(2){animation-delay:.7s}.wavewrap .ring:nth-child(3){animation-delay:1.4s}.wavewrap .ring:nth-child(4){animation-delay:2.1s}
+  @keyframes ripple{0%{transform:scale(.2);opacity:0}14%{opacity:.85}100%{transform:scale(1);opacity:0}}
+  .touchpt{fill:var(--pink);stroke:var(--pink-deep);stroke-width:1.5;animation:tp 3s ease-in-out infinite}
+  @keyframes tp{0%,100%{r:7}10%{r:9}}
+  .lead-line{stroke:rgba(62,30,48,.42);stroke-width:1;stroke-dasharray:2 3}
+  .lbl{fill:var(--ink);font-family:"Spectral",serif;font-size:15px;font-weight:500}
+  .lbl.sm{fill:var(--ink-soft);font-size:13px}
+
+  .foot{padding:var(--s4) var(--s2) 5rem;max-width:var(--maxw);margin:0 auto;color:var(--ink-soft);font-size:.84rem;border-top:1px solid var(--line)}
+
+  .r{opacity:0;transform:translateY(16px);transition:opacity var(--dur-slow) var(--ease),transform var(--dur-slow) var(--ease)}
+  .r.in{opacity:1;transform:none}
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .blob,.womb,.wavewrap .ring,.babywrap.resp,.touchpt,.scrollcue .m::after,.petals{animation:none!important}
+    .petals{display:none}.wavewrap .ring{opacity:.45}
+    .r{transition:none;opacity:1;transform:none}#bar{display:none}
+  }
+
+  /* ===== Hero art T3-02 — sentuhan dan gerak (ber-scope, awalan t2) ===== */
+  .hero-art{position:relative;width:100%;max-width:600px;margin:var(--s2,22px) auto 0;border-radius:22px;overflow:hidden;box-shadow:0 30px 70px -44px rgba(62,30,48,.5);border:1px solid rgba(231,179,205,.6)}
+  .hero-art .h-stage{position:relative;width:100%;aspect-ratio:1040/700;display:block}
+  .hero-art svg.scene{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .hero-art .h-cap{position:absolute;left:0;right:0;bottom:0;padding:18px 22px;background:linear-gradient(to top,rgba(62,30,48,.34),rgba(62,30,48,0));color:#fff}
+  .hero-art .h-cap .hk{font-family:"Fraunces",serif;font-weight:500;font-size:18px;line-height:1.1;text-shadow:0 2px 14px rgba(62,30,48,.4)}
+  .hero-art .h-cap .hsub{font-style:italic;font-size:13.5px;opacity:.95;max-width:42ch;line-height:1.45;margin-top:5px;text-shadow:0 1px 10px rgba(62,30,48,.4)}
+  @keyframes t2Breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+  @keyframes t2Glow{0%,100%{opacity:.5}50%{opacity:.82}}
+  @keyframes t2Ripple{0%{transform:scale(.5);opacity:0}20%{opacity:.75}100%{transform:scale(1.15);opacity:0}}
+  @keyframes t2Move{0%,100%{transform:rotate(-2.2deg)}50%{transform:rotate(2.2deg)}}
+  @keyframes t2BranchSway{0%,100%{transform:rotate(-1.4deg)}50%{transform:rotate(1.4deg)}}
+  @keyframes t2Drift{0%{transform:translate(0,0) rotate(0);opacity:0}12%{opacity:.9}88%{opacity:.9}100%{transform:translate(var(--dx,40px),var(--dy,520px)) rotate(var(--dr,220deg));opacity:0}}
+  @keyframes t2Shimmer{0%,100%{opacity:.4}50%{opacity:.85}}
+  .hero-art .t2-orbB{transform-box:fill-box;transform-origin:center;animation:t2Breathe 8s cubic-bezier(.45,0,.35,1) infinite}
+  .hero-art .t2-orbG{transform-box:fill-box;transform-origin:center;animation:t2Glow 8s ease-in-out infinite}
+  .hero-art .t2-sway{transform-box:fill-box;transform-origin:52% 38%;animation:t2Move 6.5s ease-in-out infinite}
+  .hero-art .t2-rip{transform-box:fill-box;transform-origin:64% 64%;animation:t2Ripple 5.6s cubic-bezier(.22,.7,.2,1) infinite}
+  .hero-art .t2-rip.r2{animation-delay:1.87s}
+  .hero-art .t2-rip.r3{animation-delay:3.74s}
+  .hero-art .t2-branch{transform-box:fill-box;transform-origin:14% 8%;animation:t2BranchSway 9s ease-in-out infinite}
+  .hero-art .t2-petal{transform-box:fill-box;transform-origin:center;animation:t2Drift var(--t,13s) linear infinite;animation-delay:var(--d,0s)}
+  .hero-art .t2-touchglow{transform-box:fill-box;transform-origin:center;animation:t2Shimmer 5.6s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){.hero-art .t2-orbB,.hero-art .t2-orbG,.hero-art .t2-sway,.hero-art .t2-rip,.hero-art .t2-branch,.hero-art .t2-petal,.hero-art .t2-touchglow{animation:none}.hero-art .t2-rip{opacity:.18}.hero-art .t2-petal{opacity:.7}}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><span class="blob a"></span><span class="blob b"></span></div>
+<div class="girih" aria-hidden="true"></div>
+<div class="petals" aria-hidden="true">
+  <span class="petal" style="left:9%;animation-duration:23s;animation-delay:0s"></span>
+  <span class="petal" style="left:28%;animation-duration:29s;animation-delay:6s;transform:scale(.8)"></span>
+  <span class="petal" style="left:50%;animation-duration:26s;animation-delay:12s;transform:scale(1.2)"></span>
+  <span class="petal" style="left:69%;animation-duration:31s;animation-delay:4s"></span>
+  <span class="petal" style="left:86%;animation-duration:25s;animation-delay:9s;transform:scale(.9)"></span>
+</div>
+<div id="bar" aria-hidden="true"></div>
+
+<main>
+  <section class="beat">
+    <div class="kicker r">Modul Prenatal · T3-02</div>
+    <h1 class="r">Sentuhan &amp; Gerak</h1>
+    <p class="lead r">Ikatan paling awal — lewat gerak ananda dan belaian tanganmu. Sebuah panduan tenang untuk Ayah dan Ibu.</p>
+    <div class="r" style="margin-top:var(--s1)"><span class="chip screen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M3 3l18 18"/></svg> Non-Layar — tanpa layar untuk ananda</span></div>
+    <div class="pills r">
+      <span class="pill">Kinestetik</span><span class="pill">Interpersonal</span><span class="pill heart">Kecerdasan hati</span>
+    </div>
+    <figure class="hero-art r">
+      <div class="h-stage">
+        <svg class="scene" viewBox="0 0 1040 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustrasi: sentuhan lembut menjangkau bayi di dalam ruang hangat, terlihat sebagai riak merah muda, dan bayi membalas dengan gerak kecil; dibingkai ranting sakura.">
+          <defs>
+            <radialGradient id="t2Sky" cx="50%" cy="32%" r="80%"><stop offset="0%" stop-color="#FFF8FB"/><stop offset="46%" stop-color="#FDEAF3"/><stop offset="100%" stop-color="#F6D2E4"/></radialGradient>
+            <radialGradient id="t2Halo" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FBE6CF" stop-opacity=".9"/><stop offset="44%" stop-color="#F7C9DD" stop-opacity=".5"/><stop offset="100%" stop-color="#F7C9DD" stop-opacity="0"/></radialGradient>
+            <radialGradient id="t2Orb" cx="44%" cy="40%" r="68%"><stop offset="0%" stop-color="#FFF3DF"/><stop offset="40%" stop-color="#FCD9E6"/><stop offset="80%" stop-color="#F3B6D0"/><stop offset="100%" stop-color="#E58FB6"/></radialGradient>
+            <radialGradient id="t2OrbI" cx="48%" cy="46%" r="58%"><stop offset="0%" stop-color="#FFEFC9" stop-opacity=".88"/><stop offset="60%" stop-color="#F8CFE0" stop-opacity=".22"/><stop offset="100%" stop-color="#F8CFE0" stop-opacity="0"/></radialGradient>
+            <linearGradient id="t2Baby" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F4A8C6"/><stop offset="100%" stop-color="#DB6FA0"/></linearGradient>
+            <radialGradient id="t2BabyGlow" cx="50%" cy="44%" r="56%"><stop offset="0%" stop-color="#FFF1D6" stop-opacity=".9"/><stop offset="100%" stop-color="#FFF1D6" stop-opacity="0"/></radialGradient>
+            <linearGradient id="t2Cradle" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E7B774" stop-opacity="0"/><stop offset="100%" stop-color="#D9A441" stop-opacity=".48"/></linearGradient>
+            <linearGradient id="t2Touch" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#E0589A" stop-opacity="0"/><stop offset="50%" stop-color="#ED6CB6" stop-opacity=".82"/><stop offset="100%" stop-color="#F3B6D0" stop-opacity="0"/></linearGradient>
+            <radialGradient id="t2Glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#F6B9D4" stop-opacity=".8"/><stop offset="100%" stop-color="#F6B9D4" stop-opacity="0"/></radialGradient>
+            <linearGradient id="t2Branch" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7A4A38"/><stop offset="100%" stop-color="#9C5E48"/></linearGradient>
+            <radialGradient id="t2Pet" cx="40%" cy="30%" r="80%"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="55%" stop-color="#FBDCE9"/><stop offset="100%" stop-color="#F3B6D0"/></radialGradient>
+            <radialGradient id="t2Vig" cx="50%" cy="46%" r="72%"><stop offset="62%" stop-color="#3E1E30" stop-opacity="0"/><stop offset="100%" stop-color="#3E1E30" stop-opacity=".14"/></radialGradient>
+            <filter id="t2Soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="20"/></filter>
+          </defs>
+
+          <rect x="0" y="0" width="1040" height="700" fill="url(#t2Sky)"/>
+          <circle class="t2-orbG" cx="520" cy="332" r="280" fill="url(#t2Halo)" filter="url(#t2Soft)"/>
+
+          <g class="t2-branch">
+          <path d="M -10 40 C 120 70, 230 60, 320 120 C 360 146, 392 150, 430 140" fill="none" stroke="url(#t2Branch)" stroke-width="9" stroke-linecap="round"/>
+          <path d="M 150 64 C 196 40, 236 44, 268 18" fill="none" stroke="url(#t2Branch)" stroke-width="5.5" stroke-linecap="round"/>
+          <path d="M 300 110 C 322 78, 356 70, 372 44" fill="none" stroke="url(#t2Branch)" stroke-width="5" stroke-linecap="round"/>
+          <g transform="translate(268,18)"><circle cx="0" cy="-9" r="7.5" fill="url(#t2Pet)"/><circle cx="8.6" cy="-2.8" r="7.5" fill="url(#t2Pet)"/><circle cx="5.3" cy="7.3" r="7.5" fill="url(#t2Pet)"/><circle cx="-5.3" cy="7.3" r="7.5" fill="url(#t2Pet)"/><circle cx="-8.6" cy="-2.8" r="7.5" fill="url(#t2Pet)"/><circle cx="0" cy="0" r="3.1" fill="#E9A23F"/></g>
+          <g transform="translate(372,44) scale(.86)"><circle cx="0" cy="-9" r="7.5" fill="url(#t2Pet)"/><circle cx="8.6" cy="-2.8" r="7.5" fill="url(#t2Pet)"/><circle cx="5.3" cy="7.3" r="7.5" fill="url(#t2Pet)"/><circle cx="-5.3" cy="7.3" r="7.5" fill="url(#t2Pet)"/><circle cx="-8.6" cy="-2.8" r="7.5" fill="url(#t2Pet)"/><circle cx="0" cy="0" r="3.1" fill="#E9A23F"/></g>
+          <g transform="translate(120,52) scale(.7)"><circle cx="0" cy="-9" r="7.5" fill="url(#t2Pet)"/><circle cx="8.6" cy="-2.8" r="7.5" fill="url(#t2Pet)"/><circle cx="5.3" cy="7.3" r="7.5" fill="url(#t2Pet)"/><circle cx="-5.3" cy="7.3" r="7.5" fill="url(#t2Pet)"/><circle cx="-8.6" cy="-2.8" r="7.5" fill="url(#t2Pet)"/><circle cx="0" cy="0" r="3.1" fill="#E9A23F"/></g>
+        </g>
+
+          <g class="t2-orbB">
+            <circle cx="520" cy="332" r="200" fill="url(#t2Orb)"/>
+            <circle cx="520" cy="332" r="200" fill="url(#t2OrbI)"/>
+            <circle cx="520" cy="332" r="198" fill="none" stroke="#FFFFFF" stroke-opacity=".55" stroke-width="2"/>
+            <path d="M 352 392 C 392 506, 648 506, 688 392 C 660 490, 380 490, 352 392 Z" fill="url(#t2Cradle)"/>
+            <path d="M 332 376 C 372 520, 668 520, 708 376" fill="none" stroke="#D9A441" stroke-opacity=".5" stroke-width="6" stroke-linecap="round"/>
+            <g class="t2-sway">
+              <ellipse cx="505" cy="340" rx="120" ry="104" fill="url(#t2BabyGlow)"/>
+              <g transform="translate(505,334) rotate(-12)">
+                <ellipse cx="0" cy="10" rx="78" ry="68" fill="url(#t2Baby)"/>
+                <circle cx="-50" cy="40" r="34" fill="url(#t2Baby)"/>
+                <circle cx="16" cy="-58" r="38" fill="url(#t2Baby)"/>
+                <ellipse cx="0" cy="-64" rx="13" ry="9" fill="#FFFFFF" fill-opacity=".3"/>
+                <ellipse cx="-34" cy="6" rx="10" ry="16" fill="#FFFFFF" fill-opacity=".14"/>
+              </g>
+            </g>
+          </g>
+
+          <!-- sentuhan: riak merah muda dari titik kontak + cahaya kontak -->
+          <circle class="t2-touchglow" cx="664" cy="436" r="52" fill="url(#t2Glow)"/>
+          <g fill="none" stroke="url(#t2Touch)" stroke-width="3.2" stroke-linecap="round">
+            <path class="t2-rip"    d="M 600 472 A 92 92 0 0 1 706 404"/>
+            <path class="t2-rip r2" d="M 588 484 A 112 112 0 0 1 716 396"/>
+            <path class="t2-rip r3" d="M 576 496 A 132 132 0 0 1 726 388"/>
+          </g>
+
+          <g>
+            <ellipse class="t2-petal" style="--t:12s;--d:0s;--dx:60px;--dy:560px;--dr:200deg" cx="430" cy="120" rx="11" ry="7" fill="url(#t2Pet)"/>
+            <ellipse class="t2-petal" style="--t:15s;--d:2.5s;--dx:-40px;--dy:540px;--dr:-180deg" cx="360" cy="80" rx="9" ry="6" fill="url(#t2Pet)"/>
+            <ellipse class="t2-petal" style="--t:13.5s;--d:5s;--dx:80px;--dy:560px;--dr:240deg" cx="700" cy="70" rx="10" ry="6.5" fill="url(#t2Pet)"/>
+            <ellipse class="t2-petal" style="--t:17s;--d:7.5s;--dx:-30px;--dy:520px;--dr:-220deg" cx="270" cy="100" rx="8" ry="5.5" fill="url(#t2Pet)"/>
+          </g>
+
+          <rect x="0" y="0" width="1040" height="700" fill="url(#t2Vig)"/>
+        </svg>
+      </div>
+      <figcaption class="h-cap">
+        <div class="hk">Sentuhan yang ia rasakan</div>
+        <div class="hsub">Tanganmu di perut adalah sapaan — dan ia membalas dengan gerak kecilnya.</div>
+      </figcaption>
+    </figure>
+    <div class="scrollcue r"><span class="m"></span> Gulir perlahan</div>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Yang terjadi</div>
+    <h2 class="r">Ananda <em class="cool">menyapamu</em> dengan gerak.</h2>
+    <p class="lead r">Tendangan, gulingan, regangan, bahkan cegukan. Saat kau membelai perut, ia kerap membalas dengan gerakan. Polanya berirama — sering lebih hidup di sore dan malam, saat kau beristirahat.</p>
+  </section>
+
+  <div class="scrolly" id="scrolly">
+    <div class="sticky">
+      <div class="stage-title"><span class="kicker">Saat tanganmu menyentuh</span></div>
+      <div class="stage-wrap">
+        <div class="stage">
+          <svg viewBox="0 0 460 460" role="img" aria-label="Diagram: sentuhan Ibu sampai ke ananda, dan ananda merespons dengan gerak">
+            <defs>
+              <radialGradient id="wombG" cx="48%" cy="44%" r="62%"><stop offset="0%" stop-color="rgba(248,201,221,.62)"/><stop offset="65%" stop-color="rgba(237,108,182,.14)"/><stop offset="100%" stop-color="rgba(237,108,182,0)"/></radialGradient>
+              <radialGradient id="babyG" cx="42%" cy="38%" r="70%"><stop offset="0%" stop-color="#FBD3E1"/><stop offset="48%" stop-color="#EE8CB6"/><stop offset="100%" stop-color="#D2679A"/></radialGradient>
+              <radialGradient id="wombGlow" cx="46%" cy="42%" r="60%"><stop offset="0%" stop-color="#FFEFC9" stop-opacity=".7"/><stop offset="70%" stop-color="#F8CFE0" stop-opacity=".12"/><stop offset="100%" stop-color="#F8CFE0" stop-opacity="0"/></radialGradient>
+            </defs>
+            <path class="embrace" d="M95 300 C80 360 140 402 215 402"/>
+            <path class="embrace" d="M335 300 C350 360 290 402 215 402"/>
+            <g class="wombwrap"><circle class="womb" cx="215" cy="238" r="138"/><circle cx="215" cy="234" r="124" fill="url(#wombGlow)"/></g>
+            <g class="babywrap" id="baby">
+              <g transform="translate(226,236) rotate(-14)">
+                <ellipse class="baby" cx="0" cy="8" rx="40" ry="35"/>
+                <circle class="baby" cx="-26" cy="22" r="18"/>
+                <circle class="baby" cx="9" cy="-30" r="20"/>
+                <ellipse cx="0" cy="-34" rx="7" ry="5" fill="#FFFFFF" fill-opacity=".34"/>
+              </g>
+              <path class="cord" d="M206 268 C188 286 176 308 170 330"/>
+            </g>
+            <g class="wavewrap">
+              <circle class="ring" cx="96" cy="150" r="80"/><circle class="ring" cx="96" cy="150" r="80"/>
+              <circle class="ring" cx="96" cy="150" r="80"/><circle class="ring" cx="96" cy="150" r="80"/>
+            </g>
+            <circle class="touchpt" cx="96" cy="150" r="7"/>
+            <line class="lead-line" x1="96" y1="76" x2="96" y2="126"/>
+            <text class="lbl" x="96" y="64" text-anchor="middle">Sentuhan Ibu</text>
+            <line class="lead-line" x1="238" y1="184" x2="358" y2="152"/>
+            <text class="lbl" x="368" y="148" text-anchor="start">Ananda</text>
+            <text class="lbl sm" x="368" y="167" text-anchor="start">(janin)</text>
+            <line class="lead-line" x1="340" y1="288" x2="360" y2="290"/>
+            <text class="lbl sm" x="370" y="294" text-anchor="start">rahim</text>
+            <line class="lead-line" x1="104" y1="388" x2="130" y2="394"/>
+            <text class="lbl sm" x="20" y="392" text-anchor="start">pelukan Ibu</text>
+          </svg>
+        </div>
+      </div>
+      <p class="caption" id="cap">Gerak ananda bukan sekadar gerak — gaya ototnya menegangkan rangka dan membantu membentuk tulang serta sendi. <span class="src">riset perkembangan rangka janin (2018)</span></p>
+    </div>
+  </div>
+
+  <section class="beat">
+    <div class="kicker r">Pertanyaan yang mungkin muncul</div>
+    <h2 class="r" style="margin-bottom:var(--s1)">Kenapa begitu?</h2>
+    <div class="r">
+      <div class="qa" data-qa>
+        <button aria-expanded="false"><span>Kenapa ananda menendang?</span><span class="mk"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="ans"><div class="ans-in">Gerak adalah bagian normal perkembangan — otot dan saraf “berlatih”, dan gerak itu membantu tulang serta sendi terbentuk. <span class="src-inline">(riset perkembangan rangka janin, 2018)</span></div></div>
+      </div>
+      <div class="qa" data-qa>
+        <button aria-expanded="false"><span>Kenapa ia bergerak saat dibelai?</span><span class="mk"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="ans"><div class="ans-in">Janin merespons sentuhan Ibu dengan menambah gerakan — terlihat jelas pada pencitraan USG 4D. <span class="src-inline">Marx &amp; Nagy (2015)</span></div></div>
+      </div>
+      <div class="qa" data-qa>
+        <button aria-expanded="false"><span>Kenapa kadang ia diam lama?</span><span class="mk"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="ans"><div class="ans-in">Ananda tidur; ada siklus tidur-bangun, dan ia sering lebih aktif saat kau beristirahat. <b>Namun penurunan gerak yang nyata dan menetap perlu segera diperiksa</b> — lihat catatan keselamatan di bawah.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Maknanya</div>
+    <h2 class="r">Setiap gerak, sebuah <em class="warm">keajaiban</em>.</h2>
+    <div class="layer iman r"><div class="l">Makna · Iman</div>Merasakan ananda bergerak adalah undangan untuk mensyukuri dan mengagumi ciptaan Allah yang dibentuk bertahap di dalam rahim, hingga ditutup dengan: “Maha Suci Allah, sebaik-baik pencipta” (Al-Mu’minun 23:12–14).</div>
+    <p class="note r">Sejujurnya: ayat ini kita pakai untuk <em>makna</em> — kekaguman dan syukur — bukan sebagai klaim bahwa Al-Qur’an merinci embriologi modern. Klaim “mukjizat embriologi” diperdebatkan secara akademis, dan kita tidak bersandar padanya. <span class="faint">Arah pemaknaannya mengikuti para mufasir: ayat tentang kebesaran Allah dalam penciptaan — lihat kartu dalil Al-Mu’minun 23:12–14.</span><button class="tb-dlk" data-d="q-muminun-23-12-14" type="button" title="Buka kartu dalil"><b>۞</b>dalil</button></p>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Dan satu hal lagi</div>
+    <h2 class="r">Ini memperkuat <em class="cool">ikatan</em> — bukan menaikkan kecerdasan.</h2>
+    <p class="lead r">Membelai dan berinteraksi menumbuhkan kelekatan dan kepekaan antara kau dan ananda. Itu hadiahnya — bukan janji menjadikan ananda “lebih pintar”.</p>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Penting · keselamatan</div>
+    <h2 class="r">Satu hal yang tidak boleh kita lewatkan.</h2>
+    <div class="callout safety r">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg></span>
+      <span><span class="label">Pantau gerak ananda</span>
+      Belai dengan lembut — jangan menekan perut dengan keras. Dan yang terpenting: <b>penurunan atau perubahan pola gerak janin yang nyata adalah tanda yang harus segera diperiksa tenaga medis</b>, karena dapat mendahului masalah serius. Modul ini menumbuhkan kepekaanmu, bukan menggantikan pemantauan medis. Ikuti panduan resmi dari dokter atau bidanmu.</span>
+    </div>
+    <div class="chip-row r"><span class="chip confirm">Konfirmasi dokter/bidan</span></div>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Caranya</div>
+    <h2 class="r">Sentuh, sapa, dan amati.</h2>
+    <div class="cards">
+      <div class="card r"><span class="n">01</span><p>Belai perut dengan lembut; tekan ringan lalu tunggu responsnya — permainan kecil “tebak tendangan” bersama Ayah.</p></div>
+      <div class="card r"><span class="n">02</span><p>Berbicara lembut sambil menyentuh. Lakukan rutin dan penuh kasih; tak perlu membeli alat apa pun.</p></div>
+      <div class="card r"><span class="n">03</span><p>Amati dan, bila suka, catat pola gerak harian — menumbuhkan kepekaan sekaligus menjadi sarana memantau. <span class="faint">(Opsional: jurnal kehamilan — periksa mandiri di Tokopedia/Shopee.)</span></p></div>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Khazanah</div>
+    <h2 class="r">Menyentuh dengan <em class="warm">kasih</em> — menyambut sebuah amanah.</h2>
+    <div class="layer iman r"><div class="l">Khazanah · Iman</div>Anak adalah <em>amanah</em> di tangan orang tua, dan hatinya — kata Imam al-Ghazali dalam <em>Ihya Ulumuddin</em> — bagai permata murni yang akan terbentuk sesuai yang ditanamkan. Maka membelai dan menyapa janin dengan lembut adalah awal budaya rahmah: “Orang-orang yang penyayang akan disayangi oleh Yang Maha Penyayang; sayangilah (makhluk) yang di bumi, niscaya yang di langit menyayangi kamu” (HR Abu Dawud no. 4941; Tirmidhi — hasan sahih).</div>
+    <p class="note r">Inti yang berdasar di sini adalah relasi dan rasa syukur — bukan “teknik” sentuhan berpahala khusus. <span class="src-inline">al-Ghazali, Ihya Ulumuddin · HR Abu Dawud no. 4941</span><button class="tb-dlk" data-d="k-ghazali-permata" type="button" title="Buka kartu dalil"><b>۞</b>dalil</button><button class="tb-dlk" data-d="h-rahimun" type="button" title="Buka kartu dalil"><b>۞</b>dalil</button></p>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Mulai hari ini</div>
+    <h2 class="r">Sentuh, sapa, <em class="warm">syukuri</em>.</h2>
+    <p class="lead r">Setiap belaian adalah percakapan tanpa kata — dan ananda merasakannya.</p>
+    <details class="sources r">
+      <summary>Lihat sumber &amp; verifikasi <svg class="cv" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="body">
+        <p><b>Sains.</b> Marx &amp; Nagy (2015), PLoS ONE 10(6):e0129118; Marx &amp; Nagy (2017), Infant Behav Dev 47:83–91 · perkembangan rangka janin (2018), PMC5805961; Nowlan, PMC4945693 · Fetal Movement, StatPearls (NBK470566); Bradford dkk. (2018), Women Birth.</p>
+        <p><b>Nuansa jujur.</b> Respons sentuhan terlihat pada gerak, bukan pada detak jantung (Macedo dkk., PMC6710198).</p>
+        <p><b>Iman.</b> Penciptaan bertahap dalam rahim: Al-Mu’minun 23:12–14<button class="tb-dlk" data-d="q-muminun-23-12-14" type="button" title="Buka kartu dalil"><b>۞</b>dalil</button> · budaya rahmah kepada semua: HR Abu Dawud no. 4941; Tirmidzi no. 1924<button class="tb-dlk" data-d="h-rahimun" type="button" title="Buka kartu dalil"><b>۞</b>dalil</button>.</p>
+        <p><b>Pendamping profesional.</b> dokter/bidan (keamanan &amp; protokol pemantauan gerak) · adaptasi ke pola gerak ananda yang sebenarnya.</p>
+      </div>
+    </details>
+    <div class="chip-row r"><span class="chip confirm">Konfirmasi dokter/bidan</span><span class="chip">Adaptasi ke anak</span></div>
+  </section>
+
+  <div class="foot">TARBIYAH · Modul T3-02 “Sentuhan &amp; Gerak” · Edisi cherry blossom. Setiap klaim disertai sumber pada titiknya; perbedaan pendapat ditandai apa adanya.</div>
+</main>
+
+<script>
+  const bar = document.getElementById("bar");
+  addEventListener("scroll", () => { const h = document.documentElement, m = h.scrollHeight - h.clientHeight; bar.style.width = (m > 0 ? h.scrollTop / m * 100 : 0) + "%"; }, { passive: true });
+
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .14 });
+  document.querySelectorAll(".r").forEach((el, i) => { el.style.transitionDelay = (i % 4 * 0.06) + "s"; io.observe(el); });
+
+  document.querySelectorAll("[data-qa]").forEach(qa => {
+    const btn = qa.querySelector("button"), ans = qa.querySelector(".ans");
+    btn.addEventListener("click", () => { const open = qa.classList.toggle("open"); btn.setAttribute("aria-expanded", open ? "true" : "false"); ans.style.maxHeight = open ? ans.scrollHeight + "px" : "0px"; });
+  });
+
+  const scrolly = document.getElementById("scrolly"), cap = document.getElementById("cap"), baby = document.getElementById("baby");
+  const STEPS = [
+    "Gerak ananda bukan sekadar gerak — gaya ototnya menegangkan rangka dan membantu membentuk tulang serta sendi. <span class='src'>riset perkembangan rangka janin (2018)</span>",
+    "Saat kau membelai perut, ananda merespons — dengan lebih banyak gerak. <span class='src'>Marx &amp; Nagy (2015)</span>",
+    "Sejujurnya: responsnya terlihat pada gerak, bukan pada detak jantung. <span class='src'>Macedo dkk.</span>"
+  ];
+  let cur = -1;
+  function onScroll() {
+    const r = scrolly.getBoundingClientRect(), total = scrolly.offsetHeight - innerHeight;
+    let p = (-r.top) / total; p = Math.max(0, Math.min(1, p));
+    const step = p < .34 ? 0 : p < .68 ? 1 : 2;
+    if (step !== cur) { cur = step; cap.style.opacity = 0; setTimeout(() => { cap.innerHTML = STEPS[step]; cap.style.opacity = 1; }, 200); baby.classList.toggle("resp", step >= 1); }
+  }
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+</script>
+
+<style>
+.tb-dlk{display:inline-flex;align-items:center;gap:.34em;margin:0 .18em;padding:.08em .6em .12em .5em;border:1px solid #E9B7CF;border-radius:999px;background:linear-gradient(180deg,#FFF9FC,#FBE3EF);color:#8A5E12;font-family:inherit;font-size:.76em;font-weight:700;letter-spacing:.01em;line-height:1.55;cursor:pointer;vertical-align:baseline;white-space:nowrap;box-shadow:0 1px 2px rgba(194,60,126,.10);transition:transform .12s ease,box-shadow .12s ease}
+.tb-dlk b{font-weight:800;color:#C23C7E;font-size:1.05em;line-height:1}
+.tb-dlk:hover{transform:translateY(-1px);box-shadow:0 3px 9px rgba(194,60,126,.20)}
+.tb-dlk:active{transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){.tb-dlk{transition:none}.tb-dlk:hover{transform:none}}
+</style>
+<script>document.addEventListener("click",function(e){var t=e.target,b=t&&t.closest?t.closest(".tb-dlk"):null;if(!b)return;e.preventDefault();try{if(parent&&parent.TB&&typeof parent.TB.openDalil==="function"){parent.TB.openDalil(b.getAttribute("data-d"));}}catch(_){}},true);</script>
+</body>
+</html>

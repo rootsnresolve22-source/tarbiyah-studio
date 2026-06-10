@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Main &amp; Imajinasi · Modul 2Y-03</title>
+<meta name="description" content="Modul produksi TARBIYAH 2Y-03 — main pura-pura dan imajinasi batita. Non-layar, dipimpin anak. Tema cherry blossom." />
+<meta name="theme-color" content="#FFF6FA" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&amp;family=Spectral:ital,wght@0,300;0,400;0,500;1,400&amp;display=swap" rel="stylesheet" />
+<style>
+  /* MODUL PRODUKSI 2Y-03 — Main dan  Imajinasi (Main Pura-pura/Simbolik) · v1.0 (Cherry Blossom)
+     Fase batita (1–2 thn). Dipimpin anak, non-layar. Kontras: teks penting = plum gelap di latar pink. */
+  :root{
+    --bg-0:#FFF6FA; --bg-1:#FCE9F2; --bg-2:#F8D6E6;
+    --surface:#FFFFFF; --surface-2:#FFF1F7;
+    --ink:#3E1E30; --ink-soft:#6B3F56; --ink-faint:#8A5C72;
+    --pink:#E0589A; --pink-deep:#C23C7E; --fuchsia:#ED6CB6; --blossom:#F8C9DD; --blossom-soft:#FBE0EC;
+    --sci:#1F7A66; --sci-bg:#DBEFEA;
+    --faith:#8A5E12; --faith-accent:#D9A441; --faith-bg:#F7E8C9;
+    --honest:#BC4327; --honest-bg:#FBDED3;
+    --ok:#4C7A3F; --ok-bg:#E3EFD8;
+    --line:#F2CFE0; --line-strong:#E7B3CD;
+    --shadow:0 2px 8px rgba(176,60,110,.08),0 14px 34px rgba(176,60,110,.10);
+    --s-1:.5rem; --s0:.75rem; --s1:1rem; --s2:1.5rem; --s3:2rem; --s4:3rem;
+    --r-sm:10px; --r:16px; --r-lg:22px; --r-pill:999px;
+    --ease:cubic-bezier(.22,.7,.2,1); --dur:.5s; --dur-slow:.8s;
+    --maxw:42rem;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Spectral",Georgia,serif;color:var(--ink);background:var(--bg-0);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+  .bg{position:fixed;inset:0;z-index:0;overflow:hidden;background:radial-gradient(120% 80% at 50% -6%,#FFFFFF,var(--bg-0) 55%,var(--bg-1) 100%)}
+  .blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5;will-change:transform}
+  .blob.a{width:60vmax;height:60vmax;left:-20vmax;top:-22vmax;background:var(--blossom);animation:drift 30s ease-in-out infinite}
+  .blob.b{width:52vmax;height:52vmax;right:-18vmax;bottom:-16vmax;background:#E9D6F2;animation:drift 36s ease-in-out infinite reverse}
+  @keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(6vmax,4vmax) scale(1.08)}}
+  .girih{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;background-size:84px 84px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84'%3E%3Cg fill='none' stroke='%23C23C7E' stroke-width='1'%3E%3Cpath d='M42 6 L78 42 L42 78 L6 42 Z'/%3E%3Crect x='24' y='24' width='36' height='36'/%3E%3Cpath d='M42 6 L42 78 M6 42 L78 42'/%3E%3C/g%3E%3C/svg%3E")}
+  .petals{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+  .petal{position:absolute;top:-10vh;width:15px;height:12px;background:linear-gradient(135deg,var(--blossom),var(--fuchsia));border-radius:100% 0 100% 0 / 72% 40% 60% 30%;opacity:.5;animation:fall linear infinite}
+  @keyframes fall{0%{transform:translateY(-12vh) translateX(0) rotate(0)}100%{transform:translateY(114vh) translateX(6vw) rotate(220deg)}}
+  #bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--fuchsia),var(--pink-deep));z-index:30;transition:width .12s linear}
+  main{position:relative;z-index:10}
+  section{max-width:var(--maxw);margin:0 auto;padding:0 var(--s2)}
+  .kicker{font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--pink-deep);font-weight:600}
+  h1{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:clamp(2.4rem,9vw,3.8rem);line-height:1.02;letter-spacing:-.02em;margin:var(--s1) 0 var(--s0);color:var(--ink)}
+  h2{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:clamp(1.7rem,6.2vw,2.5rem);line-height:1.08;letter-spacing:-.015em;margin:0 0 var(--s0);color:var(--ink)}
+  .lead{font-size:clamp(1.05rem,4.2vw,1.3rem);color:var(--ink-soft);font-weight:400}
+  p{margin:0 0 var(--s0)} .muted{color:var(--ink-soft)} .faint{color:var(--ink-faint)} .small{font-size:.88rem}
+  em.warm{color:var(--pink-deep);font-style:normal;font-weight:500} em.cool{color:var(--sci);font-style:normal;font-weight:500}
+  .beat{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:var(--s4);padding-bottom:var(--s4)}
+  .chip{display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;padding:.36rem .8rem;border-radius:var(--r-pill);background:var(--blossom-soft);border:1px solid var(--line-strong);color:var(--ink-soft)}
+  .chip.confirm{color:var(--faith);border-color:var(--faith-accent);background:var(--faith-bg)}
+  .chip.screen{color:var(--sci);border-color:rgba(31,122,102,.4);background:var(--sci-bg)}
+  .chip svg{width:15px;height:15px}
+  .chip-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:var(--s1)}
+  .pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:var(--s1)}
+  .pill{font-size:.85rem;padding:.32rem .7rem;border-radius:var(--r-pill);background:var(--blossom-soft);color:var(--pink-deep);border:1px solid var(--line-strong);font-weight:500}
+  .pill.heart{background:var(--faith-bg);color:var(--faith);border-color:var(--faith-accent)}
+  .note{margin-top:var(--s1);font-size:.95rem;color:var(--ink-soft);border-left:3px solid var(--faith-accent);padding-left:var(--s1)}
+  .src-inline{color:var(--ink-faint);font-style:italic;font-size:.85em}
+  .callout{border-radius:var(--r);padding:1rem 1.15rem;border:1px solid;display:flex;gap:.7rem;align-items:flex-start;margin-top:var(--s1)}
+  .callout .ci{flex:0 0 auto;width:22px;height:22px;margin-top:.15rem}
+  .callout.care{background:var(--honest-bg);border-color:rgba(188,67,39,.4);color:#7E2E18}
+  .callout.care .label{font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:.72rem;display:block;margin-bottom:.2rem}
+  .callout.care b{color:#7E2E18}
+  .scrollcue{margin-top:var(--s3);color:var(--ink-soft);font-size:.82rem;display:flex;align-items:center;gap:.5rem}
+  .scrollcue .m{width:22px;height:34px;border:1.5px solid var(--pink);border-radius:12px;position:relative}
+  .scrollcue .m::after{content:"";position:absolute;left:50%;top:6px;width:3px;height:6px;border-radius:2px;background:var(--pink);transform:translateX(-50%);animation:wheel 1.7s var(--ease) infinite}
+  @keyframes wheel{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}100%{opacity:0;transform:translate(-50%,10px)}}
+  .layer{border-left:3px solid var(--line-strong);padding:.1rem 0 .1rem .9rem;margin:var(--s0) 0}
+  .layer .l{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;margin-bottom:.2rem}
+  .layer.iman{border-color:var(--faith-accent)} .layer.iman .l{color:var(--faith)}
+  .qa{border-top:1px solid var(--line)}
+  .qa button{width:100%;text-align:left;background:none;border:0;cursor:pointer;font-family:"Fraunces",serif;font-size:1.08rem;color:var(--ink);font-weight:500;padding:var(--s0) 0;display:flex;gap:.7rem;align-items:center;justify-content:space-between}
+  .qa button:hover{color:var(--pink-deep)}
+  .qa .mk{flex:0 0 auto;width:1.5rem;height:1.5rem;border-radius:7px;background:var(--surface-2);border:1px solid var(--line-strong);color:var(--pink-deep);display:grid;place-items:center;transition:transform .3s var(--ease)}
+  .qa.open .mk{transform:rotate(45deg);background:var(--pink);color:#fff;border-color:var(--pink)}
+  .qa .ans{max-height:0;overflow:hidden;transition:max-height .42s var(--ease)}
+  .qa .ans-in{padding:0 0 var(--s0);color:var(--ink-soft)}
+  .cards{display:grid;gap:.7rem;margin-top:var(--s1)}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.1rem;box-shadow:var(--shadow);display:flex;gap:.8rem;align-items:flex-start}
+  .card .n{font-family:"Fraunces",serif;color:var(--pink-deep);font-size:1.1rem;flex:0 0 auto;font-weight:600}
+  .card p{margin:0;color:var(--ink)}
+  .shop{display:grid;gap:.7rem;margin-top:var(--s1)}
+  .shop-item{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:.85rem 1rem;box-shadow:var(--shadow)}
+  .shop-item .nm{font-weight:600;color:var(--ink);font-size:.97rem;margin-bottom:.45rem;display:block}
+  .kw{display:inline-flex;align-items:center;gap:.35rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.78rem;background:var(--surface-2);border:1px solid var(--line-strong);color:var(--pink-deep);border-radius:8px;padding:.22rem .55rem;margin:.18rem .3rem .18rem 0}
+  .kw svg{width:13px;height:13px;opacity:.7}
+  details.sources{margin-top:var(--s2);border-top:1px solid var(--line)}
+  details.sources summary{cursor:pointer;list-style:none;padding:var(--s0) 0;font-size:.92rem;color:var(--pink-deep);font-weight:500;display:flex;align-items:center;gap:.5rem}
+  details.sources summary::-webkit-details-marker{display:none}
+  details.sources .cv{transition:transform .3s var(--ease)}
+  details.sources[open] .cv{transform:rotate(180deg)}
+  details.sources .body{font-size:.85rem;color:var(--ink-soft);line-height:1.55}
+  details.sources .body p{margin:.4rem 0} details.sources .body b{color:var(--ink)}
+  .scrolly{position:relative;height:280vh}
+  .sticky{position:sticky;top:0;height:100vh;display:grid;grid-template-rows:auto 1fr auto;gap:var(--s1);align-items:center;padding-top:4.5rem;padding-bottom:var(--s4)}
+  .stage-title{text-align:center}
+  .stage-wrap{display:grid;place-items:center;min-height:0}
+  .stage{width:min(82vw,400px);aspect-ratio:1/1}
+  .stage svg{width:100%;height:100%;overflow:visible}
+  .caption{max-width:30rem;margin:0 auto;text-align:center;font-size:clamp(1.05rem,4.2vw,1.26rem);color:var(--ink);font-weight:400;min-height:3.6em;transition:opacity .45s var(--ease)}
+  .caption .src{display:block;margin-top:var(--s-1);font-size:.8rem;color:var(--ink-faint);font-style:italic}
+  /* ilustrasi lompatan simbolik */
+  .obj{fill:url(#objG);stroke:rgba(194,60,126,.42);stroke-width:1.5}
+  .objwrap{transform-box:fill-box;transform-origin:center;animation:obob 5.2s ease-in-out infinite}
+  @keyframes obob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+  .imag{fill:none;stroke:var(--faith-accent);stroke-width:2;stroke-dasharray:3 6;opacity:.7}
+  .star{fill:var(--faith-accent);transform-box:fill-box;transform-origin:center;animation:twinkle 2.7s ease-in-out infinite}
+  .spk{fill:var(--fuchsia);opacity:.75;transform-box:fill-box;transform-origin:center;animation:twinkle 3.1s ease-in-out infinite}
+  .spk.b{animation-delay:.7s}.spk.c{animation-delay:1.5s}
+  @keyframes twinkle{0%,100%{transform:scale(.8);opacity:.78}50%{transform:scale(1.16);opacity:1}}
+  .lead-line{stroke:rgba(62,30,48,.42);stroke-width:1;stroke-dasharray:2 3}
+  .lbl{fill:var(--ink);font-family:"Spectral",serif;font-size:15px;font-weight:500}
+  .lbl.sm{fill:var(--ink-soft);font-size:13px}
+  .foot{padding:var(--s4) var(--s2) 5rem;max-width:var(--maxw);margin:0 auto;color:var(--ink-soft);font-size:.84rem;border-top:1px solid var(--line)}
+  .r{opacity:0;transform:translateY(16px);transition:opacity var(--dur-slow) var(--ease),transform var(--dur-slow) var(--ease)}
+  .r.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .blob,.objwrap,.star,.spk,.scrollcue .m::after,.petals{animation:none!important}
+    .petals{display:none}
+    .r{transition:none;opacity:1;transform:none}#bar{display:none}
+  }
+
+  /* HX-HERO :: mesin hero sinematik universal */
+  .hero-art{max-width:760px;margin:var(--s1,30px) auto 0;padding:18px;background:radial-gradient(120% 100% at 50% 0%,#FFF1F7 0%,#FCE9F2 62%,#F8D6E6 100%);border:1px solid var(--line,#F2CFE0);border-radius:22px;box-shadow:0 30px 64px -42px rgba(62,30,48,.55);overflow:hidden}
+  .hero-art svg{display:block;width:100%;height:auto}
+  .hero-art figcaption{text-align:center;margin-top:12px}
+  .hero-art .hk{font-family:"Fraunces",serif;font-size:1.16rem;line-height:1.2;color:var(--ink,#3E1E30);font-weight:600}
+  .hero-art .hsub{font-family:"Spectral",serif;font-size:.92rem;color:var(--ink-faint,#8A5C72);margin-top:3px}
+  .hero-art .hxscene{transform-box:fill-box;transform-origin:center;animation:hx_float 9s var(--ease,ease-in-out) infinite}
+  .hero-art .hxorb{transform-box:fill-box;transform-origin:center;animation:hx_breathe 7s ease-in-out infinite}
+  .hero-art .hxpetal{transform-box:fill-box;transform-origin:center;animation:hx_drift 9s linear infinite}
+  .hero-art .hxpetal.p2{animation-duration:11s;animation-delay:-3s}
+  .hero-art .hxpetal.p3{animation-duration:13s;animation-delay:-6s}
+  .hero-art .hxpetal.p4{animation-duration:10s;animation-delay:-1.6s}
+  .hero-art .hxripple circle{transform-box:fill-box;transform-origin:center;animation:hx_ripple 4.6s ease-out infinite}
+  .hero-art .hxripple .c2{animation-delay:1.5s}
+  .hero-art .hxripple .c3{animation-delay:3s}
+  .hero-art .hxaura circle{transform-box:fill-box;transform-origin:center;animation:hx_aura 8s ease-in-out infinite}
+  .hero-art .hxaura .c2{animation-delay:-4s}
+  .hero-art .hxmote{transform-box:fill-box;transform-origin:center;animation:hx_rise 5s ease-in infinite}
+  .hero-art .hxmote.m2{animation-delay:-1.6s;animation-duration:6s}
+  .hero-art .hxmote.m3{animation-delay:-3.2s;animation-duration:5.5s}
+  .hero-art .hxmote.m4{animation-delay:-2.4s;animation-duration:6.4s}
+  .hero-art .hxmote.m5{animation-delay:-4s;animation-duration:5.2s}
+  .hero-art .hxspin{transform-box:fill-box;transform-origin:center;animation:hx_spin 30s linear infinite}
+  .hero-art .hxrayspin{transform-box:fill-box;transform-origin:center;animation:hx_spin 44s linear infinite}
+  .hero-art .hxsway{transform-box:fill-box;transform-origin:center bottom;animation:hx_sway 6s ease-in-out infinite}
+  .hero-art .hxheart{transform-box:fill-box;transform-origin:center;animation:hx_pulse 2.8s ease-in-out infinite}
+  .hero-art .hxshape{transform-box:fill-box;transform-origin:center;animation:hx_drift 10s linear infinite}
+  .hero-art .hxshape.s2{animation-duration:12s;animation-delay:-4s}
+  .hero-art .hxshape.s3{animation-duration:9s;animation-delay:-2s}
+  @keyframes hx_float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  @keyframes hx_breathe{0%,100%{transform:scale(1);opacity:.95}50%{transform:scale(1.06);opacity:1}}
+  @keyframes hx_drift{0%{transform:translate(0,0) rotate(0deg);opacity:0}12%{opacity:.85}88%{opacity:.85}100%{transform:translate(-26px,150px) rotate(150deg);opacity:0}}
+  @keyframes hx_ripple{0%{transform:scale(.35);opacity:.75}80%{opacity:0}100%{transform:scale(1.5);opacity:0}}
+  @keyframes hx_aura{0%,100%{transform:scale(.92);opacity:.16}50%{transform:scale(1.06);opacity:.5}}
+  @keyframes hx_rise{0%{transform:translateY(18px) scale(.7);opacity:0}25%{opacity:.9}75%{opacity:.9}100%{transform:translateY(-30px) scale(1);opacity:0}}
+  @keyframes hx_spin{to{transform:rotate(360deg)}}
+  @keyframes hx_sway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+  @keyframes hx_pulse{0%,100%{transform:scale(1)}25%{transform:scale(1.13)}42%{transform:scale(1)}}
+  @media (prefers-reduced-motion:reduce){.hero-art *{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><span class="blob a"></span><span class="blob b"></span></div>
+<div class="girih" aria-hidden="true"></div>
+<div class="petals" aria-hidden="true">
+  <span class="petal" style="left:10%;animation-duration:25s;animation-delay:0s"></span>
+  <span class="petal" style="left:30%;animation-duration:30s;animation-delay:7s;transform:scale(.8)"></span>
+  <span class="petal" style="left:52%;animation-duration:27s;animation-delay:13s;transform:scale(1.2)"></span>
+  <span class="petal" style="left:71%;animation-duration:32s;animation-delay:4s"></span>
+  <span class="petal" style="left:88%;animation-duration:26s;animation-delay:10s;transform:scale(.9)"></span>
+</div>
+<div id="bar" aria-hidden="true"></div>
+
+<main>
+  <section class="beat">
+    <div class="kicker r">Modul Batita · 2Y-03</div>
+    <h1 class="r">Main &amp; Imajinasi</h1>
+    <p class="lead r">Sekitar 18 bulan, kotak menjadi mobil dan pisang menjadi telepon — tanda pikiran simboliknya sedang tumbuh.</p>
+    <div class="r" style="margin-top:var(--s1)"><span class="chip screen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M5.6 5.6l2.1 2.1M3 12h3M18 12h3M16.3 7.7l2.1-2.1M12 9a3 3 0 0 0-2 5.2c.6.5.9 1.1 1 1.8h2c.1-.7.4-1.3 1-1.8A3 3 0 0 0 12 9zM10 20h4"/></svg> Dipimpin anak · non-layar</span></div>
+    <div class="pills r">
+      <span class="pill">Spasial</span><span class="pill">Interpersonal</span><span class="pill heart">Kecerdasan hati</span>
+    </div>
+    <figure class="hero-art r"><svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dunia dalam Permainan"><defs><radialGradient id="hxGlow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#FDEAF2"/><stop offset="1" stop-color="#FDEAF2" stop-opacity="0"/></radialGradient><radialGradient id="hxOrb" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#FFF6E2"/><stop offset="0.45" stop-color="#F9D7E6"/><stop offset="1" stop-color="#F8C9DD" stop-opacity="0"/></radialGradient><linearGradient id="hxFig" x1="380" y1="120" x2="380" y2="305" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FBD3E1"/><stop offset="1" stop-color="#EC85B2"/></linearGradient></defs><ellipse cx="380" cy="205" rx="300" ry="150" fill="url(#hxGlow)"/><g class="hxbranch" opacity=".92"><path d="M0,52 C46,58 84,50 116,28" fill="none" stroke="#CDA0B6" stroke-width="3.2" stroke-linecap="round"/><path d="M44,55 C50,40 52,30 49,18" fill="none" stroke="#CDA0B6" stroke-width="2.4" stroke-linecap="round"/><path d="M86,42 C92,30 96,22 95,12" fill="none" stroke="#CDA0B6" stroke-width="2.2" stroke-linecap="round"/><g transform="translate(49,16)"><g><circle r="5.6" cx="0" cy="-7.2" fill="#F8C9DD"/><circle r="5.6" cx="6.8" cy="-2.2" fill="#F8C9DD"/><circle r="5.6" cx="4.2" cy="5.8" fill="#F8C9DD"/><circle r="5.6" cx="-4.2" cy="5.8" fill="#F8C9DD"/><circle r="5.6" cx="-6.8" cy="-2.2" fill="#F8C9DD"/><circle r="3" fill="#F4B0CC"/><circle r="1.4" fill="#E0589A"/></g></g><g transform="translate(95,12)"><g><circle r="5.6" cx="0" cy="-7.2" fill="#F8C9DD"/><circle r="5.6" cx="6.8" cy="-2.2" fill="#F8C9DD"/><circle r="5.6" cx="4.2" cy="5.8" fill="#F8C9DD"/><circle r="5.6" cx="-4.2" cy="5.8" fill="#F8C9DD"/><circle r="5.6" cx="-6.8" cy="-2.2" fill="#F8C9DD"/><circle r="3" fill="#F4B0CC"/><circle r="1.4" fill="#E0589A"/></g></g><g transform="translate(14,52) scale(.8)"><g><circle r="5.6" cx="0" cy="-7.2" fill="#F8C9DD"/><circle r="5.6" cx="6.8" cy="-2.2" fill="#F8C9DD"/><circle r="5.6" cx="4.2" cy="5.8" fill="#F8C9DD"/><circle r="5.6" cx="-4.2" cy="5.8" fill="#F8C9DD"/><circle r="5.6" cx="-6.8" cy="-2.2" fill="#F8C9DD"/><circle r="3" fill="#F4B0CC"/><circle r="1.4" fill="#E0589A"/></g></g></g><ellipse class="hxpetal p1" cx="150" cy="34" rx="7" ry="4" fill="#F2A6C4"/><ellipse class="hxpetal p2" cx="250" cy="26" rx="6" ry="3.6" fill="#F4B5CF"/><ellipse class="hxpetal p3" cx="540" cy="40" rx="6.5" ry="3.8" fill="#F2A6C4"/><ellipse class="hxpetal p4" cx="624" cy="30" rx="6" ry="3.6" fill="#F4B5CF"/><g class="hxscene"><circle class="hxorb" cx="380" cy="205" r="118" fill="url(#hxOrb)"/><g class="hxfig" fill="url(#hxFig)"><circle cx="380" cy="148" r="30"/><path d="M380,176 C406,178 416,210 410,246 C406,274 354,274 350,246 C344,210 354,178 380,176 Z"/><ellipse cx="346" cy="214" rx="9" ry="21" transform="rotate(20 346 214)"/><ellipse cx="414" cy="214" rx="9" ry="21" transform="rotate(-20 414 214)"/></g><g class="hxmotif" opacity=".85"><circle class="hxshape s1" cx="318" cy="150" r="7" fill="#ED6CB6"/><rect class="hxshape s2" x="436" y="148" width="13" height="13" rx="3" fill="#ED6CB6" opacity=".82"/><path class="hxshape s3" d="M380,118 l8,14 l-16,0 z" fill="#ED6CB6" opacity=".82"/></g></g></svg><figcaption><div class="hk">Dunia dalam Permainan</div><div class="hsub">Bermain adalah caranya berpikir.</div></figcaption></figure>
+    <div class="scrollcue r"><span class="m"></span> Gulir perlahan</div>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Yang terjadi</div>
+    <h2 class="r">Satu benda, menjadi <em class="warm">apa saja</em>.</h2>
+    <p class="lead r">Menyuapi boneka, “menelepon” dengan pisang, menjadikan kotak sebagai mobil. Inilah tanda anak mulai berpikir simbolik — satu hal mewakili hal lain.</p>
+  </section>
+
+  <div class="scrolly" id="scrolly">
+    <div class="sticky">
+      <div class="stage-title"><span class="kicker">Lompatan simbolik</span></div>
+      <div class="stage-wrap">
+        <div class="stage">
+          <svg viewBox="0 0 460 460" role="img" aria-label="Diagram lembut: sebuah benda nyata yang dalam imajinasi anak mewakili hal lain">
+            <defs>
+              <radialGradient id="objG" cx="40%" cy="34%" r="74%"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="55%" stop-color="#F8C9DD"/><stop offset="100%" stop-color="#ED6CB6"/></radialGradient>
+            </defs>
+            <path class="imag" d="M196 232 Q250 150 300 186"/>
+            <g class="objwrap"><rect class="obj" x="108" y="212" width="92" height="78" rx="15"/></g>
+            <path class="star" d="M312 176 L319 192 L335 199 L319 206 L312 222 L305 206 L289 199 L305 192 Z"/>
+            <path class="spk b" d="M360 150 L364 159 L373 163 L364 167 L360 176 L356 167 L347 163 L356 159 Z"/>
+            <path class="spk c" d="M278 116 L281 123 L288 126 L281 129 L278 136 L275 129 L268 126 L275 123 Z"/>
+            <path class="spk" d="M250 200 L253 207 L260 210 L253 213 L250 220 L247 213 L240 210 L247 207 Z"/>
+            <line class="lead-line" x1="154" y1="294" x2="154" y2="302"/>
+            <text class="lbl" x="154" y="320" text-anchor="middle">benda nyata</text>
+            <line class="lead-line" x1="312" y1="150" x2="312" y2="158"/>
+            <text class="lbl" x="312" y="140" text-anchor="middle">mewakili apa saja</text>
+          </svg>
+        </div>
+      </div>
+      <p class="caption" id="cap">Sekitar 18 bulan, anak mulai bermain pura-pura — tanda fungsi simbolik yang sedang tumbuh.</p>
+    </div>
+  </div>
+
+  <section class="beat">
+    <div class="kicker r">Pertanyaan yang mungkin muncul</div>
+    <h2 class="r" style="margin-bottom:var(--s1)">Kenapa begitu?</h2>
+    <div class="r">
+      <div class="qa" data-qa>
+        <button aria-expanded="false"><span>Kenapa anak menyuapi boneka atau bicara ke pisang?</span><span class="mk"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="ans"><div class="ans-in">Ia sedang melatih berpikir simbolik — satu benda mewakili lainnya — tonggak kognitif yang muncul sekitar 18 bulan.</div></div>
+      </div>
+      <div class="qa" data-qa>
+        <button aria-expanded="false"><span>Apakah main pura-pura membuat anak pintar?</span><span class="mk"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="ans"><div class="ans-in">Bermain bermanfaat dan menyenangkan, tetapi jujur: bukti tidak mendukung klaim bahwa main pura-pura secara khusus adalah penyebab tunggal kecerdasan; ia salah satu jalan, bukan jaminan. <span class="src-inline">Lillard dkk. 2013</span> Nikmati nilainya tanpa membebani.</div></div>
+      </div>
+      <div class="qa" data-qa>
+        <button aria-expanded="false"><span>Kenapa bermain penting, bukan buang waktu?</span><span class="mk"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="ans"><div class="ans-in">Menurut AAP, bermain membangun otak dan fungsi eksekutif serta meredam stres — bahkan dianjurkan untuk “diresepkan”.</div></div>
+      </div>
+      <div class="qa" data-qa>
+        <button aria-expanded="false"><span>Bolehkah anak bermain boneka dalam Islam?</span><span class="mk"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="ans"><div class="ans-in">Nabi membolehkan dan memfasilitasi mainan anak (HR Bukhari no. 6130; Muslim no. 2440)<button class="tb-dlk" data-d="h-dolls-aisyah" type="button" title="Buka kartu dalil"><b>۞</b>dalil</button> — perincian gambar atau patung adalah ranah fiqh; peta pendapat ulamanya ada pada kartu dalil tersebut.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Maknanya</div>
+    <h2 class="r">Bermain itu <em class="warm">fitrah</em> — dan Nabi memfasilitasinya.</h2>
+    <div class="layer iman r"><div class="l">Nabi dan mainan anak</div>Aisyah menuturkan bahwa ia bermain boneka (al-banat) di hadapan Nabi, dan teman-temannya yang menyingkir saat Nabi masuk justru beliau kirimkan untuk menemani Aisyah bermain (HR Bukhari no. 6130; juga Muslim). Para ulama (an-Nawawi, Ibn Battal, Ibn Hajar) menjadikan hadis ini dalil bolehnya mainan anak.</div>
+    <div class="layer iman r"><div class="l">Bingkai</div>Imajinasi dan bermain adalah karunia masa kecil. Orang tua menemani dengan gembira — bukan mengoreksi atau mengarahkan secara kaku.</div>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Sejujurnya · dua catatan</div>
+    <h2 class="r">Berharga — tapi <em class="cool">bukan obat ajaib</em>.</h2>
+    <div class="callout care r">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg></span>
+      <span><span class="label">Anti-overclaim dan ranah fiqh</span>
+      Tinjauan komprehensif menyimpulkan bukti tidak mendukung klaim bahwa main pura-pura <b>secara khusus</b> adalah penyebab tunggal perkembangan — ia salah satu jalan, bukan jaminan. Yang jelas bermanfaat adalah bermainnya itu sendiri dan kegembiraan interaksinya. Soal gambar atau patung makhluk bernyawa (tasawir) pada boneka, itu <b>ranah fiqh</b> dengan beragam pandangan ulama — petanya tersaji utuh pada kartu dalil boneka ‘Aisyah.<button class="tb-dlk" data-d="h-dolls-aisyah" type="button" title="Buka kartu dalil"><b>۞</b>dalil</button></span>
+    </div>
+    <div class="chip-row r"><span class="chip">Peta fiqh pada kartu dalil</span></div>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Caranya · gratis, tanpa beli</div>
+    <h2 class="r">Ikuti arahan anak, bukan sebaliknya.</h2>
+    <div class="cards">
+      <div class="card r"><span class="n">01</span><p>Ikut bermain pura-pura mengikuti arahan anak: masak-masakan, “menelepon”, atau merawat boneka.</p></div>
+      <div class="card r"><span class="n">02</span><p>Sediakan benda rumah tangga yang aman sebagai “alat main”: panci, sendok kayu, kotak bekas.</p></div>
+      <div class="card r"><span class="n">03</span><p>Bermain bersama dengan gembira — dipimpin anak (child-led), untuk kegembiraan, bukan untuk hasil.</p></div>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Daftar beli · Tokopedia/Shopee</div>
+    <h2 class="r">Bahan untuk berimajinasi.</h2>
+    <p class="muted r">Kata kunci pencarian, bukan tautan — cari di marketplace tepercaya dan verifikasi sendiri dengan kriteria keamanan di bawah.</p>
+    <div class="shop">
+      <div class="shop-item r"><span class="nm">Boneka atau figur lembut sederhana</span><span class="kw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>boneka kain bayi balita</span><span class="kw">soft doll balita</span></div>
+      <div class="shop-item r"><span class="nm">Set masak-masakan / peralatan pura-pura</span><span class="kw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>mainan masak masakan anak</span><span class="kw">play kitchen set balita</span></div>
+      <div class="shop-item r"><span class="nm">Balok atau benda terbuka (open-ended) untuk imajinasi</span><span class="kw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>mainan open ended balita kayu</span></div>
+    </div>
+    <div class="callout care r">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></span>
+      <span><span class="label">Kriteria keamanan — wajib dicek</span>
+      Sesuai usia (label 1+); bahan non-toksik; tanpa bagian kecil yang bisa tertelan (di bawah 3 tahun); tepi tidak tajam. <b>Catatan fiqh:</b> bila memilih boneka berwujud lengkap, buka dahulu peta pendapat pada kartu dalil boneka ‘Aisyah — sebagian ulama memberi rukhshah untuk mainan anak, sebagian mensyaratkan bentuk yang tidak utuh.</span>
+    </div>
+    <div class="chip-row r"><span class="chip">Verifikasi mandiri</span></div>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Khazanah</div>
+    <h2 class="r">Bermain itu <em class="warm">kebutuhan</em>, bukan sekadar boleh.</h2>
+    <div class="layer iman r"><div class="l">Khazanah · Iman</div>Imam al-Ghazali dalam <em>Ihya Ulumuddin</em> menasihatkan agar anak diberi waktu bermain yang baik setelah belajar untuk beristirahat. Menurutnya, mencegah anak bermain dan memaksanya belajar terus-menerus “mematikan hatinya, menumpulkan kecerdasannya, dan membuat hidup terasa berat baginya”. Maka memberi ruang bermain — termasuk bermain pura-pura — adalah bagian dari mendidik, bukan lawannya.</div>
+    <p class="note r">Ini menguatkan apa yang sudah dibahas di modul: utamakan bermain, jangan “menyekolahkan” balita. <span class="src-inline">al-Ghazali, Ihya Ulumuddin</span><button class="tb-dlk" data-d="k-ghazali-main" type="button" title="Buka kartu dalil"><b>۞</b>dalil</button></p>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Mulai hari ini</div>
+    <h2 class="r">Dipimpin anak, gembira, dan <em class="warm">bebas</em>.</h2>
+    <p class="lead r">Bermain bernilai dan sehat, tetapi bukan mesin kecerdasan — jadi tanpa target. Orang tua mengikuti, bukan mengarahkan secara kaku, dengan pengawasan untuk keamanan (benda kecil, tersedak).</p>
+    <details class="sources r">
+      <summary>Lihat sumber &amp; verifikasi <svg class="cv" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="body">
+        <p><b>Sains.</b> Kemunculan main simbolik sekitar 18 bulan: Fenson &amp; Ramsay (1981); Tamis-LeMonda &amp; Bornstein (1994); lih. Weisberg (2015) · nilai bermain: Yogman dkk. (2018), Pediatrics 142(3):e20182058, “The Power of Play” · kejujuran anti-overclaim (bukan kausal unik): Lillard dkk. (2013), Psychological Bulletin 139(1):1–34.</p>
+        <p><b>Iman.</b> Mainan anak dibolehkan dan difasilitasi Nabi: HR Bukhari no. 6130; Muslim no. 2440 — dijadikan dalil oleh an-Nawawi, Ibnu Battal, dan Ibnu Hajar<button class="tb-dlk" data-d="h-dolls-aisyah" type="button" title="Buka kartu dalil"><b>۞</b>dalil</button> · perincian gambar/patung makhluk bernyawa (tashwir): ranah fiqh; petanya pada kartu dalil yang sama · bermain sebagai kebutuhan anak: al-Ghazali, Ihya<button class="tb-dlk" data-d="k-ghazali-main" type="button" title="Buka kartu dalil"><b>۞</b>dalil</button>.</p>
+        <p><b>Pendamping profesional.</b> dokter (bila ada kekhawatiran perkembangan bermain atau sosial) · periksa mandiri mainan di Tokopedia/Shopee beserta kriteria keamanan · adaptasi ke gaya bermain anak yang sebenarnya.</p>
+      </div>
+    </details>
+    <div class="chip-row r"><span class="chip screen">Non-layar</span><span class="chip">Dipimpin anak</span><span class="chip">Verifikasi mandiri</span><span class="chip">Adaptasi ke anak</span></div>
+  </section>
+
+  <div class="foot">TARBIYAH · Modul 2Y-03 “Main &amp; Imajinasi” · Edisi cherry blossom. Fase batita (1–2 tahun), dipimpin anak dan non-layar. Setiap klaim disertai sumber pada titiknya; perbedaan pendapat ditandai apa adanya.</div>
+</main>
+
+<script>
+  const bar = document.getElementById("bar");
+  addEventListener("scroll", () => { const h = document.documentElement, m = h.scrollHeight - h.clientHeight; bar.style.width = (m > 0 ? h.scrollTop / m * 100 : 0) + "%"; }, { passive: true });
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .14 });
+  document.querySelectorAll(".r").forEach((el, i) => { el.style.transitionDelay = (i % 4 * 0.06) + "s"; io.observe(el); });
+  document.querySelectorAll("[data-qa]").forEach(qa => {
+    const btn = qa.querySelector("button"), ans = qa.querySelector(".ans");
+    btn.addEventListener("click", () => { const open = qa.classList.toggle("open"); btn.setAttribute("aria-expanded", open ? "true" : "false"); ans.style.maxHeight = open ? ans.scrollHeight + "px" : "0px"; });
+  });
+  const scrolly = document.getElementById("scrolly"), cap = document.getElementById("cap");
+  const STEPS = [
+    "Sekitar 18 bulan, anak mulai bermain pura-pura — tanda fungsi simbolik yang sedang tumbuh.",
+    "Bermain membangun otak, fungsi eksekutif, dan ikatan — AAP bahkan menganjurkan dokter \u201Cmeresepkan bermain\u201D. <span class='src'>Yogman dkk. (2018)</span>",
+    "Tapi jujur: main pura-pura bukan obat ajaib tunggal — ia salah satu jalan, bukan jaminan kecerdasan."
+  ];
+  let cur = -1;
+  function onScroll() {
+    const r = scrolly.getBoundingClientRect(), total = scrolly.offsetHeight - innerHeight;
+    let p = (-r.top) / total; p = Math.max(0, Math.min(1, p));
+    const step = p < .34 ? 0 : p < .68 ? 1 : 2;
+    if (step !== cur) { cur = step; cap.style.opacity = 0; setTimeout(() => { cap.innerHTML = STEPS[step]; cap.style.opacity = 1; }, 200); }
+  }
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+</script>
+
+<style>
+.tb-dlk{display:inline-flex;align-items:center;gap:.34em;margin:0 .18em;padding:.08em .6em .12em .5em;border:1px solid #E9B7CF;border-radius:999px;background:linear-gradient(180deg,#FFF9FC,#FBE3EF);color:#8A5E12;font-family:inherit;font-size:.76em;font-weight:700;letter-spacing:.01em;line-height:1.55;cursor:pointer;vertical-align:baseline;white-space:nowrap;box-shadow:0 1px 2px rgba(194,60,126,.10);transition:transform .12s ease,box-shadow .12s ease}
+.tb-dlk b{font-weight:800;color:#C23C7E;font-size:1.05em;line-height:1}
+.tb-dlk:hover{transform:translateY(-1px);box-shadow:0 3px 9px rgba(194,60,126,.20)}
+.tb-dlk:active{transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){.tb-dlk{transition:none}.tb-dlk:hover{transform:none}}
+</style>
+<script>document.addEventListener("click",function(e){var t=e.target,b=t&&t.closest?t.closest(".tb-dlk"):null;if(!b)return;e.preventDefault();try{if(parent&&parent.TB&&typeof parent.TB.openDalil==="function"){parent.TB.openDalil(b.getAttribute("data-d"));}}catch(_){}},true);</script>
+</body>
+</html>

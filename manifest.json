@@ -1,0 +1,16 @@
+{
+  "name": "TARBIYAH — Perjalanan Belajar",
+  "short_name": "TARBIYAH",
+  "description": "Kurikulum pengasuhan: sains perkembangan anak berpadu tuntunan Islam — setiap klaim bersumber.",
+  "lang": "id",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#FFF6FA",
+  "theme_color": "#FFF6FA",
+  "icons": [
+    { "src": "ikon/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "ikon/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "ikon/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

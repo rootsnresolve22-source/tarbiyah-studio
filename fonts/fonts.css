@@ -1,0 +1,9 @@
+/* TARBIYAH — font swadaya (OFL). Subset Latin/Arab, WOFF2. */
+@font-face{font-family:"Fraunces";font-style:normal;font-weight:100 900;src:url("fraunces-var.woff2") format("woff2");font-display:swap}
+@font-face{font-family:"Spectral";font-style:normal;font-weight:300;src:url("spectral-300.woff2") format("woff2");font-display:swap}
+@font-face{font-family:"Spectral";font-style:normal;font-weight:400;src:url("spectral-400.woff2") format("woff2");font-display:swap}
+@font-face{font-family:"Spectral";font-style:italic;font-weight:400;src:url("spectral-400i.woff2") format("woff2");font-display:swap}
+@font-face{font-family:"Spectral";font-style:normal;font-weight:500;src:url("spectral-500.woff2") format("woff2");font-display:swap}
+@font-face{font-family:"Spectral";font-style:normal;font-weight:600;src:url("spectral-600.woff2") format("woff2");font-display:swap}
+@font-face{font-family:"Amiri";font-style:normal;font-weight:400;src:url("amiri-400.woff2") format("woff2");font-display:swap}
+@font-face{font-family:"Amiri";font-style:normal;font-weight:700;src:url("amiri-700.woff2") format("woff2");font-display:swap}

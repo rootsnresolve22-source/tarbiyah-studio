@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Ketenangan &amp; Suasana Hati Ibu &middot; Modul T3-03</title>
+<meta name="description" content="Modul produksi TARBIYAH T3-03 — merawat ketenangan Ibu. Dukungan, bukan tuntutan. Tema cherry blossom." />
+<meta name="theme-color" content="#FFF6FA" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&amp;family=Spectral:ital,wght@0,300;0,400;0,500;1,400&amp;display=swap" rel="stylesheet" />
+<style>
+  /* MODUL PRODUKSI T3-03 — Ketenangan dan Suasana Hati Ibu · v1.0 (Cherry Blossom)
+     Wellbeing ekstra: mendukung, menormalkan, tidak menyalahkan, tidak menakut-nakuti.
+     Kontras: teks/info penting = plum gelap di latar pink. */
+  :root{
+    --bg-0:#FFF6FA; --bg-1:#FCE9F2; --bg-2:#F8D6E6;
+    --surface:#FFFFFF; --surface-2:#FFF1F7;
+    --ink:#3E1E30; --ink-soft:#6B3F56; --ink-faint:#8A5C72;
+    --pink:#E0589A; --pink-deep:#C23C7E; --fuchsia:#ED6CB6; --blossom:#F8C9DD; --blossom-soft:#FBE0EC;
+    --sci:#1F7A66; --sci-bg:#DBEFEA;
+    --faith:#8A5E12; --faith-accent:#D9A441; --faith-bg:#F7E8C9;
+    --honest:#BC4327; --honest-bg:#FBDED3;
+    --ok:#4C7A3F; --ok-bg:#E3EFD8;
+    --line:#F2CFE0; --line-strong:#E7B3CD;
+    --shadow:0 2px 8px rgba(176,60,110,.08),0 14px 34px rgba(176,60,110,.10);
+    --s-1:.5rem; --s0:.75rem; --s1:1rem; --s2:1.5rem; --s3:2rem; --s4:3rem;
+    --r-sm:10px; --r:16px; --r-lg:22px; --r-pill:999px;
+    --ease:cubic-bezier(.22,.7,.2,1); --dur:.5s; --dur-slow:.8s;
+    --maxw:42rem;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Spectral",Georgia,serif;color:var(--ink);background:var(--bg-0);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+
+  .bg{position:fixed;inset:0;z-index:0;overflow:hidden;background:radial-gradient(120% 80% at 50% -6%,#FFFFFF,var(--bg-0) 55%,var(--bg-1) 100%)}
+  .blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5;will-change:transform}
+  .blob.a{width:60vmax;height:60vmax;left:-20vmax;top:-22vmax;background:var(--blossom);animation:drift 30s ease-in-out infinite}
+  .blob.b{width:52vmax;height:52vmax;right:-18vmax;bottom:-16vmax;background:#E9D6F2;animation:drift 36s ease-in-out infinite reverse}
+  @keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(6vmax,4vmax) scale(1.08)}}
+  .girih{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;background-size:84px 84px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84'%3E%3Cg fill='none' stroke='%23C23C7E' stroke-width='1'%3E%3Cpath d='M42 6 L78 42 L42 78 L6 42 Z'/%3E%3Crect x='24' y='24' width='36' height='36'/%3E%3Cpath d='M42 6 L42 78 M6 42 L78 42'/%3E%3C/g%3E%3C/svg%3E")}
+  .petals{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+  .petal{position:absolute;top:-10vh;width:15px;height:12px;background:linear-gradient(135deg,var(--blossom),var(--fuchsia));border-radius:100% 0 100% 0 / 72% 40% 60% 30%;opacity:.5;animation:fall linear infinite}
+  @keyframes fall{0%{transform:translateY(-12vh) translateX(0) rotate(0)}100%{transform:translateY(114vh) translateX(6vw) rotate(220deg)}}
+
+  #bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--fuchsia),var(--pink-deep));z-index:30;transition:width .12s linear}
+
+  main{position:relative;z-index:10}
+  section{max-width:var(--maxw);margin:0 auto;padding:0 var(--s2)}
+
+  .kicker{font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--pink-deep);font-weight:600}
+  h1{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:clamp(2.4rem,9vw,3.8rem);line-height:1.02;letter-spacing:-.02em;margin:var(--s1) 0 var(--s0);color:var(--ink)}
+  h2{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:clamp(1.7rem,6.2vw,2.5rem);line-height:1.08;letter-spacing:-.015em;margin:0 0 var(--s0);color:var(--ink)}
+  .lead{font-size:clamp(1.05rem,4.2vw,1.3rem);color:var(--ink-soft);font-weight:400}
+  p{margin:0 0 var(--s0)} .muted{color:var(--ink-soft)} .faint{color:var(--ink-faint)} .small{font-size:.88rem}
+  em.warm{color:var(--pink-deep);font-style:normal;font-weight:500} em.cool{color:var(--sci);font-style:normal;font-weight:500}
+
+  .beat{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:var(--s4);padding-bottom:var(--s4)}
+  .chip{display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;padding:.36rem .8rem;border-radius:var(--r-pill);background:var(--blossom-soft);border:1px solid var(--line-strong);color:var(--ink-soft)}
+  .chip.confirm{color:var(--faith);border-color:var(--faith-accent);background:var(--faith-bg)}
+  .chip svg{width:15px;height:15px}
+  .chip-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:var(--s1)}
+
+  .pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:var(--s1)}
+  .pill{font-size:.85rem;padding:.32rem .7rem;border-radius:var(--r-pill);background:var(--blossom-soft);color:var(--pink-deep);border:1px solid var(--line-strong);font-weight:500}
+  .pill.heart{background:var(--faith-bg);color:var(--faith);border-color:var(--faith-accent)}
+
+  .note{margin-top:var(--s1);font-size:.95rem;color:var(--ink-soft);border-left:3px solid var(--faith-accent);padding-left:var(--s1)}
+  .src-inline{color:var(--ink-faint);font-style:italic;font-size:.85em}
+
+  .callout{border-radius:var(--r);padding:1rem 1.15rem;border:1px solid;display:flex;gap:.7rem;align-items:flex-start;margin-top:var(--s1)}
+  .callout .ci{flex:0 0 auto;width:22px;height:22px;margin-top:.15rem}
+  .callout.care{background:var(--honest-bg);border-color:rgba(188,67,39,.4);color:#7E2E18}
+  .callout.care .label{font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:.72rem;display:block;margin-bottom:.2rem}
+  .callout.care b{color:#7E2E18}
+
+  .scrollcue{margin-top:var(--s3);color:var(--ink-soft);font-size:.82rem;display:flex;align-items:center;gap:.5rem}
+  .scrollcue .m{width:22px;height:34px;border:1.5px solid var(--pink);border-radius:12px;position:relative}
+  .scrollcue .m::after{content:"";position:absolute;left:50%;top:6px;width:3px;height:6px;border-radius:2px;background:var(--pink);transform:translateX(-50%);animation:wheel 1.7s var(--ease) infinite}
+  @keyframes wheel{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}100%{opacity:0;transform:translate(-50%,10px)}}
+
+  .layer{border-left:3px solid var(--line-strong);padding:.1rem 0 .1rem .9rem;margin:var(--s0) 0}
+  .layer .l{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;margin-bottom:.2rem}
+  .layer.iman{border-color:var(--faith-accent)} .layer.iman .l{color:var(--faith)}
+
+  .qa{border-top:1px solid var(--line)}
+  .qa button{width:100%;text-align:left;background:none;border:0;cursor:pointer;font-family:"Fraunces",serif;font-size:1.08rem;color:var(--ink);font-weight:500;padding:var(--s0) 0;display:flex;gap:.7rem;align-items:center;justify-content:space-between}
+  .qa button:hover{color:var(--pink-deep)}
+  .qa .mk{flex:0 0 auto;width:1.5rem;height:1.5rem;border-radius:7px;background:var(--surface-2);border:1px solid var(--line-strong);color:var(--pink-deep);display:grid;place-items:center;transition:transform .3s var(--ease)}
+  .qa.open .mk{transform:rotate(45deg);background:var(--pink);color:#fff;border-color:var(--pink)}
+  .qa .ans{max-height:0;overflow:hidden;transition:max-height .42s var(--ease)}
+  .qa .ans-in{padding:0 0 var(--s0);color:var(--ink-soft)}
+
+  .cards{display:grid;gap:.7rem;margin-top:var(--s1)}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.1rem;box-shadow:var(--shadow);display:flex;gap:.8rem;align-items:flex-start}
+  .card .n{font-family:"Fraunces",serif;color:var(--pink-deep);font-size:1.1rem;flex:0 0 auto;font-weight:600}
+  .card p{margin:0;color:var(--ink)}
+
+  details.sources{margin-top:var(--s2);border-top:1px solid var(--line)}
+  details.sources summary{cursor:pointer;list-style:none;padding:var(--s0) 0;font-size:.92rem;color:var(--pink-deep);font-weight:500;display:flex;align-items:center;gap:.5rem}
+  details.sources summary::-webkit-details-marker{display:none}
+  details.sources .cv{transition:transform .3s var(--ease)}
+  details.sources[open] .cv{transform:rotate(180deg)}
+  details.sources .body{font-size:.85rem;color:var(--ink-soft);line-height:1.55}
+  details.sources .body p{margin:.4rem 0} details.sources .body b{color:var(--ink)}
+
+  .scrolly{position:relative;height:280vh}
+  .sticky{position:sticky;top:0;height:100vh;display:grid;grid-template-rows:auto 1fr auto;gap:var(--s1);align-items:center;padding-top:4.5rem;padding-bottom:var(--s4)}
+  .stage-title{text-align:center}
+  .stage-wrap{display:grid;place-items:center;min-height:0}
+  .stage{width:min(82vw,400px);aspect-ratio:1/1}
+  .stage svg{width:100%;height:100%;overflow:visible}
+  .caption{max-width:30rem;margin:0 auto;text-align:center;font-size:clamp(1.05rem,4.2vw,1.26rem);color:var(--ink);font-weight:400;min-height:3.6em;transition:opacity .45s var(--ease)}
+  .caption .src{display:block;margin-top:var(--s-1);font-size:.8rem;color:var(--ink-faint);font-style:italic}
+
+  .womb{fill:url(#wombG);stroke:rgba(194,60,126,.38);stroke-width:1.5;animation:wb 6.5s ease-in-out infinite}
+  @keyframes wb{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+  .wombwrap{transform-origin:215px 238px;transform-box:fill-box}
+  .embrace{fill:none;stroke:rgba(217,164,65,.34);stroke-width:16;stroke-linecap:round}
+  .baby{fill:url(#babyG);stroke:rgba(194,60,126,.40);stroke-width:.75} .cord{fill:none;stroke:rgba(62,30,48,.32);stroke-width:2.2;stroke-linecap:round}
+  .babywrap{transform-origin:226px 236px;transform-box:fill-box;animation:calm 5.5s ease-in-out infinite}
+  @keyframes calm{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+  .ring{fill:none;stroke:var(--pink-deep);stroke-width:1.5;transform-box:fill-box;transform-origin:center;opacity:0}
+  .wavewrap{transform-origin:96px 150px;transform-box:fill-box}
+  .wavewrap .ring{animation:ripple 3.6s ease-out infinite}
+  .wavewrap .ring:nth-child(2){animation-delay:.9s}.wavewrap .ring:nth-child(3){animation-delay:1.8s}.wavewrap .ring:nth-child(4){animation-delay:2.7s}
+  @keyframes ripple{0%{transform:scale(.2);opacity:0}16%{opacity:.7}100%{transform:scale(1);opacity:0}}
+  .heart{fill:var(--pink-deep);transform-box:fill-box;transform-origin:center;animation:beat 3.6s ease-in-out infinite}
+  @keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.13)}}
+  .lead-line{stroke:rgba(62,30,48,.42);stroke-width:1;stroke-dasharray:2 3}
+  .lbl{fill:var(--ink);font-family:"Spectral",serif;font-size:15px;font-weight:500}
+  .lbl.sm{fill:var(--ink-soft);font-size:13px}
+
+  .foot{padding:var(--s4) var(--s2) 5rem;max-width:var(--maxw);margin:0 auto;color:var(--ink-soft);font-size:.84rem;border-top:1px solid var(--line)}
+
+  .r{opacity:0;transform:translateY(16px);transition:opacity var(--dur-slow) var(--ease),transform var(--dur-slow) var(--ease)}
+  .r.in{opacity:1;transform:none}
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .blob,.womb,.wavewrap .ring,.babywrap,.heart,.scrollcue .m::after,.petals{animation:none!important}
+    .petals{display:none}.wavewrap .ring{opacity:.4}
+    .r{transition:none;opacity:1;transform:none}#bar{display:none}
+  }
+
+  /* ===== Hero art T3-03 — ketenangan (ber-scope, awalan e3) ===== */
+  .hero-art{position:relative;width:100%;max-width:600px;margin:var(--s2,22px) auto 0;border-radius:22px;overflow:hidden;box-shadow:0 30px 70px -44px rgba(62,30,48,.5);border:1px solid rgba(231,179,205,.6)}
+  .hero-art .h-stage{position:relative;width:100%;aspect-ratio:1040/700;display:block}
+  .hero-art svg.scene{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .hero-art .h-cap{position:absolute;left:0;right:0;bottom:0;padding:18px 22px;background:linear-gradient(to top,rgba(62,30,48,.34),rgba(62,30,48,0));color:#fff}
+  .hero-art .h-cap .hk{font-family:"Fraunces",serif;font-weight:500;font-size:18px;line-height:1.1;text-shadow:0 2px 14px rgba(62,30,48,.4)}
+  .hero-art .h-cap .hsub{font-style:italic;font-size:13.5px;opacity:.95;max-width:42ch;line-height:1.45;margin-top:5px;text-shadow:0 1px 10px rgba(62,30,48,.4)}
+  @keyframes e3Breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.018)}}
+  @keyframes e3Glow{0%,100%{opacity:.5}50%{opacity:.8}}
+  @keyframes e3Aura{0%{transform:scale(.92);opacity:0}30%{opacity:.5}100%{transform:scale(1.15);opacity:0}}
+  @keyframes e3Float{0%,100%{transform:translate(0,0);opacity:0}25%{opacity:.7}50%{transform:translate(var(--fx,10px),var(--fy,-16px))}80%{opacity:.4}}
+  @keyframes e3Drift{0%{transform:translate(0,0) rotate(0);opacity:0}12%{opacity:.85}88%{opacity:.85}100%{transform:translate(var(--dx,40px),var(--dy,520px)) rotate(var(--dr,200deg));opacity:0}}
+  @keyframes e3BranchSway{0%,100%{transform:rotate(-1.2deg)}50%{transform:rotate(1.2deg)}}
+  @keyframes e3Shimmer{0%,100%{opacity:.55}50%{opacity:.9}}
+  .hero-art .e3-orbB{transform-box:fill-box;transform-origin:center;animation:e3Breathe 9s ease-in-out infinite}
+  .hero-art .e3-orbG{transform-box:fill-box;transform-origin:center;animation:e3Glow 9s ease-in-out infinite}
+  .hero-art .e3-aura{transform-box:fill-box;transform-origin:center;animation:e3Aura 9s ease-out infinite}
+  .hero-art .e3-aura.a2{animation-delay:3s}
+  .hero-art .e3-aura.a3{animation-delay:6s}
+  .hero-art .e3-branch{transform-box:fill-box;transform-origin:14% 8%;animation:e3BranchSway 10s ease-in-out infinite}
+  .hero-art .e3-petal{transform-box:fill-box;transform-origin:center;animation:e3Drift var(--t,16s) linear infinite;animation-delay:var(--d,0s)}
+  .hero-art .e3-mote{transform-box:fill-box;transform-origin:center;animation:e3Float var(--t,13s) ease-in-out infinite;animation-delay:var(--d,0s)}
+  .hero-art .e3-babyG{transform-box:fill-box;transform-origin:center;animation:e3Shimmer 9s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){.hero-art .e3-orbB,.hero-art .e3-orbG,.hero-art .e3-aura,.hero-art .e3-branch,.hero-art .e3-petal,.hero-art .e3-mote,.hero-art .e3-babyG{animation:none}.hero-art .e3-aura{opacity:.14}.hero-art .e3-petal,.hero-art .e3-mote{opacity:.6}}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><span class="blob a"></span><span class="blob b"></span></div>
+<div class="girih" aria-hidden="true"></div>
+<div class="petals" aria-hidden="true">
+  <span class="petal" style="left:11%;animation-duration:25s;animation-delay:0s"></span>
+  <span class="petal" style="left:30%;animation-duration:30s;animation-delay:7s;transform:scale(.8)"></span>
+  <span class="petal" style="left:52%;animation-duration:27s;animation-delay:13s;transform:scale(1.2)"></span>
+  <span class="petal" style="left:71%;animation-duration:32s;animation-delay:4s"></span>
+  <span class="petal" style="left:88%;animation-duration:26s;animation-delay:10s;transform:scale(.9)"></span>
+</div>
+<div id="bar" aria-hidden="true"></div>
+
+<main>
+  <section class="beat">
+    <div class="kicker r">Modul Prenatal &middot; T3-03</div>
+    <h1 class="r">Ketenangan Hati Ibu</h1>
+    <p class="lead r">Kehamilan membawa gembira sekaligus cemas — dan itu wajar. Modul ini untuk merawatmu, Ibu, bukan menuntutmu.</p>
+    <div class="r" style="margin-top:var(--s1)"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.3 3-5.5A4.5 4.5 0 0 0 12 6 4.5 4.5 0 0 0 2 8.5c0 2.2 1.5 4 3 5.5l7 7Z"/></svg> Dukungan, bukan tuntutan</span></div>
+    <div class="pills r">
+      <span class="pill">Intrapersonal</span><span class="pill">Interpersonal</span><span class="pill heart">Kecerdasan hati</span>
+    </div>
+    <figure class="hero-art r">
+      <div class="h-stage">
+        <svg class="scene" viewBox="0 0 1040 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustrasi: ruang hangat yang sangat tenang, diselimuti aura lembut yang bernapas perlahan, dengan bayi yang beristirahat damai dan ranting sakura.">
+          <defs>
+            <radialGradient id="e3Sky" cx="50%" cy="34%" r="82%"><stop offset="0%" stop-color="#FFF9FC"/><stop offset="48%" stop-color="#FCEAF3"/><stop offset="100%" stop-color="#F4D2E6"/></radialGradient>
+            <radialGradient id="e3Halo" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FBE8D6" stop-opacity=".85"/><stop offset="46%" stop-color="#F7CCE0" stop-opacity=".45"/><stop offset="100%" stop-color="#F7CCE0" stop-opacity="0"/></radialGradient>
+            <radialGradient id="e3Orb" cx="44%" cy="40%" r="68%"><stop offset="0%" stop-color="#FFF4E2"/><stop offset="42%" stop-color="#FCDCE8"/><stop offset="80%" stop-color="#F3B9D2"/><stop offset="100%" stop-color="#E695BA"/></radialGradient>
+            <radialGradient id="e3OrbI" cx="48%" cy="46%" r="58%"><stop offset="0%" stop-color="#FFF1D2" stop-opacity=".85"/><stop offset="60%" stop-color="#F8D2E2" stop-opacity=".2"/><stop offset="100%" stop-color="#F8D2E2" stop-opacity="0"/></radialGradient>
+            <linearGradient id="e3Baby" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F4A8C6"/><stop offset="100%" stop-color="#DB6FA0"/></linearGradient>
+            <radialGradient id="e3BabyGlow" cx="50%" cy="44%" r="56%"><stop offset="0%" stop-color="#FFF1D6" stop-opacity=".88"/><stop offset="100%" stop-color="#FFF1D6" stop-opacity="0"/></radialGradient>
+            <linearGradient id="e3Cradle" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E7B774" stop-opacity="0"/><stop offset="100%" stop-color="#D9A441" stop-opacity=".46"/></linearGradient>
+            <linearGradient id="e3Branch" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7A4A38"/><stop offset="100%" stop-color="#9C5E48"/></linearGradient>
+            <radialGradient id="e3Pet" cx="40%" cy="30%" r="80%"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="55%" stop-color="#FBDCE9"/><stop offset="100%" stop-color="#F3B6D0"/></radialGradient>
+            <radialGradient id="e3Vig" cx="50%" cy="46%" r="72%"><stop offset="62%" stop-color="#3E1E30" stop-opacity="0"/><stop offset="100%" stop-color="#3E1E30" stop-opacity=".13"/></radialGradient>
+            <filter id="e3Soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="22"/></filter>
+          </defs>
+
+          <rect x="0" y="0" width="1040" height="700" fill="url(#e3Sky)"/>
+
+          <!-- aura ketenangan: gelombang halus yang bernapas perlahan -->
+          <g fill="none" stroke="#EFABCD" stroke-width="2.4">
+            <circle class="e3-aura" cx="520" cy="332" r="206"/>
+            <circle class="e3-aura a2" cx="520" cy="332" r="206"/>
+            <circle class="e3-aura a3" cx="520" cy="332" r="206"/>
+          </g>
+
+          <circle class="e3-orbG" cx="520" cy="332" r="278" fill="url(#e3Halo)" filter="url(#e3Soft)"/>
+
+          <g>
+            <circle class="e3-mote" style="--t:12s;--d:.4s;--fx:10px;--fy:-18px" cx="300" cy="300" r="2.8" fill="#F3C887"/>
+            <circle class="e3-mote" style="--t:14s;--d:2.2s;--fx:-12px;--fy:-16px" cx="760" cy="320" r="2.4" fill="#EFB6D2"/>
+            <circle class="e3-mote" style="--t:13s;--d:3.6s;--fx:9px;--fy:-20px" cx="360" cy="470" r="2.6" fill="#F3C887"/>
+            <circle class="e3-mote" style="--t:15s;--d:1.3s;--fx:-10px;--fy:-14px" cx="700" cy="480" r="2.4" fill="#EFB6D2"/>
+          </g>
+
+          <g class="e3-branch">
+          <path d="M -10 40 C 120 70, 230 60, 320 120 C 360 146, 392 150, 430 140" fill="none" stroke="url(#e3Branch)" stroke-width="9" stroke-linecap="round"/>
+          <path d="M 150 64 C 196 40, 236 44, 268 18" fill="none" stroke="url(#e3Branch)" stroke-width="5.5" stroke-linecap="round"/>
+          <path d="M 300 110 C 322 78, 356 70, 372 44" fill="none" stroke="url(#e3Branch)" stroke-width="5" stroke-linecap="round"/>
+          <g transform="translate(268,18)"><circle cx="0" cy="-9" r="7.5" fill="url(#e3Pet)"/><circle cx="8.6" cy="-2.8" r="7.5" fill="url(#e3Pet)"/><circle cx="5.3" cy="7.3" r="7.5" fill="url(#e3Pet)"/><circle cx="-5.3" cy="7.3" r="7.5" fill="url(#e3Pet)"/><circle cx="-8.6" cy="-2.8" r="7.5" fill="url(#e3Pet)"/><circle cx="0" cy="0" r="3.1" fill="#E9A23F"/></g>
+          <g transform="translate(372,44) scale(.86)"><circle cx="0" cy="-9" r="7.5" fill="url(#e3Pet)"/><circle cx="8.6" cy="-2.8" r="7.5" fill="url(#e3Pet)"/><circle cx="5.3" cy="7.3" r="7.5" fill="url(#e3Pet)"/><circle cx="-5.3" cy="7.3" r="7.5" fill="url(#e3Pet)"/><circle cx="-8.6" cy="-2.8" r="7.5" fill="url(#e3Pet)"/><circle cx="0" cy="0" r="3.1" fill="#E9A23F"/></g>
+          <g transform="translate(120,52) scale(.7)"><circle cx="0" cy="-9" r="7.5" fill="url(#e3Pet)"/><circle cx="8.6" cy="-2.8" r="7.5" fill="url(#e3Pet)"/><circle cx="5.3" cy="7.3" r="7.5" fill="url(#e3Pet)"/><circle cx="-5.3" cy="7.3" r="7.5" fill="url(#e3Pet)"/><circle cx="-8.6" cy="-2.8" r="7.5" fill="url(#e3Pet)"/><circle cx="0" cy="0" r="3.1" fill="#E9A23F"/></g>
+        </g>
+
+          <g class="e3-orbB">
+            <circle cx="520" cy="332" r="200" fill="url(#e3Orb)"/>
+            <circle cx="520" cy="332" r="200" fill="url(#e3OrbI)"/>
+            <circle cx="520" cy="332" r="198" fill="none" stroke="#FFFFFF" stroke-opacity=".5" stroke-width="2"/>
+            <path d="M 352 392 C 392 506, 648 506, 688 392 C 660 490, 380 490, 352 392 Z" fill="url(#e3Cradle)"/>
+            <path d="M 332 380 C 372 522, 668 522, 708 380" fill="none" stroke="#D9A441" stroke-opacity=".46" stroke-width="6" stroke-linecap="round"/>
+            <ellipse class="e3-babyG" cx="512" cy="372" rx="120" ry="98" fill="url(#e3BabyGlow)"/>
+            <g transform="translate(512,366) rotate(-12)">
+              <ellipse cx="0" cy="10" rx="76" ry="66" fill="url(#e3Baby)"/>
+              <circle cx="-48" cy="38" r="33" fill="url(#e3Baby)"/>
+              <circle cx="15" cy="-56" r="37" fill="url(#e3Baby)"/>
+              <ellipse cx="0" cy="-62" rx="13" ry="9" fill="#FFFFFF" fill-opacity=".3"/>
+              <ellipse cx="-32" cy="6" rx="10" ry="15" fill="#FFFFFF" fill-opacity=".13"/>
+            </g>
+          </g>
+
+          <g>
+            <ellipse class="e3-petal" style="--t:16s;--d:0s;--dx:50px;--dy:560px;--dr:180deg" cx="430" cy="120" rx="11" ry="7" fill="url(#e3Pet)"/>
+            <ellipse class="e3-petal" style="--t:19s;--d:3.5s;--dx:-34px;--dy:540px;--dr:-160deg" cx="360" cy="80" rx="9" ry="6" fill="url(#e3Pet)"/>
+            <ellipse class="e3-petal" style="--t:17.5s;--d:6.5s;--dx:70px;--dy:560px;--dr:210deg" cx="700" cy="70" rx="10" ry="6.5" fill="url(#e3Pet)"/>
+          </g>
+
+          <rect x="0" y="0" width="1040" height="700" fill="url(#e3Vig)"/>
+        </svg>
+      </div>
+      <figcaption class="h-cap">
+        <div class="hk">Ketenanganmu, rumah pertamanya</div>
+        <div class="hsub">Saat hatimu tenang, dunia kecilnya pun tenang — dan tak apa bila tak selalu sempurna.</div>
+      </figcaption>
+    </figure>
+    <div class="scrollcue r"><span class="m"></span> Gulir perlahan</div>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Yang wajar dirasakan</div>
+    <h2 class="r">Cemas dan sedih saat hamil itu <em class="cool">wajar</em> — dan kamu tidak sendirian.</h2>
+    <p class="lead r">Sekitar 1 dari 5 ibu hamil mengalami gejala cemas atau sedih yang berarti. Ini umum, bukan aib — dan mencari bantuan adalah kekuatan, bukan kelemahan.</p>
+  </section>
+
+  <div class="scrolly" id="scrolly">
+    <div class="sticky">
+      <div class="stage-title"><span class="kicker">Ketenangan yang menyelimuti</span></div>
+      <div class="stage-wrap">
+        <div class="stage">
+          <svg viewBox="0 0 460 460" role="img" aria-label="Diagram lembut: ketenangan Ibu menjadi bagian dari lingkungan tempat ananda tumbuh">
+            <defs>
+              <radialGradient id="wombG" cx="48%" cy="44%" r="62%"><stop offset="0%" stop-color="rgba(248,201,221,.62)"/><stop offset="65%" stop-color="rgba(237,108,182,.14)"/><stop offset="100%" stop-color="rgba(237,108,182,0)"/></radialGradient>
+              <radialGradient id="babyG" cx="42%" cy="38%" r="70%"><stop offset="0%" stop-color="#FBD3E1"/><stop offset="48%" stop-color="#EE8CB6"/><stop offset="100%" stop-color="#D2679A"/></radialGradient>
+              <radialGradient id="wombGlow" cx="46%" cy="42%" r="60%"><stop offset="0%" stop-color="#FFEFC9" stop-opacity=".7"/><stop offset="70%" stop-color="#F8CFE0" stop-opacity=".12"/><stop offset="100%" stop-color="#F8CFE0" stop-opacity="0"/></radialGradient>
+            </defs>
+            <path class="embrace" d="M95 300 C80 360 140 402 215 402"/>
+            <path class="embrace" d="M335 300 C350 360 290 402 215 402"/>
+            <g class="wombwrap"><circle class="womb" cx="215" cy="238" r="138"/><circle cx="215" cy="234" r="124" fill="url(#wombGlow)"/></g>
+            <g class="babywrap" id="baby">
+              <g transform="translate(226,236) rotate(-14)">
+                <ellipse class="baby" cx="0" cy="8" rx="40" ry="35"/>
+                <circle class="baby" cx="-26" cy="22" r="18"/>
+                <circle class="baby" cx="9" cy="-30" r="20"/>
+                <ellipse cx="0" cy="-34" rx="7" ry="5" fill="#FFFFFF" fill-opacity=".34"/>
+              </g>
+              <path class="cord" d="M206 268 C188 286 176 308 170 330"/>
+            </g>
+            <g class="wavewrap">
+              <circle class="ring" cx="96" cy="150" r="80"/><circle class="ring" cx="96" cy="150" r="80"/>
+              <circle class="ring" cx="96" cy="150" r="80"/><circle class="ring" cx="96" cy="150" r="80"/>
+            </g>
+            <path class="heart" d="M96 169 C 80 156 80 144 90 144 C 95 144 96 148 96 150 C 96 148 97 144 102 144 C 112 144 112 156 96 169 Z"/>
+            <line class="lead-line" x1="96" y1="78" x2="96" y2="132"/>
+            <text class="lbl" x="96" y="66" text-anchor="middle">Ketenangan Ibu</text>
+            <line class="lead-line" x1="238" y1="184" x2="358" y2="152"/>
+            <text class="lbl" x="368" y="148" text-anchor="start">Ananda</text>
+            <text class="lbl sm" x="368" y="167" text-anchor="start">(janin)</text>
+            <line class="lead-line" x1="340" y1="288" x2="360" y2="290"/>
+            <text class="lbl sm" x="370" y="294" text-anchor="start">rahim</text>
+            <line class="lead-line" x1="104" y1="388" x2="130" y2="394"/>
+            <text class="lbl sm" x="20" y="392" text-anchor="start">pelukan Ibu</text>
+          </svg>
+        </div>
+      </div>
+      <p class="caption" id="cap">Ketenangan Ibu menjadi bagian dari lingkungan tempat ananda tumbuh.</p>
+    </div>
+  </div>
+
+  <section class="beat">
+    <div class="kicker r">Pertanyaan yang mungkin muncul</div>
+    <h2 class="r" style="margin-bottom:var(--s1)">Pertanyaan yang menenangkan.</h2>
+    <div class="r">
+      <div class="qa" data-qa>
+        <button aria-expanded="false"><span>Kalau aku cemas, apakah pasti membahayakan bayi?</span><span class="mk"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="ans"><div class="ans-in">Tidak. Efeknya beragam antar studi, dan kekhawatiran sehari-hari berbeda dari stres yang kronis dan berat. Yang membantu adalah dukungan dan menurunkan stres — bukan menambah rasa bersalah. <span class="src-inline">Annual Review (2024)</span></div></div>
+      </div>
+      <div class="qa" data-qa>
+        <button aria-expanded="false"><span>Kenapa suasana hati Ibu bisa memengaruhi bayi?</span><span class="mk"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="ans"><div class="ans-in">Ananda tumbuh di lingkungan fisiologis Ibu; stres yang berat dapat memengaruhi lewat hormon dan plasenta. Tetapi ini pengaruh, bukan vonis. <span class="src-inline">Tadanki dkk. (2025)</span></div></div>
+      </div>
+      <div class="qa" data-qa>
+        <button aria-expanded="false"><span>Apa yang bisa menenangkan?</span><span class="mk"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="ans"><div class="ans-in">Praktik berbasis bukti seperti mindfulness dan relaksasi, dan bagi keluarga Muslim: dzikir, salat, doa, serta murottal — ditambah dukungan suami dan keluarga. <span class="src-inline">meta-analisis mindfulness; tinjauan praktik iman</span></div></div>
+      </div>
+      <div class="qa" data-qa>
+        <button aria-expanded="false"><span>Kapan sebaiknya mencari bantuan profesional?</span><span class="mk"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="ans"><div class="ans-in">Bila cemas atau sedih terasa berat, menetap, atau mengganggu keseharian — segera temui dokter atau tenaga kesehatan jiwa. Itu ikhtiar yang sejalan dengan iman.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Maknanya</div>
+    <h2 class="r">Hati yang tenang, <em class="warm">dekat dengan-Nya</em>.</h2>
+    <div class="layer iman r"><div class="l">Makna · Iman</div>Islam meletakkan ketenangan pada kedekatan dengan Allah: “hanya dengan mengingat Allah, hati menjadi tenang” (Ar-Ra’d 13:28); dan kita diajak meminta pertolongan dengan sabar dan salat (Al-Baqarah 2:153). Dzikir, salat, doa, tawakkul, dan murottal menjadi sumber ketenangan bagi Ibu.</div>
+    <p class="note r">Beberapa studi pada ibu hamil Muslim menunjukkan praktik iman — doa, dzikir, mendengar Al-Qur’an — turut menurunkan kecemasan, meski buktinya masih terbatas. Dan ini penting: tawakkul berjalan bersama ikhtiar — “ikat untamu, lalu bertawakkal” (HR Tirmidzi no. 2517 — hasan).<button class="tb-dlk" data-d="h-ikat-unta" type="button" title="Buka kartu dalil"><b>۞</b>dalil</button> Maka iman melengkapi, bukan menggantikan, bantuan profesional.</p>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Penting &middot; dukungan</div>
+    <h2 class="r">Bila terasa berat, meminta bantuan adalah <em class="warm">kekuatan</em>.</h2>
+    <div class="callout care r">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.3 3-5.5A4.5 4.5 0 0 0 12 6 4.5 4.5 0 0 0 2 8.5c0 2.2 1.5 4 3 5.5l7 7Z"/></svg></span>
+      <span><span class="label">Kapan mencari bantuan</span>
+      Bila cemas atau sedih terasa berat, menetap, atau mengganggu keseharian — termasuk bila muncul pikiran untuk menyakiti diri — <b>segera hubungi dokter atau tenaga kesehatan jiwa</b>. Modul ini menemani dan menenangkan, tetapi bukan terapi dan tidak menggantikan penanganan profesional. Mencari bantuan adalah ikhtiar yang sejalan dengan iman.</span>
+    </div>
+    <div class="chip-row r"><span class="chip confirm">Konfirmasi dokter/tenaga kesehatan jiwa</span></div>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Caranya</div>
+    <h2 class="r">Hal-hal kecil yang menenangkan.</h2>
+    <div class="cards">
+      <div class="card r"><span class="n">01</span><p>Rawat rutinitas yang menenangkan: dzikir dan doa harian, salat yang khusyuk, murottal lembut, latihan napas sederhana, jalan santai, dan tidur yang cukup.</p></div>
+      <div class="card r"><span class="n">02</span><p>Peran Ayah penting: hadir, mendengarkan tanpa menghakimi, meringankan beban, dan berdoa bersama.</p></div>
+      <div class="card r"><span class="n">03</span><p>Bila membantu, gunakan aplikasi relaksasi atau jurnal syukur. <span class="faint">(Banyak yang gratis; bila berbayar — periksa mandiri di Tokopedia/Shopee.)</span></p></div>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Khazanah</div>
+    <h2 class="r">Hati yang tenang — <em class="warm">dengan mengingat-Nya</em>.</h2>
+    <div class="layer iman r"><div class="l">Khazanah · Iman</div>“(Yaitu) orang-orang yang beriman dan hati mereka menjadi tenang dengan mengingat Allah. Ingatlah, hanya dengan mengingat Allah hati menjadi tenang” (Ar-Ra’d 13:28). Dzikir, doa, dan tawakal adalah penambat ketenangan Ibu — berusaha sebaik mungkin, lalu menyerahkan hasilnya kepada Allah.</div>
+    <p class="note r">Disajikan tanpa menakut-nakuti dan tanpa menyalahkan Ibu atas setiap rasa cemas; ketenangan dirawat, bukan dipaksakan. <span class="src-inline">Ar-Ra’d 13:28</span><button class="tb-dlk" data-d="q-rad-13-28" type="button" title="Buka kartu dalil"><b>۞</b>dalil</button></p>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Untukmu, Ibu</div>
+    <h2 class="r">Rawat dirimu — itu <em class="warm">kebaikan</em>.</h2>
+    <p class="lead r">Merawat hatimu adalah kebaikan untukmu, dan untuk ananda. Pelan-pelan, tanpa rasa bersalah.</p>
+    <p class="note r">Praktik ini menenangkan dan mendukung; bukan jaminan hasil tertentu pada bayi, dan bukan pengganti perawatan medis.</p>
+    <details class="sources r">
+      <summary>Lihat sumber &amp; verifikasi <svg class="cv" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="body">
+        <p><b>Sains.</b> Tadanki dkk. (2025), Pediatric Discovery, PMC12483304; Glover &amp; O’Donnell (2018), Development and Psychopathology · efek heterogen: Annual Review of Developmental Psychology (2024) · mindfulness menurunkan cemas/depresi/stres: PMC12192663 (catatan jujur: bukan obat ajaib; J Affect Disord 2023).</p>
+        <p><b>Umum.</b> Sekitar 1 dari 5 ibu hamil mengalami gejala cemas atau depresi yang berarti.</p>
+        <p><b>Iman.</b> Hati tenteram dengan dzikir: Ar-Ra’d 13:28<button class="tb-dlk" data-d="q-rad-13-28" type="button" title="Buka kartu dalil"><b>۞</b>dalil</button> · sabar dan salat sebagai penolong: Al-Baqarah 2:153<button class="tb-dlk" data-d="q-baqarah-2-153" type="button" title="Buka kartu dalil"><b>۞</b>dalil</button> · ikhtiar lalu tawakal: HR Tirmidzi no. 2517<button class="tb-dlk" data-d="h-ikat-unta" type="button" title="Buka kartu dalil"><b>۞</b>dalil</button> · praktik iman menurunkan kecemasan perinatal (bukti terbatas): PMC9170987; PMC10704108.</p>
+        <p><b>Pendamping profesional.</b> dokter/tenaga kesehatan jiwa (penilaian dan penanganan; kapan mencari bantuan) · adaptasi ke kondisi dan dukungan nyata di sekitar Ibu.</p>
+      </div>
+    </details>
+    <div class="chip-row r"><span class="chip confirm">Konfirmasi dokter/tenaga kesehatan jiwa</span><span class="chip">Adaptasi ke kondisi Ibu</span></div>
+  </section>
+
+  <div class="foot">TARBIYAH &middot; Modul T3-03 “Ketenangan &amp; Suasana Hati Ibu” &middot; v1.1 (cherry blossom). Modul ini dukungan, bukan tuntutan, dan bukan pengganti penanganan profesional. Setiap klaim disertai sumber pada titiknya; perbedaan pendapat ditandai apa adanya.</div>
+</main>
+
+<script>
+  const bar = document.getElementById("bar");
+  addEventListener("scroll", () => { const h = document.documentElement, m = h.scrollHeight - h.clientHeight; bar.style.width = (m > 0 ? h.scrollTop / m * 100 : 0) + "%"; }, { passive: true });
+
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .14 });
+  document.querySelectorAll(".r").forEach((el, i) => { el.style.transitionDelay = (i % 4 * 0.06) + "s"; io.observe(el); });
+
+  document.querySelectorAll("[data-qa]").forEach(qa => {
+    const btn = qa.querySelector("button"), ans = qa.querySelector(".ans");
+    btn.addEventListener("click", () => { const open = qa.classList.toggle("open"); btn.setAttribute("aria-expanded", open ? "true" : "false"); ans.style.maxHeight = open ? ans.scrollHeight + "px" : "0px"; });
+  });
+
+  const scrolly = document.getElementById("scrolly"), cap = document.getElementById("cap");
+  const STEPS = [
+    "Ketenangan Ibu menjadi bagian dari lingkungan tempat ananda tumbuh.",
+    "Stres yang berat dan menetap bisa berpengaruh — tetapi ini pengaruh, bukan vonis; kekhawatiran sehari-hari berbeda. <span class='src'>Annual Review (2024)</span>",
+    "Dan kabar baiknya: ketenangan bisa dirawat dan ditumbuhkan. <span class='src'>meta-analisis mindfulness (2023)</span>"
+  ];
+  let cur = -1;
+  function onScroll() {
+    const r = scrolly.getBoundingClientRect(), total = scrolly.offsetHeight - innerHeight;
+    let p = (-r.top) / total; p = Math.max(0, Math.min(1, p));
+    const step = p < .34 ? 0 : p < .68 ? 1 : 2;
+    if (step !== cur) { cur = step; cap.style.opacity = 0; setTimeout(() => { cap.innerHTML = STEPS[step]; cap.style.opacity = 1; }, 200); }
+  }
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+</script>
+
+<style>
+.tb-dlk{display:inline-flex;align-items:center;gap:.34em;margin:0 .18em;padding:.08em .6em .12em .5em;border:1px solid #E9B7CF;border-radius:999px;background:linear-gradient(180deg,#FFF9FC,#FBE3EF);color:#8A5E12;font-family:inherit;font-size:.76em;font-weight:700;letter-spacing:.01em;line-height:1.55;cursor:pointer;vertical-align:baseline;white-space:nowrap;box-shadow:0 1px 2px rgba(194,60,126,.10);transition:transform .12s ease,box-shadow .12s ease}
+.tb-dlk b{font-weight:800;color:#C23C7E;font-size:1.05em;line-height:1}
+.tb-dlk:hover{transform:translateY(-1px);box-shadow:0 3px 9px rgba(194,60,126,.20)}
+.tb-dlk:active{transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){.tb-dlk{transition:none}.tb-dlk:hover{transform:none}}
+</style>
+<script>document.addEventListener("click",function(e){var t=e.target,b=t&&t.closest?t.closest(".tb-dlk"):null;if(!b)return;e.preventDefault();try{if(parent&&parent.TB&&typeof parent.TB.openDalil==="function"){parent.TB.openDalil(b.getAttribute("data-d"));}}catch(_){}},true);</script>
+</body>
+</html>

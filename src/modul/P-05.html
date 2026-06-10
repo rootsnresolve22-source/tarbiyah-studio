@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Keterampilan Harian · Jalur Orang Tua P-05</title>
+<meta name="description" content="TARBIYAH Jalur Belajar Orang Tua P-05 — keterampilan pengasuhan harian: ko-regulasi, baca dialogis, ruang-aman. Tema cherry blossom." />
+<meta name="theme-color" content="#FFF6FA" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&amp;family=Spectral:ital,wght@0,300;0,400;0,500;1,400&amp;display=swap" rel="stylesheet" />
+<style>
+  /* JALUR ORANG TUA P-05 — Keterampilan Harian (Ko-regulasi, Baca Dialogis, Ruang-Aman) · v1.0 (Cherry Blossom)
+     Untuk ORANG TUA. Kontras: teks penting = plum gelap; putih hanya pada isian merah jenuh. */
+  :root{
+    --bg-0:#FFF6FA; --bg-1:#FCE9F2; --bg-2:#F8D6E6;
+    --surface:#FFFFFF; --surface-2:#FFF1F7;
+    --ink:#3E1E30; --ink-soft:#6B3F56; --ink-faint:#8A5C72;
+    --pink:#E0589A; --pink-deep:#C23C7E; --fuchsia:#ED6CB6; --blossom:#F8C9DD; --blossom-soft:#FBE0EC;
+    --sci:#1F7A66; --sci-bg:#DBEFEA;
+    --faith:#8A5E12; --faith-accent:#D9A441; --faith-bg:#F7E8C9;
+    --honest:#BC4327; --honest-bg:#FBDED3;
+    --ok:#4C7A3F; --ok-bg:#E3EFD8;
+    --line:#F2CFE0; --line-strong:#E7B3CD;
+    --shadow:0 2px 8px rgba(176,60,110,.08),0 14px 34px rgba(176,60,110,.10);
+    --s-1:.5rem; --s0:.75rem; --s1:1rem; --s2:1.5rem; --s3:2rem; --s4:3rem;
+    --r-sm:10px; --r:16px; --r-lg:22px; --r-pill:999px;
+    --ease:cubic-bezier(.22,.7,.2,1); --dur:.5s; --dur-slow:.8s;
+    --maxw:42rem;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Spectral",Georgia,serif;color:var(--ink);background:var(--bg-0);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+  .bg{position:fixed;inset:0;z-index:0;overflow:hidden;background:radial-gradient(120% 80% at 50% -6%,#FFFFFF,var(--bg-0) 55%,var(--bg-1) 100%)}
+  .blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5;will-change:transform}
+  .blob.a{width:60vmax;height:60vmax;left:-20vmax;top:-22vmax;background:var(--blossom);animation:drift 30s ease-in-out infinite}
+  .blob.b{width:52vmax;height:52vmax;right:-18vmax;bottom:-16vmax;background:#E9D6F2;animation:drift 36s ease-in-out infinite reverse}
+  @keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(6vmax,4vmax) scale(1.08)}}
+  .girih{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;background-size:84px 84px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84'%3E%3Cg fill='none' stroke='%23C23C7E' stroke-width='1'%3E%3Cpath d='M42 6 L78 42 L42 78 L6 42 Z'/%3E%3Crect x='24' y='24' width='36' height='36'/%3E%3Cpath d='M42 6 L42 78 M6 42 L78 42'/%3E%3C/g%3E%3C/svg%3E")}
+  .petals{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+  .petal{position:absolute;top:-10vh;width:15px;height:12px;background:linear-gradient(135deg,var(--blossom),var(--fuchsia));border-radius:100% 0 100% 0 / 72% 40% 60% 30%;opacity:.5;animation:fall linear infinite}
+  @keyframes fall{0%{transform:translateY(-12vh) translateX(0) rotate(0)}100%{transform:translateY(114vh) translateX(6vw) rotate(220deg)}}
+  #bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--fuchsia),var(--pink-deep));z-index:30;transition:width .12s linear}
+  main{position:relative;z-index:10}
+  section{max-width:var(--maxw);margin:0 auto;padding:0 var(--s2)}
+  .kicker{font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--pink-deep);font-weight:600}
+  h1{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:clamp(2.4rem,9vw,3.8rem);line-height:1.02;letter-spacing:-.02em;margin:var(--s1) 0 var(--s0);color:var(--ink)}
+  h2{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:clamp(1.7rem,6.2vw,2.5rem);line-height:1.08;letter-spacing:-.015em;margin:0 0 var(--s0);color:var(--ink)}
+  .lead{font-size:clamp(1.05rem,4.2vw,1.3rem);color:var(--ink-soft);font-weight:400}
+  p{margin:0 0 var(--s0)} .muted{color:var(--ink-soft)} .faint{color:var(--ink-faint)} .small{font-size:.88rem}
+  em.warm{color:var(--pink-deep);font-style:normal;font-weight:500} em.cool{color:var(--sci);font-style:normal;font-weight:500}
+  .beat{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:var(--s4);padding-bottom:var(--s4)}
+  .chip{display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;padding:.36rem .8rem;border-radius:var(--r-pill);background:var(--blossom-soft);border:1px solid var(--line-strong);color:var(--ink-soft)}
+  .chip.confirm{color:var(--faith);border-color:var(--faith-accent);background:var(--faith-bg)}
+  .chip.parent{color:var(--sci);border-color:rgba(31,122,102,.4);background:var(--sci-bg)}
+  .chip svg{width:15px;height:15px}
+  .chip-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:var(--s1)}
+  .pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:var(--s1)}
+  .pill{font-size:.85rem;padding:.32rem .7rem;border-radius:var(--r-pill);background:var(--blossom-soft);color:var(--pink-deep);border:1px solid var(--line-strong);font-weight:500}
+  .pill.heart{background:var(--faith-bg);color:var(--faith);border-color:var(--faith-accent)}
+  .steps{display:flex;align-items:center;gap:.45rem;margin-top:var(--s2);font-size:.78rem;color:var(--ink-soft)}
+  .steps .dots{display:flex;gap:.34rem}
+  .steps .d{width:9px;height:9px;border-radius:50%;background:var(--line-strong)}
+  .steps .d.on{background:var(--pink);box-shadow:0 0 0 3px var(--blossom-soft)}
+  .note{margin-top:var(--s1);font-size:.95rem;color:var(--ink-soft);border-left:3px solid var(--faith-accent);padding-left:var(--s1)}
+  .src-inline{color:var(--ink-faint);font-style:italic;font-size:.85em}
+  .callout{border-radius:var(--r);padding:1rem 1.15rem;border:1px solid;display:flex;gap:.7rem;align-items:flex-start;margin-top:var(--s1)}
+  .callout .ci{flex:0 0 auto;width:22px;height:22px;margin-top:.15rem}
+  .callout.care{background:var(--honest-bg);border-color:rgba(188,67,39,.4);color:#7E2E18}
+  .callout.care .label{font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:.72rem;display:block;margin-bottom:.2rem}
+  .callout.care b{color:#7E2E18}
+  .scrollcue{margin-top:var(--s3);color:var(--ink-soft);font-size:.82rem;display:flex;align-items:center;gap:.5rem}
+  .scrollcue .m{width:22px;height:34px;border:1.5px solid var(--pink);border-radius:12px;position:relative}
+  .scrollcue .m::after{content:"";position:absolute;left:50%;top:6px;width:3px;height:6px;border-radius:2px;background:var(--pink);transform:translateX(-50%);animation:wheel 1.7s var(--ease) infinite}
+  @keyframes wheel{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}100%{opacity:0;transform:translate(-50%,10px)}}
+  .layer{border-left:3px solid var(--line-strong);padding:.1rem 0 .1rem .9rem;margin:var(--s0) 0}
+  .layer .l{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;margin-bottom:.2rem}
+  .layer.iman{border-color:var(--faith-accent)} .layer.iman .l{color:var(--faith)}
+  .qa{border-top:1px solid var(--line)}
+  .qa button{width:100%;text-align:left;background:none;border:0;cursor:pointer;font-family:"Fraunces",serif;font-size:1.08rem;color:var(--ink);font-weight:500;padding:var(--s0) 0;display:flex;gap:.7rem;align-items:center;justify-content:space-between}
+  .qa button:hover{color:var(--pink-deep)}
+  .qa .mk{flex:0 0 auto;width:1.5rem;height:1.5rem;border-radius:7px;background:var(--surface-2);border:1px solid var(--line-strong);color:var(--pink-deep);display:grid;place-items:center;transition:transform .3s var(--ease)}
+  .qa.open .mk{transform:rotate(45deg);background:var(--pink);color:#fff;border-color:var(--pink)}
+  .qa .ans{max-height:0;overflow:hidden;transition:max-height .42s var(--ease)}
+  .qa .ans-in{padding:0 0 var(--s0);color:var(--ink-soft)}
+  .cards{display:grid;gap:.7rem;margin-top:var(--s1)}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.1rem;box-shadow:var(--shadow);display:flex;gap:.8rem;align-items:flex-start}
+  .card .n{font-family:"Fraunces",serif;color:var(--pink-deep);font-size:1.1rem;flex:0 0 auto;font-weight:600}
+  .card p{margin:0;color:var(--ink)}
+  details.sources{margin-top:var(--s2);border-top:1px solid var(--line)}
+  details.sources summary{cursor:pointer;list-style:none;padding:var(--s0) 0;font-size:.92rem;color:var(--pink-deep);font-weight:500;display:flex;align-items:center;gap:.5rem}
+  details.sources summary::-webkit-details-marker{display:none}
+  details.sources .cv{transition:transform .3s var(--ease)}
+  details.sources[open] .cv{transform:rotate(180deg)}
+  details.sources .body{font-size:.85rem;color:var(--ink-soft);line-height:1.55}
+  details.sources .body p{margin:.4rem 0} details.sources .body b{color:var(--ink)}
+  .scrolly{position:relative;height:280vh}
+  .sticky{position:sticky;top:0;height:100vh;display:grid;grid-template-rows:auto 1fr auto;gap:var(--s1);align-items:center;padding-top:4.5rem;padding-bottom:var(--s4)}
+  .stage-title{text-align:center}
+  .stage-wrap{display:grid;place-items:center;min-height:0}
+  .stage{width:min(82vw,400px);aspect-ratio:1/1}
+  .stage svg{width:100%;height:100%;overflow:visible}
+  .caption{max-width:30rem;margin:0 auto;text-align:center;font-size:clamp(1.05rem,4.2vw,1.26rem);color:var(--ink);font-weight:400;min-height:3.6em;transition:opacity .45s var(--ease)}
+  .caption .src{display:block;margin-top:var(--s-1);font-size:.8rem;color:var(--ink-faint);font-style:italic}
+  /* ilustrasi zona yang pas + scaffold memudar */
+  .cnode2{fill:var(--fuchsia);stroke:#fff;stroke-width:3;transform-box:fill-box;transform-origin:center;animation:cbreathe 5s ease-in-out infinite}
+  @keyframes cbreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+  .track{fill:var(--blossom-soft);stroke:var(--line-strong);stroke-width:1}
+  .sweet{fill:var(--pink)}
+  .prop{fill:var(--faith-accent);transform-box:fill-box;transform-origin:bottom;animation:ppulse 4s ease-in-out infinite}
+  .prop.p2{animation-delay:.5s}.prop.p3{animation-delay:1s}
+  @keyframes ppulse{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.08)}}
+  .conn{stroke:var(--line-strong);stroke-width:1.5;stroke-dasharray:3 4}
+  .lead-line{stroke:rgba(62,30,48,.42);stroke-width:1;stroke-dasharray:2 3}
+  .lbl{fill:var(--ink);font-family:"Spectral",serif;font-size:15px;font-weight:500}
+  .lbl.sm{fill:var(--ink-soft);font-size:13px}
+  .foot{padding:var(--s4) var(--s2) 5rem;max-width:var(--maxw);margin:0 auto;color:var(--ink-soft);font-size:.84rem;border-top:1px solid var(--line)}
+  .r{opacity:0;transform:translateY(16px);transition:opacity var(--dur-slow) var(--ease),transform var(--dur-slow) var(--ease)}
+  .r.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .blob,.cnode2,.prop,.scrollcue .m::after,.petals{animation:none!important}
+    .petals{display:none}
+    .r{transition:none;opacity:1;transform:none}#bar{display:none}
+  }
+
+  /* HX-HERO :: mesin hero sinematik universal */
+  .hero-art{max-width:760px;margin:var(--s1,30px) auto 0;padding:18px;background:radial-gradient(120% 100% at 50% 0%,#FFF1F7 0%,#FCE9F2 62%,#F8D6E6 100%);border:1px solid var(--line,#F2CFE0);border-radius:22px;box-shadow:0 30px 64px -42px rgba(62,30,48,.55);overflow:hidden}
+  .hero-art svg{display:block;width:100%;height:auto}
+  .hero-art figcaption{text-align:center;margin-top:12px}
+  .hero-art .hk{font-family:"Fraunces",serif;font-size:1.16rem;line-height:1.2;color:var(--ink,#3E1E30);font-weight:600}
+  .hero-art .hsub{font-family:"Spectral",serif;font-size:.92rem;color:var(--ink-faint,#8A5C72);margin-top:3px}
+  .hero-art .hxscene{transform-box:fill-box;transform-origin:center;animation:hx_float 9s var(--ease,ease-in-out) infinite}
+  .hero-art .hxorb{transform-box:fill-box;transform-origin:center;animation:hx_breathe 7s ease-in-out infinite}
+  .hero-art .hxpetal{transform-box:fill-box;transform-origin:center;animation:hx_drift 9s linear infinite}
+  .hero-art .hxpetal.p2{animation-duration:11s;animation-delay:-3s}
+  .hero-art .hxpetal.p3{animation-duration:13s;animation-delay:-6s}
+  .hero-art .hxpetal.p4{animation-duration:10s;animation-delay:-1.6s}
+  .hero-art .hxripple circle{transform-box:fill-box;transform-origin:center;animation:hx_ripple 4.6s ease-out infinite}
+  .hero-art .hxripple .c2{animation-delay:1.5s}
+  .hero-art .hxripple .c3{animation-delay:3s}
+  .hero-art .hxaura circle{transform-box:fill-box;transform-origin:center;animation:hx_aura 8s ease-in-out infinite}
+  .hero-art .hxaura .c2{animation-delay:-4s}
+  .hero-art .hxmote{transform-box:fill-box;transform-origin:center;animation:hx_rise 5s ease-in infinite}
+  .hero-art .hxmote.m2{animation-delay:-1.6s;animation-duration:6s}
+  .hero-art .hxmote.m3{animation-delay:-3.2s;animation-duration:5.5s}
+  .hero-art .hxmote.m4{animation-delay:-2.4s;animation-duration:6.4s}
+  .hero-art .hxmote.m5{animation-delay:-4s;animation-duration:5.2s}
+  .hero-art .hxspin{transform-box:fill-box;transform-origin:center;animation:hx_spin 30s linear infinite}
+  .hero-art .hxrayspin{transform-box:fill-box;transform-origin:center;animation:hx_spin 44s linear infinite}
+  .hero-art .hxsway{transform-box:fill-box;transform-origin:center bottom;animation:hx_sway 6s ease-in-out infinite}
+  .hero-art .hxheart{transform-box:fill-box;transform-origin:center;animation:hx_pulse 2.8s ease-in-out infinite}
+  .hero-art .hxshape{transform-box:fill-box;transform-origin:center;animation:hx_drift 10s linear infinite}
+  .hero-art .hxshape.s2{animation-duration:12s;animation-delay:-4s}
+  .hero-art .hxshape.s3{animation-duration:9s;animation-delay:-2s}
+  @keyframes hx_float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  @keyframes hx_breathe{0%,100%{transform:scale(1);opacity:.95}50%{transform:scale(1.06);opacity:1}}
+  @keyframes hx_drift{0%{transform:translate(0,0) rotate(0deg);opacity:0}12%{opacity:.85}88%{opacity:.85}100%{transform:translate(-26px,150px) rotate(150deg);opacity:0}}
+  @keyframes hx_ripple{0%{transform:scale(.35);opacity:.75}80%{opacity:0}100%{transform:scale(1.5);opacity:0}}
+  @keyframes hx_aura{0%,100%{transform:scale(.92);opacity:.16}50%{transform:scale(1.06);opacity:.5}}
+  @keyframes hx_rise{0%{transform:translateY(18px) scale(.7);opacity:0}25%{opacity:.9}75%{opacity:.9}100%{transform:translateY(-30px) scale(1);opacity:0}}
+  @keyframes hx_spin{to{transform:rotate(360deg)}}
+  @keyframes hx_sway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+  @keyframes hx_pulse{0%,100%{transform:scale(1)}25%{transform:scale(1.13)}42%{transform:scale(1)}}
+  @media (prefers-reduced-motion:reduce){.hero-art *{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><span class="blob a"></span><span class="blob b"></span></div>
+<div class="girih" aria-hidden="true"></div>
+<div class="petals" aria-hidden="true">
+  <span class="petal" style="left:10%;animation-duration:25s;animation-delay:0s"></span>
+  <span class="petal" style="left:30%;animation-duration:30s;animation-delay:7s;transform:scale(.8)"></span>
+  <span class="petal" style="left:52%;animation-duration:27s;animation-delay:13s;transform:scale(1.2)"></span>
+  <span class="petal" style="left:71%;animation-duration:32s;animation-delay:4s"></span>
+  <span class="petal" style="left:88%;animation-duration:26s;animation-delay:10s;transform:scale(.9)"></span>
+</div>
+<div id="bar" aria-hidden="true"></div>
+
+<main>
+  <section class="beat">
+    <div class="kicker r">Jalur Orang Tua · P-05 · Keterampilan Harian</div>
+    <h1 class="r">Keterampilan kecil yang dipakai tiap hari.</h1>
+    <p class="lead r">Beberapa kebiasaan sederhana — menenangkan, membacakan, menyiapkan ruang, mengamati — yang menjadi tulang punggung pengasuhan sehari-hari.</p>
+    <p class="small faint r" style="margin-top:var(--s0)">Untuk orang tua, bukan anak · Praktik harian lintas modul anak.</p>
+    <div class="r" style="margin-top:var(--s1)"><span class="chip parent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg> Lembut &amp; konsisten</span></div>
+    <div class="pills r">
+      <span class="pill">Ko-regulasi</span><span class="pill">Baca dialogis</span><span class="pill heart">Niat &amp; istiqamah</span>
+    </div>
+    <div class="steps r"><span>Tahap 5 dari 7</span><span class="dots"><span class="d"></span><span class="d"></span><span class="d"></span><span class="d"></span><span class="d on"></span><span class="d"></span><span class="d"></span></span></div>
+    <figure class="hero-art r"><svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Keterampilan Harian"><defs><radialGradient id="hxGlow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#FDEAF2"/><stop offset="1" stop-color="#FDEAF2" stop-opacity="0"/></radialGradient><radialGradient id="hxOrb" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#FFF6E2"/><stop offset="0.45" stop-color="#F9D7E6"/><stop offset="1" stop-color="#F8C9DD" stop-opacity="0"/></radialGradient><linearGradient id="hxFig" x1="380" y1="120" x2="380" y2="305" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FBD3E1"/><stop offset="1" stop-color="#EC85B2"/></linearGradient></defs><ellipse cx="380" cy="205" rx="300" ry="150" fill="url(#hxGlow)"/><g class="hxbranch" opacity=".92"><path d="M0,52 C46,58 84,50 116,28" fill="none" stroke="#CDA0B6" stroke-width="3.2" stroke-linecap="round"/><path d="M44,55 C50,40 52,30 49,18" fill="none" stroke="#CDA0B6" stroke-width="2.4" stroke-linecap="round"/><path d="M86,42 C92,30 96,22 95,12" fill="none" stroke="#CDA0B6" stroke-width="2.2" stroke-linecap="round"/><g transform="translate(49,16)"><g><circle r="5.6" cx="0" cy="-7.2" fill="#F8C9DD"/><circle r="5.6" cx="6.8" cy="-2.2" fill="#F8C9DD"/><circle r="5.6" cx="4.2" cy="5.8" fill="#F8C9DD"/><circle r="5.6" cx="-4.2" cy="5.8" fill="#F8C9DD"/><circle r="5.6" cx="-6.8" cy="-2.2" fill="#F8C9DD"/><circle r="3" fill="#F4B0CC"/><circle r="1.4" fill="#E0589A"/></g></g><g transform="translate(95,12)"><g><circle r="5.6" cx="0" cy="-7.2" fill="#F8C9DD"/><circle r="5.6" cx="6.8" cy="-2.2" fill="#F8C9DD"/><circle r="5.6" cx="4.2" cy="5.8" fill="#F8C9DD"/><circle r="5.6" cx="-4.2" cy="5.8" fill="#F8C9DD"/><circle r="5.6" cx="-6.8" cy="-2.2" fill="#F8C9DD"/><circle r="3" fill="#F4B0CC"/><circle r="1.4" fill="#E0589A"/></g></g><g transform="translate(14,52) scale(.8)"><g><circle r="5.6" cx="0" cy="-7.2" fill="#F8C9DD"/><circle r="5.6" cx="6.8" cy="-2.2" fill="#F8C9DD"/><circle r="5.6" cx="4.2" cy="5.8" fill="#F8C9DD"/><circle r="5.6" cx="-4.2" cy="5.8" fill="#F8C9DD"/><circle r="5.6" cx="-6.8" cy="-2.2" fill="#F8C9DD"/><circle r="3" fill="#F4B0CC"/><circle r="1.4" fill="#E0589A"/></g></g></g><ellipse class="hxpetal p1" cx="150" cy="34" rx="7" ry="4" fill="#F2A6C4"/><ellipse class="hxpetal p2" cx="250" cy="26" rx="6" ry="3.6" fill="#F4B5CF"/><ellipse class="hxpetal p3" cx="540" cy="40" rx="6.5" ry="3.8" fill="#F2A6C4"/><ellipse class="hxpetal p4" cx="624" cy="30" rx="6" ry="3.6" fill="#F4B5CF"/><g class="hxscene"><circle class="hxorb" cx="380" cy="205" r="118" fill="url(#hxOrb)"/><g class="hxfig" fill="url(#hxFig)"><circle cx="380" cy="156" r="33"/><path d="M314,300 C314,250 342,214 380,214 C418,214 446,250 446,300 Z"/></g><g class="hxmotif" opacity=".82"><circle cx="380" cy="205" r="102" fill="none" stroke="#D9A441" stroke-width="1.4" stroke-dasharray="2 8" opacity=".5"/><g class="hxspin"><circle cx="380" cy="205" r="102" fill="none"/><circle cx="482" cy="205" r="6" fill="#D9A441"/><circle cx="318" cy="120" r="4.6" fill="#D9A441" opacity=".82"/><circle cx="300" cy="266" r="5" fill="#D9A441" opacity=".7"/></g></g></g></svg><figcaption><div class="hk">Keterampilan Harian</div><div class="hsub">Hal kecil, dipraktikkan setiap hari.</div></figcaption></figure>
+    <div class="scrollcue r"><span class="m"></span> Gulir perlahan</div>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Inti tahap</div>
+    <h2 class="r">Tenangkan diri, lalu <em class="warm">temani</em>.</h2>
+    <p class="lead r">Anak belajar mengatur emosi dengan “meminjam” ketenangan Anda. Maka keterampilan pertama bukan teknik pada anak, melainkan menenangkan diri sendiri lebih dulu.</p>
+  </section>
+
+  <div class="scrolly" id="scrolly">
+    <div class="sticky">
+      <div class="stage-title"><span class="kicker">Ko-regulasi</span></div>
+      <div class="stage-wrap">
+        <div class="stage">
+          <svg viewBox="0 0 460 460" role="img" aria-label="Ko-regulasi: orang tua menenangkan diri lebih dulu, lalu ketenangan itu menular kepada anak">
+            <line class="conn" x1="198" y1="214" x2="290" y2="240"/>
+            <circle class="cnode2" cx="152" cy="206" r="46"/>
+            <circle class="sweet" cx="320" cy="246" r="30"/>
+            <text class="lbl" x="152" y="284" text-anchor="middle">Anda</text>
+            <text class="lbl" x="320" y="302" text-anchor="middle">anak</text>
+            <text class="lbl sm" x="236" y="150" text-anchor="middle">tenang dulu,</text>
+            <text class="lbl sm" x="236" y="172" text-anchor="middle">lalu menular</text>
+          </svg>
+        </div>
+      </div>
+      <p class="caption" id="cap">Tenangkan diri Anda lebih dulu — anak meminjam ketenangan itu (ko-regulasi).</p>
+    </div>
+  </div>
+
+  <section class="beat">
+    <div class="kicker r">Pertanyaan yang mungkin muncul</div>
+    <h2 class="r" style="margin-bottom:var(--s1)">Kenapa begitu?</h2>
+    <div class="r">
+      <div class="qa" data-qa>
+        <button aria-expanded="false"><span>Kenapa saya yang harus tenang dulu?</span><span class="mk"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="ans"><div class="ans-in">Anak belum mampu menenangkan diri sendiri; ia meminjam ketenangan dari Anda — disebut ko-regulasi. <span class="src-inline">Siegel &amp; Bryson</span></div></div>
+      </div>
+      <div class="qa" data-qa>
+        <button aria-expanded="false"><span>Apa itu membaca dialogis?</span><span class="mk"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="ans"><div class="ans-in">Membacakan sambil bertanya, menunjuk, dan menanggapi — anak ikut bercerita, bukan sekadar mendengarkan. <span class="src-inline">Whitehurst dkk.</span></div></div>
+      </div>
+      <div class="qa" data-qa>
+        <button aria-expanded="false"><span>Perlukah membeli banyak alat?</span><span class="mk"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="ans"><div class="ans-in">Tidak. Yang utama ruang aman sederhana dan kehadiran Anda, bukan banyaknya mainan. <span class="src-inline">Lihat P-02</span></div></div>
+      </div>
+      <div class="qa" data-qa>
+        <button aria-expanded="false"><span>Apa kata Islam soal kebiasaan harian?</span><span class="mk"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="ans"><div class="ans-in">Setiap amal bergantung niatnya, dan yang dicintai Allah adalah yang konsisten meski sedikit. <span class="src-inline">HR Bukhari no. 1; HR Bukhari dan Muslim</span><button class="tb-dlk" data-d="h-niat" type="button" title="Buka kartu dalil"><b>۞</b>dalil</button><button class="tb-dlk" data-d="h-istiqamah" type="button" title="Buka kartu dalil"><b>۞</b>dalil</button></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Maknanya</div>
+    <h2 class="r">Niat yang lurus, <em class="warm">dijaga dengan lembut</em>.</h2>
+    <div class="layer iman r"><div class="l">Amal bergantung niat</div>“Sesungguhnya setiap amal bergantung pada niatnya” (HR Bukhari no. 1). Mengganti popok, menyusui, dan membacakan buku berubah menjadi ibadah ketika diniatkan karena Allah.</div>
+    <div class="layer iman r"><div class="l">Allah Mahalembut dan menyukai kelembutan</div>Nabi bersabda, “Sesungguhnya Allah Mahalembut dan menyukai kelembutan dalam segala urusan” (HR Bukhari dan Muslim). Kelembutan inilah inti ko-regulasi.</div>
+    <p class="note r">Titik temu: ko-regulasi, kehadiran, dan rutinitas yang lembut (sains) bertemu niat yang lurus, kelembutan (rifq), dan keajekan/istiqamah (sunnah).</p>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Sejujurnya · jangkar kejujuran</div>
+    <h2 class="r">Soal ruang-aman dan “metode” — <em class="cool">jujur pada bukti</em>.</h2>
+    <div class="callout care r">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg></span>
+      <span><span class="label">Bermanfaat, tetapi bukan sihir</span>
+      Menyiapkan ruang-aman (yes-space) dan pendekatan seperti RIE atau Montessori bisa memudahkan hidup, tetapi <b>belum terbukti unggul</b> secara empiris dibanding pengasuhan yang hangat dan responsif pada umumnya. Begitu pula tummy time bermanfaat untuk motorik, namun “parentese” (cara bicara melagu) bukan keharusan kaku. Ambil yang membantu, jangan terbebani label.</span>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Praktik &amp; latihan untuk Anda</div>
+    <h2 class="r">Tenang, hadir, bacakan, amati.</h2>
+    <div class="cards">
+      <div class="card r"><span class="n">01</span><p>Tenang dulu (ko-regulasi): tarik napas, lembutkan suara dan wajah, baru dampingi anak yang sedang kesal.</p></div>
+      <div class="card r"><span class="n">02</span><p>Baca dialogis: saat membacakan, bertanya “apa ini?”, tunjuk gambar, dan ikuti arah perhatian anak.</p></div>
+      <div class="card r"><span class="n">03</span><p>Siapkan ruang-aman: amankan satu area agar anak bebas bergerak — lebih sedikit “jangan”, lebih banyak “boleh”.</p></div>
+      <div class="card r"><span class="n">04</span><p>Amati sebelum bertindak: luangkan waktu memperhatikan apa yang sebenarnya anak butuhkan.</p></div>
+      <div class="card r"><span class="n">05</span><p>Jaga rutinitas lembut: ritme yang dapat ditebak (makan, main, tidur) menenangkan — tetap lentur, bukan kaku.</p></div>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Khazanah</div>
+    <h2 class="r">Sedikit, tetapi <em class="warm">istiqamah</em>.</h2>
+    <div class="layer iman r"><div class="l">Khazanah · Iman</div>Aisyah meriwayatkan bahwa amal yang paling dicintai Allah adalah yang paling ajek meski sedikit (HR Bukhari dan Muslim). Maka keterampilan harian tidak perlu sempurna atau besar — cukup kecil, lembut, dan diulang setiap hari.</div>
+    <p class="note r">Konsistensi yang lembut mengalahkan ledakan semangat yang cepat padam. <span class="src-inline">HR Bukhari dan Muslim</span><button class="tb-dlk" data-d="h-istiqamah" type="button" title="Buka kartu dalil"><b>۞</b>dalil</button></p>
+  </section>
+
+  <section class="beat">
+    <div class="kicker r">Penutup tahap</div>
+    <h2 class="r">Kecil, lembut, <em class="warm">setiap hari</em>.</h2>
+    <p class="lead r">Pengasuhan sehari-hari bukan soal teknik rumit, melainkan kebiasaan kecil yang hangat dan ajek: tenang dulu, hadir, bacakan, amati, dan jaga ritme.</p>
+    <p class="note r">Perlengkapan keamanan rumah yang umum diperiksa ketersediaan dan harganya secara lokal: pintu pengaman tangga, penutup stopkontak, kunci laci, dan pelindung sudut meja.</p>
+    <details class="sources r">
+      <summary>Lihat sumber &amp; verifikasi <svg class="cv" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="body">
+        <p><b>Sains.</b> Ko-regulasi: Siegel &amp; Bryson; tinjauan regulasi emosi anak usia dini · membaca dialogis: Whitehurst dkk. (teknik PEER dan CROWD) · lingkungan siap: tradisi Montessori dan RIE/Gerber (manfaat praktis, bukan keunggulan empiris yang mapan) · tummy time: anjuran perkembangan motorik.</p>
+        <p><b>Iman.</b> Amal bergantung niat: HR Bukhari no. 1; Muslim no. 1907<button class="tb-dlk" data-d="h-niat" type="button" title="Buka kartu dalil"><b>۞</b>dalil</button> · Allah menyukai kelembutan (rifq): HR Bukhari no. 6024; Muslim no. 2165<button class="tb-dlk" data-d="h-rifq" type="button" title="Buka kartu dalil"><b>۞</b>dalil</button> · amal yang dicintai adalah yang ajek meski sedikit: HR Bukhari no. 6464; Muslim no. 782<button class="tb-dlk" data-d="h-istiqamah" type="button" title="Buka kartu dalil"><b>۞</b>dalil</button>.</p>
+        <p><b>Pendamping profesional.</b> Tenaga kesehatan (pertanyaan perkembangan atau motorik khusus anak Anda) · periksa mandiri ketersediaan perlengkapan keamanan rumah · adaptasi ke anak.</p>
+      </div>
+    </details>
+    <div class="chip-row r"><span class="chip parent">Untuk orang tua</span><span class="chip confirm">Konfirmasi tenaga kesehatan</span><span class="chip">Periksa mandiri</span><span class="chip">Adaptasi ke anak</span></div>
+  </section>
+
+  <div class="foot">TARBIYAH · Jalur Belajar Orang Tua · Tahap P-05 “Keterampilan Harian” · Edisi cherry blossom. Materi untuk orang tua (bukan anak): keterampilan pengasuhan harian yang hangat dan konsisten. Setiap klaim disertai sumber pada titiknya; perbedaan pendapat ditandai apa adanya.</div>
+</main>
+
+<script>
+  const bar = document.getElementById("bar");
+  addEventListener("scroll", () => { const h = document.documentElement, m = h.scrollHeight - h.clientHeight; bar.style.width = (m > 0 ? h.scrollTop / m * 100 : 0) + "%"; }, { passive: true });
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .14 });
+  document.querySelectorAll(".r").forEach((el, i) => { el.style.transitionDelay = (i % 4 * 0.06) + "s"; io.observe(el); });
+  document.querySelectorAll("[data-qa]").forEach(qa => {
+    const btn = qa.querySelector("button"), ans = qa.querySelector(".ans");
+    btn.addEventListener("click", () => { const open = qa.classList.toggle("open"); btn.setAttribute("aria-expanded", open ? "true" : "false"); ans.style.maxHeight = open ? ans.scrollHeight + "px" : "0px"; });
+  });
+  const scrolly = document.getElementById("scrolly"), cap = document.getElementById("cap");
+  const STEPS = [
+    "Tenangkan diri Anda lebih dulu \u2014 anak meminjam ketenangan itu (ko-regulasi). <span class='src'>Siegel &amp; Bryson</span>",
+    "Baca dialogis: bertanya, menunjuk, dan biarkan anak memimpin halaman. <span class='src'>Whitehurst dkk.</span>",
+    "Siapkan ruang-aman dan jaga rutinitas yang lembut dan konsisten."
+  ];
+  let cur = -1;
+  function onScroll() {
+    const r = scrolly.getBoundingClientRect(), total = scrolly.offsetHeight - innerHeight;
+    let p = (-r.top) / total; p = Math.max(0, Math.min(1, p));
+    const step = p < .34 ? 0 : p < .68 ? 1 : 2;
+    if (step !== cur) { cur = step; cap.style.opacity = 0; setTimeout(() => { cap.innerHTML = STEPS[step]; cap.style.opacity = 1; }, 200); }
+  }
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+</script>
+
+<style>
+.tb-dlk{display:inline-flex;align-items:center;gap:.34em;margin:0 .18em;padding:.08em .6em .12em .5em;border:1px solid #E9B7CF;border-radius:999px;background:linear-gradient(180deg,#FFF9FC,#FBE3EF);color:#8A5E12;font-family:inherit;font-size:.76em;font-weight:700;letter-spacing:.01em;line-height:1.55;cursor:pointer;vertical-align:baseline;white-space:nowrap;box-shadow:0 1px 2px rgba(194,60,126,.10);transition:transform .12s ease,box-shadow .12s ease}
+.tb-dlk b{font-weight:800;color:#C23C7E;font-size:1.05em;line-height:1}
+.tb-dlk:hover{transform:translateY(-1px);box-shadow:0 3px 9px rgba(194,60,126,.20)}
+.tb-dlk:active{transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){.tb-dlk{transition:none}.tb-dlk:hover{transform:none}}
+</style>
+<script>document.addEventListener("click",function(e){var t=e.target,b=t&&t.closest?t.closest(".tb-dlk"):null;if(!b)return;e.preventDefault();try{if(parent&&parent.TB&&typeof parent.TB.openDalil==="function"){parent.TB.openDalil(b.getAttribute("data-d"));}}catch(_){}},true);</script>
+</body>
+</html>
