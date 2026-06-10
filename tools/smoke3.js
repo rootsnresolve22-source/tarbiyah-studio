@@ -73,6 +73,8 @@ function boot(file, { withFetch } = {}) {
   ok(w.mseen("T3-02").q === 1, "kuis tuntas tercatat");
   d.querySelector("#pNext").click(); // → Main
   await new Promise(r => setTimeout(r, 60));
+  ok(d.querySelector(".ghow .gchip"), "panduan cara-main tampil di langkah Main");
+  ok((d.querySelector("#gScore")||{textContent:""}).textContent.includes("Pasangan"), "skor hidup tampil (match)");
 
   // langkah Main T3-02 = match → menangkan terprogram
   const g = w.GAMES["T3-02"];
@@ -144,6 +146,8 @@ function boot(file, { withFetch } = {}) {
   ok(d2.querySelector("#rowPush") && d2.querySelector("#rowPush").style.display === "none", "baris Pengingat tersembunyi anggun saat push tak didukung");
   const t303 = JSON.parse(fs.readFileSync(path.join(ROOT, "release", "data", "T3-03.json"), "utf8")).html;
   ok(t303.includes('TB_SCENE_ID="T3-03"') && t303.includes("Diorama Hidup"), "diorama tertanam di T3-03 (web)");
+  const t301 = JSON.parse(fs.readFileSync(path.join(ROOT, "release", "data", "T3-01.json"), "utf8")).html;
+  ok(t301.includes("dio-dock") && t301.includes("foreignObject") && t301.includes("dMaskOut") && t301.includes("pan-y"), "benchmark v2 di T3-01: dok + kelopak ukur-diri + atenuasi gelombang");
   const offHtml = fs.readFileSync(path.join(ROOT, "release", "tarbiyah.html"), "utf8");
   ok((offHtml.match(/TB_SCENE_ID=/g) || []).length === 3, "tiga adegan diorama tertanam di edisi offline");
 

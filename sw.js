@@ -1,5 +1,5 @@
 /* TARBIYAH service worker — cache-first untuk aset, SWR untuk dokumen. */
-const VER = "tb-v3-4";
+const VER = "tb-v3-5";
 const CORE = ["./","index.html","manifest.json","fonts/fonts.css",
  "fonts/fraunces-var.woff2","fonts/spectral-300.woff2","fonts/spectral-400.woff2","fonts/spectral-400i.woff2","fonts/spectral-500.woff2","fonts/spectral-600.woff2","fonts/amiri-400.woff2","fonts/amiri-700.woff2",
  "ikon/icon-192.png","ikon/icon-512.png","ikon/icon-512-maskable.png","gambar/sampul.webp"];

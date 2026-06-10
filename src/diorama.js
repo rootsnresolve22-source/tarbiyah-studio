@@ -71,15 +71,15 @@ var firstChip=document.querySelector(".tb-dlk[data-d]");
 /* ---------- gaya ---------- */
 var css=document.createElement("style");
 css.textContent=
-".dio-head{width:100%;max-width:560px;text-align:center;padding:0 14px;margin:0 auto}"+
+".dio-head{width:100%;max-width:560px;text-align:center;padding:0 14px;margin:6px auto 2px}"+
 ".dio-kick{font:700 .72rem/1 inherit;letter-spacing:.34em;text-transform:uppercase;color:#B8568B}"+
 ".dio-beads{display:flex;gap:6px;justify-content:center;margin:9px 0 7px}"+
 ".dio-bead{width:22px;height:4px;border-radius:99px;background:#EDC9DC;transition:background .4s,width .4s}"+
 ".dio-bead.on{background:#C23C7E;width:34px}"+
 ".dio-beat{font:italic 500 .9rem/1.5 'Spectral',serif;color:#5E3D50;min-height:2.9em;transition:opacity .35s;margin:0}"+
 ".dio-beat .src{display:block;font:600 .62rem/1.6 inherit;font-style:normal;letter-spacing:.05em;color:#B08CA0;text-transform:uppercase}"+
-".dio-stage{touch-action:none;cursor:grab;flex:0 0 auto}.dio-stage:active{cursor:grabbing}"+
-".dio-dock{box-sizing:border-box;display:grid;grid-template-columns:1fr auto auto;gap:8px 8px;align-items:center;"+
+".dio-stage{touch-action:pan-y;cursor:grab;flex:0 0 auto}.dio-stage:active{cursor:grabbing}"+
+".dio-dock{box-sizing:border-box;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;"+
  "margin:10px auto 0;padding:10px 12px;border-radius:18px;background:rgba(255,250,252,.92);"+
  "backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 6px 22px rgba(194,60,126,.13),inset 0 0 0 1px rgba(233,183,207,.55)}"+
 ".dio-pill{font:600 .8rem/1 inherit;letter-spacing:.02em;border:1px solid #E9B7CF;border-radius:999px;"+
@@ -90,11 +90,11 @@ css.textContent=
 ".dio-pill.invite{animation:dioInv 1.6s ease-in-out infinite}"+
 "@keyframes dioInv{0%,100%{box-shadow:0 1px 3px rgba(194,60,126,.12)}50%{box-shadow:0 0 0 8px rgba(232,184,106,.22)}}"+
 ".dio-ic{width:42px;height:42px;display:grid;place-items:center;font-size:1.05rem;padding:0}"+
-".dio-srow{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;gap:3px}"+
+".dio-srow{flex:1 1 100%;display:flex;flex-direction:column;align-items:center;gap:3px}"+
 ".dio-range{appearance:none;-webkit-appearance:none;width:100%;height:6px;border-radius:99px;outline:none;background:linear-gradient(90deg,#B8B0BC,#E8B86A)}"+
 ".dio-range::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid #C23C7E;box-shadow:0 1px 4px rgba(0,0,0,.18);cursor:pointer}"+
 ".dio-lbl{font:600 .64rem/1 inherit;color:#A6889A;letter-spacing:.03em}"+
-".dio-note{grid-column:1/-1;text-align:center;font:600 .74rem/1.55 inherit;color:#8E3D68;display:none;border-top:1px dashed #EDCBDC;padding-top:8px;margin-top:2px}"+
+".dio-note{flex:1 1 100%;text-align:center;font:600 .74rem/1.55 inherit;color:#8E3D68;display:none;border-top:1px dashed #EDCBDC;padding-top:8px;margin-top:2px}"+
 ".dio-note.show{display:block}"+
 ".dio-chip-dim{opacity:.42;filter:grayscale(.5);pointer-events:none}"+
 ".dio-chip-lit{animation:dioLit .9s ease}@keyframes dioLit{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.12)}100%{transform:scale(1)}}"+
@@ -109,6 +109,10 @@ document.head.appendChild(css);
 var oldTitle=sticky.querySelector(".stage-title"); if(oldTitle)oldTitle.style.display="none";
 var capEl=document.getElementById("cap");
 if(capEl){var cb=capEl; while(cb.parentElement&&cb.parentElement!==sticky)cb=cb.parentElement; cb.style.display="none";}
+/* lepaskan penyematan: panggung jadi blok normal yang mengalir — vh ponsel tak lagi ikut campur */
+scrolly.style.height="auto";
+sticky.style.position="static";sticky.style.height="auto";sticky.style.minHeight="0";
+sticky.style.paddingTop="6px";sticky.style.paddingBottom="4px";
 sticky.style.display="flex";sticky.style.flexDirection="column";
 sticky.style.alignItems="center";sticky.style.justifyContent="center";
 
@@ -249,14 +253,15 @@ sticky.appendChild(dock);
 
 /* ---------- geometri deterministik ---------- */
 function size(){
-  var avail=sticky.clientHeight-head.offsetHeight-dock.offsetHeight-26;
-  var s=Math.max(232,Math.min(window.innerWidth*.86,avail,442));
+  var W=window.innerWidth||stage.clientWidth||360, H=window.innerHeight||640;
+  var s=(W>H)?Math.min(H*.62,W*.5,442):Math.min(W*.86,H*.52,442);
+  s=Math.max(216,s);
   stage.style.width=s+"px";stage.style.height=s+"px";
-  dock.style.width=Math.min(s+46,window.innerWidth*.94)+"px";
+  dock.style.width=Math.min(s+46,W*.94)+"px";
+  head.style.maxWidth=Math.min(560,W*.94)+"px";
 }
 size();setTimeout(size,120);
-if(window.ResizeObserver){new ResizeObserver(size).observe(sticky);} 
-addEventListener("resize",size);
+addEventListener("resize",size);addEventListener("orientationchange",size);
 
 /* ---------- keadaan ---------- */
 var calm=slider.value/100,calmT=calm,touched=false,breaths=0,unlocked=false;
@@ -270,7 +275,8 @@ function bpmM_(){return 88-24*calm;}
 function bpmB_(){return 152-16*calm-(listenF>0?10:0);}
 
 stage.addEventListener("pointerdown",function(e){dragging=true;moved=0;drag0=[e.clientX,e.clientY,tilt.tx,tilt.ty];stage.setPointerCapture&&stage.setPointerCapture(e.pointerId);});
-stage.addEventListener("pointermove",function(e){if(!dragging)return;var dx=e.clientX-drag0[0],dy=e.clientY-drag0[1];moved=Math.max(moved,Math.abs(dx)+Math.abs(dy));tilt.tx=Math.max(-1,Math.min(1,drag0[2]+dx/120));tilt.ty=Math.max(-1,Math.min(1,drag0[3]+dy/120));touched=true;});
+stage.addEventListener("pointermove",function(e){if(!dragging)return;var dx=e.clientX-drag0[0],dy=e.clientY-drag0[1];moved=Math.max(moved,Math.abs(dx)+Math.abs(dy));tilt.tx=Math.max(-1,Math.min(1,drag0[2]+dx/110));touched=true;});
+stage.addEventListener("pointercancel",function(){dragging=false;});
 stage.addEventListener("pointerup",function(e){dragging=false;if(moved<7){var r=svg.getBoundingClientRect(),x=(e.clientX-r.left)/r.width*460,y=(e.clientY-r.top)/r.height*460;tap(x,y);}});
 window.addEventListener("deviceorientation",function(e){if(tiltBtn&&!gyroOn)return;if(e.gamma==null)return;gyroOn=true;tilt.tx=Math.max(-1,Math.min(1,e.gamma/26));tilt.ty=Math.max(-1,Math.min(1,(e.beta-46)/30));},true);
 
@@ -341,16 +347,13 @@ function thump(f,g){if(!audOn||!AC)return;var o=AC.createOscillator(),ga=AC.crea
   ga.gain.setValueAtTime(0,AC.currentTime);ga.gain.linearRampToValueAtTime(g,AC.currentTime+.018);ga.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+.22);
   o.connect(ga);ga.connect(AC.destination);o.start();o.stop(AC.currentTime+.24);}
 
-/* fase gulir → beat */
-function onScrollPhase(){
-  var r=scrolly.getBoundingClientRect(),total=scrolly.offsetHeight-innerHeight;
-  var p=Math.max(0,Math.min(1,(-r.top)/total));
-  var st=p<.34?0:p<.68?1:2;
-  setBeat(st,null);
-  if(!touched){calmT=st===1?.24:.5;}
-  if(st===2&&!unlocked)hold.classList.add("invite");
-}
-addEventListener("scroll",onScrollPhase,{passive:true});
+/* beat berjalan sendiri; manik bisa diketuk; ajakan setelah jeda */
+var beatTimer=setInterval(function(){
+  if(holding||petalOpen>-1||document.hidden||!visible)return;
+  setBeat((curBeat+1)%CFG.beats.length,null);
+},6500);
+beadEls.forEach(function(b,i){b.style.cursor="pointer";b.addEventListener("click",function(){setBeat(i,null);});});
+setTimeout(function(){if(!unlocked)hold.classList.add("invite");},9000);
 
 var visible=true;
 new IntersectionObserver(function(es){es.forEach(function(e){visible=e.isIntersecting;});},{threshold:.05}).observe(stage);
@@ -361,7 +364,7 @@ function loop(now){
   if(!visible||document.hidden){lastT=now;return;}
   var dt=Math.min(.05,(now-lastT)/1000);lastT=now;bobT+=dt;
   calm+=(calmT-calm)*Math.min(1,dt*2.4);
-  if(!dragging&&!gyroOn){tilt.tx*=(1-dt*1.4);tilt.ty*=(1-dt*1.4);}
+  if(!gyroOn){ if(!dragging)tilt.tx*=(1-dt*1.4); tilt.ty=Math.sin(bobT*.45)*.22; }
   tilt.x+=(tilt.tx-tilt.x)*Math.min(1,dt*5);
   tilt.y+=(tilt.ty-tilt.y)*Math.min(1,dt*5);
   [Lbg,Lwomb,Lwave,Lring,Lflow,Lbaby,Lfore].forEach(function(L){
@@ -422,6 +425,6 @@ function loop(now){
     M.el.setAttribute("x",M.x);M.el.setAttribute("y",M.y);M.el.setAttribute("opacity",M.o);M.el.setAttribute("font-size",M.s);}
 }
 requestAnimationFrame(loop);
-onScrollPhase();setBeat(0,null);
+setBeat(0,null);
 /* Diorama Hidup */
 })();

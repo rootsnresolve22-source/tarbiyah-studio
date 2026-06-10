@@ -1,5 +1,12 @@
 # CHANGELOG — TARBIYAH
 
+## v3.2.1 · 11 Juni 2026 — scroll bebas, dua orientasi, bingkai game standar
+- Panggung diorama TIDAK lagi membajak scroll: touch-action pan-y (vertikal = scroll halaman seperti biasa; miring cukup dari seretan horizontal atau gyroscope; ayunan vertikal lembut otomatis).
+- Penyematan 280vh dilepas: panggung kini blok normal yang mengalir — sumber "menutupi gambar" dan beda-bentuk-antar-perangkat hilang by-construction; beat narasi berjalan otomatis tiap 6,5 dtk dan manik progres bisa diketuk.
+- Ukuran panggung = rumus murni viewport untuk dua orientasi (portrait: min(86vw, 52vh); landscape: min(62vh, 50vw)); dok kini flex-wrap sehingga chip dalil tak pernah terpotong.
+- Bingkai Main standar di SEMUA 6 tipe game: chip "cara main" + baris skor hidup. gOrder ditulis ulang: kartu terpasang hilang dari kolam (tanpa hantu kelabu), slot aktif menyala, centang hijau, hitungan keliru; match/memory/panel kini menampilkan kemajuan & keliru secara langsung.
+- Service worker tb-v3-5.
+
 ## v3.2.0 · 11 Juni 2026 — "Kontrak Benchmark" (pilot: T3-01)
 Mesin Diorama ditulis ulang sebagai sasis v2 dengan lima hukum yang membuat cacat tata letak mustahil secara konstruksi:
 - Pengambilalihan panggung penuh: judul, narasi-beat (3 takarir asli + sumber ilmiahnya), stage, dan dok kendali menjadi SATU komposisi milik mesin — takarir modul disembunyikan, tabrakan tak punya ruang lahir.

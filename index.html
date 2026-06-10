@@ -152,6 +152,15 @@ main{padding-bottom:86px}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
 .slotlist{display:flex;flex-direction:column;gap:8px;margin:8px 0}
 .slot{display:flex;align-items:center;gap:10px;background:var(--card);border:1.6px dashed var(--line);border-radius:13px;padding:.5em .8em;min-height:2.6em;font-size:.9rem}
+.ghow{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 10px}
+.gchip{font-size:.7rem;font-weight:700;letter-spacing:.02em;color:#8E3D68;background:linear-gradient(180deg,#FFF9FC,#FBEAF3);border:1px solid #EFCFE0;border-radius:999px;padding:.42em .8em}
+.gscore{font-size:.74rem;font-weight:700;letter-spacing:.04em;color:#A0617E;margin:0 0 10px;min-height:1em}
+.slot.next{border-color:var(--pink-deep);border-style:solid;animation:slotnx 1.5s ease-in-out infinite}
+@keyframes slotnx{0%,100%{box-shadow:0 0 0 3px rgba(194,60,126,.10)}50%{box-shadow:0 0 0 7px rgba(194,60,126,.16)}}
+.slot.fill{border-style:solid;border-color:#CDE6C8;background:#F4FBF2}
+.slot.fill b{color:#3E7F4E}
+.slot .ok{margin-left:auto;color:#3E7F4E;font-weight:800}
+@media (prefers-reduced-motion:reduce){.slot.next{animation:none}}
 .slot b{color:var(--pink-deep);font-family:"Fraunces",serif}
 .slot.fill{border-style:solid}
 .matchgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
@@ -2398,6 +2407,16 @@ function stepGame(body){
   if(!g){ m.g=1; save(); goStep(4); return; }
   w.innerHTML='<h3 class="gtitle">'+esc(g.title)+'</h3><p class="gintro">'+esc(g.intro)+'</p><div id="gArea"></div>';
   var area=$("#gArea");
+  var HOW={
+   order:["Ketuk kartu di kolam bawah","Kartu masuk ke slot bernomor yang menyala","Salah urutan? Kartu bergetar \u2014 coba yang lain"],
+   match:["Ketuk satu kartu di kolom kiri","Lalu ketuk pasangannya di kolom kanan","Cocok = terkunci hijau"],
+   fill:["Ketuk satu jawaban untuk melengkapi kalimat"],
+   panel:["Baca pernyataan, lalu ketuk Sesuai atau Keliru"],
+   memory:["Ketuk untuk membuka kartu","Buka dua \u2014 yang berpasangan tetap terbuka"],
+   scene:["Ketuk panggung untuk melanjutkan cerita","Saat pilihan muncul, ketuk balasan terbaikmu"]
+  }[g.type]||[];
+  if(HOW.length){var gh=document.createElement("div");gh.className="ghow";gh.setAttribute("aria-label","cara main");gh.innerHTML=HOW.map(function(c){return '<span class="gchip">'+c+'</span>';}).join("");area.parentNode.insertBefore(gh,area);}
+  var gsl=document.createElement("p");gsl.className="gscore";gsl.id="gScore";area.parentNode.insertBefore(gsl,area);
   foot(nextBtn("Lanjut",false));
   bindNext(function(){ goStep(4); });
   function won(){
@@ -2408,20 +2427,27 @@ function stepGame(body){
   ({order:gOrder,match:gMatch,fill:gFill,panel:gPanel,memory:gMemory,scene:(window.V3&&V3.gScene)||function(a){a.innerHTML='<div class="emptynote">Adegan belum tersedia.</div>';}})[g.type](area,g,won);
 }
 
+function gScore(t){var e=$("#gScore");if(e)e.textContent=t||"";}
 function gOrder(area,g,won){
-  var target=g.items, pool=shuffle(target), pos=0;
-  area.innerHTML='<div class="slotlist">'+target.map(function(_,i){return '<div class="slot" data-s="'+i+'"><b>'+(i+1)+'</b><span></span></div>';}).join("")+'</div><div class="poolrow">'+pool.map(function(t,i){return '<button class="tile" data-t="'+esc(t)+'">'+esc(t)+'</button>';}).join("")+'</div>';
+  var target=g.items, pool=shuffle(target.slice()), pos=0, salah=0;
+  function score(){gScore("Terisi "+pos+" / "+target.length+(salah?" \u00b7 keliru "+salah+"\u00d7":""));}
+  area.innerHTML='<div class="slotlist">'+target.map(function(_,i){return '<div class="slot" data-s="'+i+'"><b>'+(i+1)+'</b><span></span></div>';}).join("")+'</div><div class="poolrow">'+pool.map(function(t){return '<button class="tile" data-t="'+esc(t)+'">'+esc(t)+'</button>';}).join("")+'</div>';
+  function mark(){$$(".slot",area).forEach(function(sl,i){sl.classList.toggle("next",i===pos);});}
+  mark(); score();
   $$(".tile",area).forEach(function(b){
     b.addEventListener("click",function(){
       var t=b.dataset.t;
       if(t===target[pos]){
         var sl=$('.slot[data-s="'+pos+'"]',area);
-        sl.classList.add("fill"); $("span",sl).textContent=t;
-        b.classList.add("used"); pos++;
-        if(pos===target.length) won();
+        sl.classList.add("fill"); sl.classList.remove("next");
+        $("span",sl).textContent=t;
+        var okm=document.createElement("span");okm.className="ok";okm.textContent="\u2713";sl.appendChild(okm);
+        b.remove(); pos++; mark(); score();
+        if(pos===target.length){gScore("Tersusun sempurna"+(salah?" \u00b7 keliru "+salah+"\u00d7":" \u2014 tanpa keliru"));won();}
       }else{
+        salah++; score();
         b.classList.remove("bad"); void b.offsetWidth; b.classList.add("bad");
-        toast("Belum urutannya — pikirkan langkah ke-"+(pos+1)+".");
+        toast("Belum urutannya \u2014 pikirkan langkah ke-"+(pos+1)+".");
       }
     });
   });
@@ -2431,14 +2457,16 @@ function gMatch(area,g,won){
   var Rt=shuffle(g.pairs.map(function(p){return p[1];}));
   var ansOf={}; g.pairs.forEach(function(p){ansOf[p[0]]=p[1];});
   area.innerHTML='<div class="matchgrid"><div>'+L.map(function(t){return '<button class="tile" style="display:block;width:100%;margin-bottom:9px" data-l="'+esc(t)+'">'+esc(t)+'</button>';}).join("")+'</div><div>'+Rt.map(function(t){return '<button class="tile" style="display:block;width:100%;margin-bottom:9px" data-r="'+esc(t)+'">'+esc(t)+'</button>';}).join("")+'</div></div>';
-  var sel=null, got=0;
+  var sel=null, got=0, salah=0;
+  function score(){gScore("Pasangan "+got+" / "+g.pairs.length+(salah?" \u00b7 keliru "+salah+"\u00d7":""));}
+  score();
   $$("[data-l]",area).forEach(function(b){ b.addEventListener("click",function(){ if(b.classList.contains("okk"))return; $$("[data-l]",area).forEach(function(x){x.classList.remove("sel");}); sel=b; b.classList.add("sel"); }); });
   $$("[data-r]",area).forEach(function(b){ b.addEventListener("click",function(){
     if(!sel){toast("Pilih dulu kartu di kolom kiri.");return;}
     if(ansOf[sel.dataset.l]===b.dataset.r){
       sel.classList.remove("sel"); sel.classList.add("okk"); b.classList.add("okk");
-      sel=null; got++; if(got===g.pairs.length) won();
-    }else{ b.classList.remove("bad"); void b.offsetWidth; b.classList.add("bad"); toast("Bukan pasangannya."); }
+      sel=null; got++; score(); if(got===g.pairs.length){gScore("Semua berpasangan"+(salah?" \u00b7 keliru "+salah+"\u00d7":" \u2014 tanpa keliru"));won();}
+    }else{ salah++; score(); b.classList.remove("bad"); void b.offsetWidth; b.classList.add("bad"); toast("Bukan pasangannya."); }
   });});
 }
 function gFill(area,g,won){
@@ -2459,6 +2487,7 @@ function gPanel(area,g,won){
   function ask(){
     if(i>=g.stmts.length){ $("#pnQ").innerHTML='<p class="gintro">Tuntas — '+ok+' dari '+g.stmts.length+' tepat.</p>'; won(); return; }
     var s=g.stmts[i];
+    gScore("Pernyataan "+(i+1)+" / "+g.stmts.length+(i?" \u00b7 tepat "+ok:""));
     $("#pnQ").innerHTML='<div class="qprog">PERNYATAAN '+(i+1)+' / '+g.stmts.length+'</div><p class="pstmt">'+esc(s[0])+'</p><div class="tworow"><button class="btn" id="bOk">Sesuai</button><button class="btn ghost" id="bNo">Keliru</button></div><div id="pnEx"></div>';
     function pick(v){
       var benar=(v===s[1]);
@@ -2474,17 +2503,19 @@ function gPanel(area,g,won){
 function gMemory(area,g,won){
   var deck=shuffle(g.cards.concat(g.cards).map(function(c,i){return {k:c.label,img:c.img,label:c.label,id:i};}));
   area.innerHTML='<div class="memgrid">'+deck.map(function(c,i){return '<button class="mem" data-i="'+i+'" data-k="'+esc(c.k)+'"><span class="qmark">۞</span><span class="face"><img src="'+esc(c.img)+'" alt="" onerror="this.style.display=\'none\'"/><span>'+esc(c.label)+'</span></span></button>';}).join("")+'</div>';
-  var up=[], lockB=false, got=0;
+  var up=[], lockB=false, got=0, langkah=0;
+  function score(){gScore("Pasangan "+got+" / "+g.cards.length+" \u00b7 langkah "+langkah);}
+  score();
   $$(".mem",area).forEach(function(b){
     b.addEventListener("click",function(){
       if(lockB||b.classList.contains("up"))return;
       b.classList.add("up"); up.push(b);
       if(up.length===2){
-        lockB=true;
+        lockB=true; langkah++; score();
         if(up[0].dataset.k===up[1].dataset.k){
           up.forEach(function(x){x.classList.add("got");}); got++;
-          up=[]; lockB=false;
-          if(got===g.cards.length) won();
+          up=[]; lockB=false; score();
+          if(got===g.cards.length){gScore("Semua pasangan ditemukan \u00b7 "+langkah+" langkah");won();}
         }else{
           setTimeout(function(){ up.forEach(function(x){x.classList.remove("up");}); up=[]; lockB=false; }, RM?500:850);
         }
