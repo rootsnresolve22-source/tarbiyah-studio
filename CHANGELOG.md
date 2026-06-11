@@ -1,5 +1,11 @@
 # CHANGELOG — TARBIYAH
 
+## v4.6.0 · 11 Juni 2026 — Naskah AJAR Lengkap 23 Panggung
+- 48 naskah pedagogis baru ditulis khusus: kini SETIAP adegan punya pelajaran akibat-kurang (tuas kiri, panggung memucat), pelajaran manfaat (tuas kanan, berpendar), dan pelajaran “yang barusan diterapkan” (tahan penuh) — bukan kalimat generik.
+- 2Y-08 Cermin Adab mendapat pelajaran anti-tergesa: meniru tanpa contoh utuh → kartu peringatan.
+- Mesin AJAR diporting ke tiga panggung prenatal T3-01/03/05 (hotspot + tuas-zona + naskah khusus) — cakupan kini 23/23.
+- Salinan tur menyesuaikan tahan 0,7 detik. Lencana versi v4.6.0. Service worker tb-v4-6.
+
 ## v4.5.0 · 11 Juni 2026 — Suara Anti-Mati, Mesin AJAR, Tahan 0,7 dtk
 - Suara DUA LAPIS: jalur utama (induk) + synthesizer cadangan LOKAL di tiap panggung yang dibangunkan langsung oleh sentuhanmu — satu lapis gagal, lapis lain bekerja. Bundel suara global juga dipaksa terekspor ke jendela.
 - MESIN AJAR di seluruh 20 panggung interaktif: ketuk hotspot → kartu pelajaran (apa & mengapa); tuas ke kiri → PANGGUNG MEMUCAT + pelajaran akibat-kurang; ke kanan → panggung berpendar + pelajaran manfaat; tahan penuh → kartu “yang barusan kamu terapkan”. Ketukan beruntun pada lentera P-02 → pelajaran “jangan terburu melabeli”.
