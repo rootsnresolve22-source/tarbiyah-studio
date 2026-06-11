@@ -1,5 +1,15 @@
 # CHANGELOG — TARBIYAH
 
+## v5.2.0 · 11 Juni 2026 — TAHAP C Ronde-2: Sapuan 15 Panggung
+- Pemandangan PERAGA per-adegan di seluruh 15 panggung taman & keluarga: bukit berlapis, pohon sakura, awan, matahari bersinar, rumput, bintang & bulan malam, burung, lantai-jendela-pot untuk adegan dalam-rumah.
+- ±45 bedah dekorasi presisi tanpa menyentuh satu baris logika: batang & tajuk pohon bergradien (2Y-01, P-01), papan titian berpapan-baut (2Y-02), empat wujud imajinasi naik kelas (2Y-03), lintasan kelereng bertiang & berel emas plus bel berkilau (2Y-04), matahari berhalo (2Y-06), awan badai bergradien & pelangi tiga warna (2Y-07), cermin berdiri berbingkai emas (2Y-08), roda hari berbingkai emas, penunjuk & bulan berpendar (2Y-09), sembilan lentera emas menyala (P-02), perancah bersilang & menara balok kayu asli (P-03), timbangan berpiring emas berporos kuningan (P-04), cangkir porselen bermotif berisi teh bergradien (P-06), keping mozaik berkilau (P-07), mercusuar bergaris dengan atap & lampu sungguhan plus perahu berpapan dan dayung berbilah (PP).
+- Lencana v5.2.0. Service worker tb-v5-2.
+
+## v5.1.0 · 11 Juni 2026 — TAHAP C Ronde-1: Rekonstruksi Alat Peraga
+- Pustaka PERAGA v1 tertanam di mesin taman & keluarga: peraga kelas-atelier dengan gradien kayu-emas-kaca, bayangan lembut, kilau, dan rim — pohon sakura penuh bunga, bukit berlapis, awan, jendela mihrab bercahaya, lampu lentera gantung bernyala, pot bunga, dial premium berzonasi warna, dan tetes-air kaca.
+- Dua panggung percontohan direkonstruksi total tanpa menyentuh satu pun logika interaksi: P-05 (rumah penampang utuh beratap, lantai kayu, karpet bersulam emas, jendela & lentera bercahaya, dua dial termostat premium) dan 2Y-05 (kolam berkilau, pohon sakura, bukit, tetes-air kaca berkilau menggantikan bidang polos).
+- Lencana v5.1.0. Service worker tb-v5-1.
+
 ## v5.0.0 · 11 Juni 2026 — TAHAP B: Suntikan Lottie
 - Pemutar animasi profesional lottie-web (lottie_light, lisensi MIT, sumber npm resmi) tertanam di bundel — mesin yang sama dipakai aplikasi-aplikasi kelas dunia.
 - Tiga animasi Lottie ditulis langsung dalam format studio, presisi palet sakura: RAYAKAN (hujan konfeti layar penuh + gelombang cincin saat modul pertama tuntas), LENCANA (bintang emas delapan-sudut merekah berkilau setiap lencana terbuka), SEMPURNA (kaskade tujuh bintang saat kuis 100% benar pertama-coba).
