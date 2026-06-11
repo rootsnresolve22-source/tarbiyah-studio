@@ -1,5 +1,13 @@
 # CHANGELOG — TARBIYAH
 
+## v4.2.0 · 11 Juni 2026 — Responsif & Eksplisit
+- Chip dalil di dok kini SELALU aktif sejak awal (berpendar ekstra saat panggung tuntas).
+- Setiap sentuhan panggung langsung beriak + bunyi + getar mikro — tak ada lagi ketukan yang terasa hampa; berlaku juga di T3-01/03/05.
+- Tombol tahan: isian penuh dalam 1,4 dtk lalu MENGUNCI emas + bunyi + getar (tanda “cukup, silakan lepas”); dilepas terlalu cepat → tombol bergetar + petunjuk “tahan sampai isian penuh”. Ambang adegan panjang disinkronkan.
+- KARTU CARA BERMAIN sebelum setiap game: ikon gestur, langkah bernomor, baris TARGET, dan tombol besar Mulai Main — format misi selayaknya aplikasi belajar modern.
+- Pil [?] Panduan permanen di dok panggung: memutar ulang tur sorotan kapan pun (kini 4 langkah, termasuk cara menyentuh panggung).
+- Service worker tb-v4-2.
+
 ## v4.1.0 · 11 Juni 2026 — Sprint A: Mesin JUICE (GSAP + SFX + Tur)
 - GSAP (kini 100% gratis, lisensi Webflow Apr 2025) + plugin MorphSVG/DrawSVG/Physics2D/MotionPath ditanam SEKALI di induk; mesin panggung memakainya lintas-iframe.
 - Lapisan suara ZzFX tersintesis (~1KB): tap, pop, chime, salah, fanfare menang — tanpa berkas audio, tanpa lisensi.
