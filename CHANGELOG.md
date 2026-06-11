@@ -1,5 +1,9 @@
 # CHANGELOG — TARBIYAH
 
+## v5.3.0 · 11 Juni 2026 — TAHAP C Ronde-3 (penutup): Diorama Prenatal
+- Ketiga panggung prenatal (T3-01, T3-03, T3-05) naik kelas: langit malam berbintang dengan bulan sabit berpendar, cahaya lantai lembut, rahim bercincin shimmer dengan partikel cahaya mengambang, jantung Ibu bergradien berkilau, pipi janin merona, tangan pelukan bertaut di pangkuan, dan sumber suara Ibu menjelma lentera emas bernyala.
+- Lencana v5.3.0. Service worker tb-v5-3.
+
 ## v5.2.0 · 11 Juni 2026 — TAHAP C Ronde-2: Sapuan 15 Panggung
 - Pemandangan PERAGA per-adegan di seluruh 15 panggung taman & keluarga: bukit berlapis, pohon sakura, awan, matahari bersinar, rumput, bintang & bulan malam, burung, lantai-jendela-pot untuk adegan dalam-rumah.
 - ±45 bedah dekorasi presisi tanpa menyentuh satu baris logika: batang & tajuk pohon bergradien (2Y-01, P-01), papan titian berpapan-baut (2Y-02), empat wujud imajinasi naik kelas (2Y-03), lintasan kelereng bertiang & berel emas plus bel berkilau (2Y-04), matahari berhalo (2Y-06), awan badai bergradien & pelangi tiga warna (2Y-07), cermin berdiri berbingkai emas (2Y-08), roda hari berbingkai emas, penunjuk & bulan berpendar (2Y-09), sembilan lentera emas menyala (P-02), perancah bersilang & menara balok kayu asli (P-03), timbangan berpiring emas berporos kuningan (P-04), cangkir porselen bermotif berisi teh bergradien (P-06), keping mozaik berkilau (P-07), mercusuar bergaris dengan atap & lampu sungguhan plus perahu berpapan dan dayung berbilah (PP).
