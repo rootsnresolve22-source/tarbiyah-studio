@@ -1,5 +1,13 @@
 # CHANGELOG — TARBIYAH
 
+## v4.1.0 · 11 Juni 2026 — Sprint A: Mesin JUICE (GSAP + SFX + Tur)
+- GSAP (kini 100% gratis, lisensi Webflow Apr 2025) + plugin MorphSVG/DrawSVG/Physics2D/MotionPath ditanam SEKALI di induk; mesin panggung memakainya lintas-iframe.
+- Lapisan suara ZzFX tersintesis (~1KB): tap, pop, chime, salah, fanfare menang — tanpa berkas audio, tanpa lisensi.
+- Konfeti fisika sungguhan (Physics2D) di panggung maupun kemenangan game.
+- TUR SOROTAN sekali-pakai ala Duolingo: panggung pertama → sorotan Tombol Tahan, Tuas, Chip Dalil; tiap tipe game pertama → Cara Main, Arena, Skor. Mesin tur lintas-dokumen (induk menyorot elemen dalam iframe).
+- Token UI v5: tombol 3D-press, denyut skor hidup, pop elastis saat unlock.
+- Service worker tb-v4-1.
+
 ## v4.0.0 · 11 Juni 2026 — ROMBAK TOTAL: anti-macet, satu-berkas, siluet premium
 - AKAR MASALAH MOBILE DICABUT: service worker lama bisa gagal instal diam-diam (precache addAll) lalu menyajikan data lama selamanya. SW v4: tanpa precache yang bisa membunuh instalasi, dokumen & JSON network-first, skipWaiting+claim, dan halaman memuat-ulang otomatis saat versi baru mengambil alih. Plus palu kas di index: registrasi lama & cache asing dibersihkan sekali.
 - SATU BERKAS: index.html kini aplikasi utuh (23 modul + mesin tertanam). Folder data/ tidak dipakai lagi — kelas bug “JSON basi” musnah permanen. Pembaruan = unggah satu index.html.
