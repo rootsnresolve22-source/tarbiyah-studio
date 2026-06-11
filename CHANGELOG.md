@@ -1,5 +1,11 @@
 # CHANGELOG — TARBIYAH
 
+## v5.0.0 · 11 Juni 2026 — TAHAP B: Suntikan Lottie
+- Pemutar animasi profesional lottie-web (lottie_light, lisensi MIT, sumber npm resmi) tertanam di bundel — mesin yang sama dipakai aplikasi-aplikasi kelas dunia.
+- Tiga animasi Lottie ditulis langsung dalam format studio, presisi palet sakura: RAYAKAN (hujan konfeti layar penuh + gelombang cincin saat modul pertama tuntas), LENCANA (bintang emas delapan-sudut merekah berkilau setiap lencana terbuka), SEMPURNA (kaskade tujuh bintang saat kuis 100% benar pertama-coba).
+- Semua overlay tanpa-sentuh, bersih-sendiri setelah selesai, hormat prefers-reduced-motion, dan gagal-senyap bila pemutar tak tersedia.
+- Lencana v5.0.0. Service worker tb-v5-0.
+
 ## v4.9.0 · 11 Juni 2026 — TAHAP A: Sinema Pass Ronde-1
 - Atmosfer sinematik di SEMUA panggung (23/23): berkas cahaya menyapu pelan dari atas, tujuh bokeh hangat yang berdenyut melayang, lima kelopak sakura jatuh abadi dengan rotasi & ayunan, dan vignette lembut yang memberi kedalaman — ruang hampa berganti suasana hidup.
 - Lentera naik kelas prinsip animasi: squash-stretch sungguhan saat melonjak (memampat → memanjang → mendarat memantul), ayunan idle halus, dan JEJAK lima kelopak beterbangan setiap kali girang.
