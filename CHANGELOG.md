@@ -1,5 +1,12 @@
 # CHANGELOG — TARBIYAH
 
+## v4.7.0 · 11 Juni 2026 — Sprint C Merdeka-Biaya: Maskot “Lentera”
+- Riset harga terverifikasi (laman resmi Rive): ekspor .riv tergembok paket Cadet $9/bln — gembok fitur, bukan kuota; rotasi akun gratis tidak membukanya. Keputusan: maskot dibangun di mesin GSAP yang sudah tertanam — 100% gratis, nol dependensi baru, nol bobot tambahan.
+- Lahir “Lentera”: maskot lentera bersayap kelopak sakura (non-manusia, tematik cahaya-ilmu). Idle hidup: melayang, kepak sayap, lilin bergetar, kedip acak, bayangan ikut bernapas.
+- State machine reaksi: MENANG game → lompat girang + sayap berputar + pendar + konfeti; pelajaran-BURUK (tuas kiri / tergesa) → menunduk prihatin, sayap layu, pendar redup; pelajaran-baik → girang; info → kedip-kedip. Sumber sinyal: hook suara global + pesan AJAR dari ketiga mesin panggung.
+- Disentuh → melonjak + chime. Diam 75 detik → tertidur (mata garis, pendar temaram, ayunan melambat); sentuhan apa pun membangunkan. Menghormati prefers-reduced-motion.
+- Lencana v4.7.0. Service worker tb-v4-7.
+
 ## v4.6.0 · 11 Juni 2026 — Naskah AJAR Lengkap 23 Panggung
 - 48 naskah pedagogis baru ditulis khusus: kini SETIAP adegan punya pelajaran akibat-kurang (tuas kiri, panggung memucat), pelajaran manfaat (tuas kanan, berpendar), dan pelajaran “yang barusan diterapkan” (tahan penuh) — bukan kalimat generik.
 - 2Y-08 Cermin Adab mendapat pelajaran anti-tergesa: meniru tanpa contoh utuh → kartu peringatan.
