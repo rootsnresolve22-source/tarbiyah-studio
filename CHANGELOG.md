@@ -1,5 +1,11 @@
 # CHANGELOG — TARBIYAH
 
+## v4.8.0 · 11 Juni 2026 — Perekat Momen: Fanfare Selesai, Rasa Kuis, Gerbang Narasi
+- Penyelesaian modul pertama kini punya puncaknya: fanfare tiga-nada, ledakan konfeti di tengah layar, dan Lentera melonjak girang — menyatu dengan hujan kelopak & XP yang sudah ada.
+- Kuis terasa hidup: jawaban benar → pop + kotak penjelasan berdenyut; jawaban salah → dengung + tombol bergoyang — melengkapi sistem petunjuk & penjelasan+dalil yang telah berdiri.
+- Gerbang NARASI AUDIO di setiap langkah Baca: tombol ♪ mencoba memuat audio/narasi/<kode>.mp3 dari repo — begitu berkas edge-tts diunggah ke folder itu, narasi langsung hidup per modul tanpa build ulang; bila belum ada, pesan santun “menyusul”.
+- Lencana v4.8.0. Service worker tb-v4-8.
+
 ## v4.7.0 · 11 Juni 2026 — Sprint C Merdeka-Biaya: Maskot “Lentera”
 - Riset harga terverifikasi (laman resmi Rive): ekspor .riv tergembok paket Cadet $9/bln — gembok fitur, bukan kuota; rotasi akun gratis tidak membukanya. Keputusan: maskot dibangun di mesin GSAP yang sudah tertanam — 100% gratis, nol dependensi baru, nol bobot tambahan.
 - Lahir “Lentera”: maskot lentera bersayap kelopak sakura (non-manusia, tematik cahaya-ilmu). Idle hidup: melayang, kepak sayap, lilin bergetar, kedip acak, bayangan ikut bernapas.

@@ -2534,7 +2534,7 @@ addEventListener("message",function(e){
 });
 (function(){var b=document.createElement("div");
 b.style.cssText="position:fixed;right:8px;bottom:6px;z-index:9990;font:600 10px/1 system-ui;color:#B88AA0;opacity:.65;pointer-events:none";
-function add(){b.textContent="v4.7.0"+(window.TB5?" \u00b7 fx":"");document.body.appendChild(b);}
+function add(){b.textContent="v4.8.0"+(window.TB5?" \u00b7 fx":"");document.body.appendChild(b);}
 if(document.body)add();else addEventListener("DOMContentLoaded",add);})();
 
 (function(){
@@ -2617,6 +2617,22 @@ function boot(){
 }
 })();
 function stepRead(body){
+  (function(){
+    var nb=document.createElement("div");
+    nb.style.cssText="max-width:760px;margin:2px auto 6px;text-align:right;padding:0 14px";
+    nb.innerHTML='<button class="btn ghost" id="pNar" style="font-size:.78rem;padding:.5em 1em">\u266A Narasi audio</button>';
+    body.appendChild(nb);
+    var nA=null,btn=nb.querySelector("#pNar");
+    btn.addEventListener("click",function(){
+      if(nA&&!nA.paused){nA.pause();btn.textContent="\u266A Narasi audio";return;}
+      if(nA){nA.play();btn.textContent="\u275A\u275A Jeda narasi";return;}
+      btn.disabled=true;btn.textContent="Memuat\u2026";
+      var a=new Audio("audio/narasi/"+P.code+".mp3");
+      a.addEventListener("canplay",function(){nA=a;btn.disabled=false;btn.textContent="\u275A\u275A Jeda narasi";try{a.play();}catch(e){}},{once:true});
+      a.addEventListener("ended",function(){btn.textContent="\u266A Narasi audio";});
+      a.addEventListener("error",function(){btn.disabled=false;btn.textContent="\u266A Narasi audio";toast("Narasi audio modul ini menyusul.");},{once:true});
+    });
+  })();
   var c=P.code, m=mseen(c);
   var bar=document.createElement("div"); bar.className="readbar"; bar.innerHTML="<i></i>";
   if(SPLIT_BUILD) bar.style.display="none";
@@ -2679,6 +2695,7 @@ function stepQuiz(body){
         if(i===q.a){
           $$(".opt",w).forEach(function(x){x.disabled=true;});
           b.classList.add("pick-ok");
+          if(window.TB5){TB5.sfx("pop");setTimeout(function(){var eb=w.querySelector(".exbox");if(eb)TB5.pulse(eb);},40);}
           var gained = tried?5:10;
           m.qs[idx]=tried?2:1;
           addXP(gained); save();
@@ -2688,6 +2705,7 @@ function stepQuiz(body){
         }else{
           tried=true; firstAll=false;
           b.classList.add("pick-no"); b.disabled=true;
+          if(window.TB5){TB5.sfx("wrong");TB5.shake(b);}
           toast("Belum tepat — coba lagi.");
           var hint=(typeof HINTS!=="undefined"&&HINTS[c]&&HINTS[c][idx])||"";
           if(hint&&!$("#hintBox")) $("#exSlot").insertAdjacentHTML("beforebegin",'<div class="hintbox" id="hintBox"><b>Petunjuk:</b> '+esc(hint)+'</div>');
@@ -2858,6 +2876,8 @@ function stepDone(body){
   if(first){
     m.done=1; addXP(50); save();
     giveBadge("b-pertama");
+    if(window.TB5){TB5.sfx("win");setTimeout(function(){TB5.burstDOM(innerWidth/2,Math.max(90,innerHeight*0.28),18);},120);}
+    if(window.__tbMaskot)setTimeout(function(){__tbMaskot("girang");},260);
     var ph=PHASES.find(function(p){return p.mods.indexOf(c)>=0;});
     phDone=ph&&ph.mods.every(function(x){return mseen(x).done;});
     checkPhaseBadges();
@@ -3041,7 +3061,7 @@ function renderAll(){ renderStats(); renderMap(); if(!$("#viewExplore").classLis
   routeFromHash(false);
   if("serviceWorker" in navigator && (location.protocol==="https:"||location.hostname==="localhost")){
     try{
-      var KV="tb.swv",CUR="tb-v4-7";
+      var KV="tb.swv",CUR="tb-v4-8";
       if(localStorage.getItem(KV)!==CUR){localStorage.setItem(KV,CUR);
         if(window.caches)caches.keys().then(function(ks){ks.forEach(function(k){if(k!==CUR)caches.delete(k);});});
         if(navigator.serviceWorker.getRegistrations)navigator.serviceWorker.getRegistrations().then(function(rs){rs.forEach(function(r){if(r.active&&r.active.scriptURL.indexOf("sw.js")<0)r.unregister();});});
