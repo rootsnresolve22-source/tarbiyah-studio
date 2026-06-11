@@ -1,5 +1,13 @@
 # CHANGELOG — TARBIYAH
 
+## v4.5.0 · 11 Juni 2026 — Suara Anti-Mati, Mesin AJAR, Tahan 0,7 dtk
+- Suara DUA LAPIS: jalur utama (induk) + synthesizer cadangan LOKAL di tiap panggung yang dibangunkan langsung oleh sentuhanmu — satu lapis gagal, lapis lain bekerja. Bundel suara global juga dipaksa terekspor ke jendela.
+- MESIN AJAR di seluruh 20 panggung interaktif: ketuk hotspot → kartu pelajaran (apa & mengapa); tuas ke kiri → PANGGUNG MEMUCAT + pelajaran akibat-kurang; ke kanan → panggung berpendar + pelajaran manfaat; tahan penuh → kartu “yang barusan kamu terapkan”. Ketukan beruntun pada lentera P-02 → pelajaran “jangan terburu melabeli”.
+- Naskah baik/buruk khusus T3-04 (pembangunan sel melambat vs ±250 ribu sel/menit) dan P-02.
+- Tombol tahan dipersingkat ke 0,7 detik, tetap menyala otomatis saat penuh.
+- Lencana versi pojok kanan-bawah (“v4.5.0 · fx”) untuk verifikasi deploy sekali pandang.
+- Service worker tb-v4-5.
+
 ## v4.4.0 · 11 Juni 2026 — Karakter v3: Rombak Total Figur
 - Lima sosok dirancang ulang dari nol setelah tinjauan visual berlapis (rancang di Figma → potret → nilai → perbaiki → tanam): anatomi lengkap kepala-leher-torso-lengan-tangan-kaki-sepatu.
 - Ibu: hijab membingkai wajah dengan kilau atas, ring dalam, dan juntaian khimar ke dada; gamis berlipatan; pose tangan menyambut. Ibu hamil: siluet perut tegas + tangan kanan memeluk perut. Ayah: peci, baju koko berkancing & kerah, celana, pose melambai. Putri: kuncir dua dengan ikat rose, poni, kerah putih, gaun. Putra: peci kecil, koko biru, melambai.
