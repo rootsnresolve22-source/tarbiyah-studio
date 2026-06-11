@@ -1,5 +1,11 @@
 # CHANGELOG — TARBIYAH
 
+## v4.3.0 · 11 Juni 2026 — Suara Hidup, Tahan Instan, Karakter v2 (Sprint B)
+- BUG suara diperbaiki: konteks audio bangun otomatis dari gestur mana pun (termasuk di dalam panggung); suara DEFAULT MENYALA; saklar ♪ kini global (panggung + game) dan tersimpan; menyalakan ♪ langsung berbunyi chime konfirmasi.
+- Tombol tahan dirombak: 0,9 detik; aura emas membesar di tengah panggung + bilah kemajuan di tepi atas (terlihat walau jari menutup tombol); detak tiap seperempat; saat penuh EFEK MENYALA OTOMATIS tanpa menunggu dilepas. Ambang semua adegan disinkronkan ≤ isian.
+- Sprint B — Karakter v2: figur berlapis menggantikan siluet — wajah ekspresif (senang/waw/sedih/tidur), hijab dua-nada untuk sosok ibu, rambut gelap untuk ayah & anak, rona pipi, lengan & tangan, panel busana terang, idle-sway halus; API koreografi lama dipertahankan sehingga 23 adegan tetap utuh.
+- Service worker tb-v4-3.
+
 ## v4.2.0 · 11 Juni 2026 — Responsif & Eksplisit
 - Chip dalil di dok kini SELALU aktif sejak awal (berpendar ekstra saat panggung tuntas).
 - Setiap sentuhan panggung langsung beriak + bunyi + getar mikro — tak ada lagi ketukan yang terasa hampa; berlaku juga di T3-01/03/05.
