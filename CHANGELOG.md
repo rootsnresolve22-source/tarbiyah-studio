@@ -1,5 +1,11 @@
 # CHANGELOG — TARBIYAH
 
+## v4.9.0 · 11 Juni 2026 — TAHAP A: Sinema Pass Ronde-1
+- Atmosfer sinematik di SEMUA panggung (23/23): berkas cahaya menyapu pelan dari atas, tujuh bokeh hangat yang berdenyut melayang, lima kelopak sakura jatuh abadi dengan rotasi & ayunan, dan vignette lembut yang memberi kedalaman — ruang hampa berganti suasana hidup.
+- Lentera naik kelas prinsip animasi: squash-stretch sungguhan saat melonjak (memampat → memanjang → mendarat memantul), ayunan idle halus, dan JEJAK lima kelopak beterbangan setiap kali girang.
+- Seluruhnya GSAP yang sudah tertanam — nol dependensi baru, nol bobot unduhan tambahan; menghormati prefers-reduced-motion.
+- Lencana v4.9.0. Service worker tb-v4-9.
+
 ## v4.8.0 · 11 Juni 2026 — Perekat Momen: Fanfare Selesai, Rasa Kuis, Gerbang Narasi
 - Penyelesaian modul pertama kini punya puncaknya: fanfare tiga-nada, ledakan konfeti di tengah layar, dan Lentera melonjak girang — menyatu dengan hujan kelopak & XP yang sudah ada.
 - Kuis terasa hidup: jawaban benar → pop + kotak penjelasan berdenyut; jawaban salah → dengung + tombol bergoyang — melengkapi sistem petunjuk & penjelasan+dalil yang telah berdiri.
