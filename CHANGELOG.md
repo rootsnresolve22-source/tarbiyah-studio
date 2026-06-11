@@ -1,5 +1,12 @@
 # CHANGELOG — TARBIYAH
 
+## v4.4.0 · 11 Juni 2026 — Karakter v3: Rombak Total Figur
+- Lima sosok dirancang ulang dari nol setelah tinjauan visual berlapis (rancang di Figma → potret → nilai → perbaiki → tanam): anatomi lengkap kepala-leher-torso-lengan-tangan-kaki-sepatu.
+- Ibu: hijab membingkai wajah dengan kilau atas, ring dalam, dan juntaian khimar ke dada; gamis berlipatan; pose tangan menyambut. Ibu hamil: siluet perut tegas + tangan kanan memeluk perut. Ayah: peci, baju koko berkancing & kerah, celana, pose melambai. Putri: kuncir dua dengan ikat rose, poni, kerah putih, gaun. Putra: peci kecil, koko biru, melambai.
+- Wajah empat ekspresi sungguhan: pupil berbinar (highlight), takjub = pupil membesar + mulut O; sedih = alis turun + cemberut; tidur = mata terpejam garis.
+- Geometri identik ditanam di aplikasi dan di berkas Figma “TARBIYAH — Atelier Karakter” (halaman Karakter v3) untuk penyuntingan visual.
+- Service worker tb-v4-4.
+
 ## v4.3.0 · 11 Juni 2026 — Suara Hidup, Tahan Instan, Karakter v2 (Sprint B)
 - BUG suara diperbaiki: konteks audio bangun otomatis dari gestur mana pun (termasuk di dalam panggung); suara DEFAULT MENYALA; saklar ♪ kini global (panggung + game) dan tersimpan; menyalakan ♪ langsung berbunyi chime konfirmasi.
 - Tombol tahan dirombak: 0,9 detik; aura emas membesar di tengah panggung + bilah kemajuan di tepi atas (terlihat walau jari menutup tombol); detak tiap seperempat; saat penuh EFEK MENYALA OTOMATIS tanpa menunggu dilepas. Ambang semua adegan disinkronkan ≤ isian.
