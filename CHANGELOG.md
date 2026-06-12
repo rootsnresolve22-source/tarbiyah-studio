@@ -1,5 +1,12 @@
 # CHANGELOG — TARBIYAH
 
+## v5.8.0 · 12 Juni 2026 — Film Murni di 23 Panggung + Peraga Materi (percontohan)
+- Interaksi panggung DIBUANG TOTAL sesuai keputusan: tidak ada lagi tombol Tahan, tuas, tanda tanya, kartu/pad yang bisa dipencet, ataupun penanda ketuk. Yang tersisa hanya dalil, suara, dan Putar ulang.
+- Seluruh 23 panggung kini film peraga murni: berputar otomatis dari pembuka sampai momen kemenangannya (akar mekar, genta berbunyi, pelangi muncul, perahu tiba di mercusuar, lentera menyala, zona hijau terjaga), dengan keterangan langkah bernomor — lalu tombol ⟲ Putar ulang yang memutar bersih dari awal.
+- PERAGA MATERI lahir: film penjelasan kecil tertanam di titik kontennya pada tab Baca. Percontohan penuh di modul 2Y-01 — kelima titiknya, termasuk adegan “bicara vs TV” persis seperti yang diminta: anak di depan layar, kata satu arah, otak redup, tanda silang — lalu ibu-anak bersahutan, kata memantul bolak-balik, otak menyala, centang. Tiap peraga mulai sendiri saat terlihat dan punya ⟲ sendiri.
+- Penanda hotspot dimatikan di akarnya; kontrol dock tak terpakai disembunyikan; tab Kenali, Kuis, dan Selesai tetap bersih.
+- Lencana v5.8.0. Service worker tb-v5-8.
+
 ## v5.7.0 · 12 Juni 2026 — SINEMA Penuh: Tonton Dulu, Lalu Giliranmu — di 23 Panggung
 - Gelembung Ilustrasi singkat v5.5 dicabut dari keempat tab (salah model & penempatan, sesuai koreksi).
 - SELURUH 23 panggung kini membuka diri dengan demonstrasi otomatis ala video: keterangan langkah bernomor (Tonton 1/3–1/4) berganti sendiri sambil mekanik panggung benar-benar bergerak memperlihatkan sebab-akibat materi — lalu tombol GILIRANMU dengan label gamblang fungsi setiap kontrol. Demonstrasi tidak pernah mencuri kemenanganmu: penyelesaian selalu disisakan untuk tanganmu.
