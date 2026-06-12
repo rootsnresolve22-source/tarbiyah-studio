@@ -2837,6 +2837,11 @@ function renderStep(){
 
 // ---- 1 Kenali ----
 function stepKenali(body){
+  setTimeout(function(){try{ if(typeof SCENES!=="undefined"&&SCENES[P.code]&&window.V3&&V3.sceneTeaser){
+    var tzk=document.createElement("div");tzk.className="wrap";tzk.style.marginTop="10px";
+    body.appendChild(tzk);
+    V3.sceneTeaser(tzk,P.code,{judul:"Cuplikan kisah modul ini"});
+  }}catch(e){}},0);
   var c=P.code, m=mseen(c), md=(typeof MEDIA!=="undefined"&&MEDIA[c])||{};
   var dim=(typeof IMG_DIMS!=="undefined"&&IMG_DIMS[(md.i||"").replace(/^gambar\//,"").replace(/\.webp$/,"")])||null;
   var w=document.createElement("div"); w.className="wrap";
@@ -2902,7 +2907,7 @@ addEventListener("message",function(e){
 });
 (function(){var b=document.createElement("div");
 b.style.cssText="position:fixed;right:8px;bottom:6px;z-index:9990;font:600 10px/1 system-ui;color:#B88AA0;opacity:.65;pointer-events:none";
-function add(){b.textContent="v5.4.0"+(window.TB5?" \u00b7 fx":"");document.body.appendChild(b);}
+function add(){b.textContent="v5.5.0"+(window.TB5?" \u00b7 fx":"");document.body.appendChild(b);}
 if(document.body)add();else addEventListener("DOMContentLoaded",add);})();
 
 (function(){
@@ -3038,6 +3043,11 @@ function stepRead(body){
       }catch(e){}
     });
   });
+  try{ if(typeof SCENES!=="undefined"&&SCENES[c]&&window.V3&&V3.sceneTeaser){
+    var tzr=document.createElement("div");tzr.className="wrap";tzr.style.marginTop="12px";
+    body.appendChild(tzr);
+    V3.sceneTeaser(tzr,c,{judul:"Ilustrasi singkat \u2014 versi yang diteladankan"});
+  }}catch(e){}
   if(window.V3&&V3.themeFrame) V3.themeFrame(f);
   foot(nextBtn(m.b?"Lanjut ke Kuis":"Saya sudah membaca",true));
   bindNext(function(){ if(!m.b){m.b=1;addXP(15);save();} goStep(2); });
@@ -3096,6 +3106,10 @@ function stepQuiz(body){
     var allFirst=Object.keys(m.qs).length===bank.length && Object.keys(m.qs).every(function(k){return m.qs[k]===1;});
     if(allFirst){giveBadge("b-kuis100");try{window.TBL&&TBL.play("sempurna",{size:300,y:"42%"});}catch(e){}}
     w.innerHTML='<div class="donebox"><div class="ring">'+ICONS.check+'</div><h2>Kuis selesai</h2><p>'+(allFirst?"Sempurna — semua benar pada percobaan pertama.":"Selesai dengan baik. Penjelasan tiap soal bisa dibaca lagi kapan pun.")+'</p></div>';
+    try{ if(typeof SCENES!=="undefined"&&SCENES[P.code]&&window.V3&&V3.sceneTeaser){
+      var tzq=document.createElement("div");tzq.style.marginTop="12px";w.appendChild(tzq);
+      V3.sceneTeaser(tzq,P.code,{judul:"Ulang sekilas teladannya"});
+    }}catch(e){}
     foot(nextBtn("Lanjut ke Main",true));
     bindNext(function(){goStep(3);});
   }
@@ -3269,6 +3283,11 @@ function stepDone(body){
     if(window.V3){ V3.mascotWalk=c; }
   }
   var am=(typeof AMALAN!=="undefined"&&AMALAN[c])||"";
+  setTimeout(function(){try{ if(typeof SCENES!=="undefined"&&SCENES[c]&&window.V3&&V3.sceneTeaser){
+    var tzd=document.createElement("div");tzd.className="wrap";tzd.style.marginTop="12px";
+    body.appendChild(tzd);
+    V3.sceneTeaser(tzd,c,{judul:"Kisah penutup \u2014 bawa pulang teladannya"});
+  }}catch(e){}},0);
   var w=document.createElement("div"); w.className="wrap";
   w.innerHTML='<div class="donebox"><div class="ring">'+ICONS.check+'</div><h2>'+esc(TITLES[c])+' tuntas</h2><p>'+(first?"Barakallahu fiik — satu langkah lagi dalam perjalanan ini.":"Modul ini sudah pernah kamu tuntaskan — mengulang adalah cara menanam lebih dalam.")+'</p><div class="gain">'+(first?'<span>+50 XP modul</span>':'')+'<span>Runtunan '+S.streak+' hari</span></div></div>'+
     (first&&am?'<div class="card" style="margin-top:6px"><b style="font-family:Fraunces,serif;font-size:.95rem">Amalan terbuka</b><p style="margin:.3em 0 0;font-size:.88rem;color:var(--muted)">'+esc(am)+'</p><p style="margin:.4em 0 0;font-size:.74rem;color:var(--pink-deep);font-weight:700">Centang di kartu \u201cAmalan Hari Ini\u201d pada peta.</p></div>':'');
@@ -3446,7 +3465,7 @@ function renderAll(){ renderStats(); renderMap(); if(!$("#viewExplore").classLis
   routeFromHash(false);
   if("serviceWorker" in navigator && (location.protocol==="https:"||location.hostname==="localhost")){
     try{
-      var KV="tb.swv",CUR="tb-v5-4";
+      var KV="tb.swv",CUR="tb-v5-5";
       if(localStorage.getItem(KV)!==CUR){localStorage.setItem(KV,CUR);
         if(window.caches)caches.keys().then(function(ks){ks.forEach(function(k){if(k!==CUR)caches.delete(k);});});
         if(navigator.serviceWorker.getRegistrations)navigator.serviceWorker.getRegistrations().then(function(rs){rs.forEach(function(r){if(r.active&&r.active.scriptURL.indexOf("sw.js")<0)r.unregister();});});
@@ -3702,6 +3721,40 @@ function typeIn(node,text,done){
   var i=0; node.textContent="";
   (function tick(){ node.textContent=text.slice(0,++i); if(i<text.length)setTimeout(tick,16); else if(done)done(); })();
 }
+V3.sceneTeaser=function(area,key,opt){
+  var sc=(typeof SCENES!=="undefined")&&SCENES[key]; if(!sc)return false;
+  opt=opt||{};
+  var L=(opt.lines==="wrong"?sc.wrong:sc.right)||[]; if(!L.length)return false;
+  if(!document.getElementById("v3TzCss")){
+    var st=document.createElement("style");st.id="v3TzCss";
+    st.textContent="@keyframes tzIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}} .tzBubs{position:relative;z-index:2;padding:6px;min-height:64px} .stage .fig{transition:transform .45s,filter .45s}";
+    document.head.appendChild(st);
+  }
+  area.innerHTML='<div class="stagewrap">'+
+    (opt.judul?'<p class="gintro" style="margin:0 0 8px;font-weight:700;color:var(--ok)">'+esc(opt.judul)+'</p>':'')+
+    '<div class="stage" style="min-height:172px"><div class="tzBubs"></div>'+
+    '<div class="fig a">'+person(sc.cast.a.who)+'<span class="nm">'+esc(sc.cast.a.name)+'</span></div>'+
+    '<div class="fig b">'+person(sc.cast.b.who)+'<span class="nm">'+esc(sc.cast.b.name)+'</span></div>'+
+    '</div></div>';
+  var stage=area.querySelector(".stage"), bubs=area.querySelector(".tzBubs");
+  var fa=area.querySelector(".fig.a"), fb=area.querySelector(".fig.b");
+  var i=0,tm=null;
+  function show(){
+    if(!document.body.contains(area)){if(tm)clearInterval(tm);return;}
+    var b=L[i%L.length];
+    bubs.innerHTML='<div class="bub '+b.s+'" style="animation:tzIn .5s ease both">'+esc(b.t)+'</div>';
+    if(fa&&fb){
+      fa.style.transform=b.s==="a"?"scale(1.07)":"";
+      fb.style.transform=b.s==="b"?"scale(1.07)":"";
+      fa.style.filter=b.s==="a"?"drop-shadow(0 0 10px rgba(244,196,106,.55))":"";
+      fb.style.filter=b.s==="b"?"drop-shadow(0 0 10px rgba(244,196,106,.55))":"";
+    }
+    i++;
+  }
+  show();
+  if(!RM)tm=setInterval(show,3100);
+  return true;
+};
 V3.gScene=function(area,g,won){
   var sc=(typeof SCENES!=="undefined")&&SCENES[g.scene];
   if(!sc){ area.innerHTML='<div class="emptynote">Adegan belum tersedia.</div>'; return; }

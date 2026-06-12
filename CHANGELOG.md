@@ -1,5 +1,10 @@
 # CHANGELOG — TARBIYAH
 
+## v5.5.0 · 12 Juni 2026 — Panggung Ala-Video di Empat Tahap
+- Mesin sceneTeaser: panggung adegan otomatis — dialog bergulir sendiri tiap 3 detik, figur menyala bergiliran, berulang tanpa perlu diketuk; menghormati prefers-reduced-motion.
+- Dianyam ke SELURUH perjalanan tiap modul: KENALI (Cuplikan kisah modul ini), BACA (Ilustrasi singkat di bawah materi), KUIS layar selesai (Ulang sekilas teladannya), dan SELESAI (Kisah penutup) — di samping Adegan Teladan interaktif penuh yang tetap di tab Main.
+- Lencana v5.5.0. Service worker tb-v5-5.
+
 ## v5.4.0 · 11 Juni 2026 — Dua Bug Tumpas + Semesta Adegan Teladan
 - PERBAIKAN-1: maskot Lentera ternyata mati suri sejak lahir — boot-nya memanggil $ sebelum dideklarasikan. Urutan dibetulkan; idle, kedip, girang, sedih, dan tidurnya kini benar-benar hidup untuk pertama kalinya.
 - PERBAIKAN-2: panggung diorama memanggil getar() yang tak pernah didefinisikan di mesinnya — fungsi getar ditanam; ketukan panggung prenatal kini bergetar halus tanpa error.
