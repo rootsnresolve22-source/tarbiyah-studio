@@ -1,5 +1,23 @@
 # CHANGELOG — TARBIYAH
 
+## v6.0.0 · 12 Juni 2026 — RILIS-PUBLIK KIT
+- Halaman KREDIT & SUMBER: lencana versi di pojok kanan-bawah kini dapat diklik (“v6.0.0 · kredit”) dan membuka lembar atribusi lengkap — batas adab (bukan fatwa, bukan pengganti nasihat profesional, ikhtilaf berimbang), sumber wahyu (Tanzil Uthmani; terjemahan independen; tafsir Ibn Katsir, ath-Thabari, al-Qurthubi, as-Sa’di; takhrij via sunnah.com dan dataset fawazahmed0), audio (tilawah Mishary Rashid Alafasy via everyayah.com), rujukan sains kunci, tipografi SIL-OFL, dan kredit pengembangan.
+- Pembersihan rilis-publik: sisa teks Inggris bilingual lama di modul PP (“Our two roles”, “Our first steps”) dihapus dari sumbernya — aplikasi kini Bahasa Indonesia murni.
+- Gerbang QA-publik permanen pada pipeline: nama personal, TODO, frasa deferal, jejak interaksi lama, dan teks Inggris sisa wajib NOL; 71 penambat peraga wajib tertanam — sebelum bundel boleh lahir.
+- Lencana v6.0.0. Service worker tb-v6-0.
+
+### DAFTAR PERIKSA RILIS-PUBLIK (uji manual ±15 menit, HP + desktop)
+1. Lencana pojok kanan-bawah menunjukkan v6.0.0 dan saat diklik membuka Kredit & Sumber; tombol Tutup dan tombol Escape bekerja.
+2. Pasang sebagai aplikasi (Add to Home Screen di Android; Install di Chrome desktop), lalu buka dari ikonnya.
+3. Mode pesawat: buka tiga modul lintas fase (mis. T3-01, 2Y-05, P-06) — semuanya termuat penuh dari cache.
+4. Film panggung: P-01 berjalan otomatis sampai pohon tegak diuji angin; T3-01 diorama empat babak; tombol ⟲ memutar ulang bersih; hanya dalil dan ♪ yang tersisa di dock.
+5. Peraga materi: 2Y-01 entri “bicara vs TV”, P-06 entri cangkir, T3-05 entri azan (timbangan dua pendapat) — mulai sendiri saat terlihat, ⟲ masing-masing bekerja.
+6. Kartu dalil: teks Arab tampil dengan huruf Amiri, terjemahan dan takhrij lengkap, audio ayat berbunyi dengan atribusi (perlu daring).
+7. Tombol ♪ di tab Baca: berbunyi bila folder audio/narasi/ sudah diunggah (Tahap D); bila belum, tidak ada error yang tampak.
+8. Kuis dan permainan tiap modul berfungsi; XP dan lencana bertambah; muat ulang halaman — kemajuan tersimpan.
+9. Putar layar HP (potret-lanskap) pada panggung dan peraga — tidak ada elemen terpotong atau bertumpuk.
+10. Konsol peramban (desktop, F12) bersih dari error merah saat menjelajah lima modul acak.
+
 ## v5.11.0 · 12 Juni 2026 — Peraga Materi: Fase Orang Tua + Pasangan — 23 MODUL TUNTAS
 - Sapuan pamungkas: 23 peraga film penjelasan pada delapan modul terakhir (P-01 s.d. P-07 dan PP). Dengan ini SELURUH 23 modul TARBIYAH berperaga: total 71 titik peraga materi di tab Baca, semuanya lahir dari teks jawaban modulnya sendiri.
 - Isi fase ini: teladan dan ko-regulasi sebagai mekanisme (Bandura) serta tenang dan stres yang sama-sama menular (FPG/UNC); kejujuran MI sebagai peta keluasan bukan label, mitos “gaya belajar” yang terbantah, dan serve-and-return sebagai investasi termurah-terkuat; zona pas Vygotsky, bahaya hadiah yang menggerus api intrinsik (Lepper 1973; Deci) dan pujian usaha; tangga derajat riwayat sahih-hasan-da’if-palsu, “tanya dari mana”, dan kabar viral tanpa rujukan; ko-regulasi Siegel & Bryson, membaca dialogis Whitehurst, dan kehadiran di atas gunung mainan; cangkir retak yang diisi ulang (Roskam & Mikolajczak), lelah yang bukan kegagalan, dan keberanian meminta bantuan; tujuh tahap satu sikap, menanam dengan ikhlas, dan kompas niat (HR Bukhari no. 1); serta dua dayung musyawarah dan langkah pertama pasangan menuju cahaya yang satu.
