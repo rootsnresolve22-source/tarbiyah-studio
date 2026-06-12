@@ -1,5 +1,11 @@
 # CHANGELOG — TARBIYAH
 
+## v5.4.0 · 11 Juni 2026 — Dua Bug Tumpas + Semesta Adegan Teladan
+- PERBAIKAN-1: maskot Lentera ternyata mati suri sejak lahir — boot-nya memanggil $ sebelum dideklarasikan. Urutan dibetulkan; idle, kedip, girang, sedih, dan tidurnya kini benar-benar hidup untuk pertama kalinya.
+- PERBAIKAN-2: panggung diorama memanggil getar() yang tak pernah didefinisikan di mesinnya — fungsi getar ditanam; ketukan panggung prenatal kini bergetar halus tanpa error.
+- SEMESTA ADEGAN TELADAN: dua puluh naskah adegan baru ditulis — kini SELURUH 23 modul memiliki Adegan Teladan (dua versi kisah + pilihan balasan terbaik + penjelasan + chips dalil sahih), tampil di tab Main di bawah permainan tanpa menggusurnya, berhadiah +5 XP.
+- Lencana v5.4.0. Service worker tb-v5-4.
+
 ## v5.3.0 · 11 Juni 2026 — TAHAP C Ronde-3 (penutup): Diorama Prenatal
 - Ketiga panggung prenatal (T3-01, T3-03, T3-05) naik kelas: langit malam berbintang dengan bulan sabit berpendar, cahaya lantai lembut, rahim bercincin shimmer dengan partikel cahaya mengambang, jantung Ibu bergradien berkilau, pipi janin merona, tangan pelukan bertaut di pangkuan, dan sumber suara Ibu menjelma lentera emas bernyala.
 - Lencana v5.3.0. Service worker tb-v5-3.
