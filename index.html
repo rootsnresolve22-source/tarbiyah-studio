@@ -2904,7 +2904,7 @@ addEventListener("message",function(e){
 });
 (function(){var b=document.createElement("div");
 b.style.cssText="position:fixed;right:8px;bottom:6px;z-index:9990;font:600 10px/1 system-ui;color:#B88AA0;opacity:.65;pointer-events:none";
-function add(){b.textContent="v5.9.0"+(window.TB5?" \u00b7 fx":"");document.body.appendChild(b);}
+function add(){b.textContent="v5.10.0"+(window.TB5?" \u00b7 fx":"");document.body.appendChild(b);}
 if(document.body)add();else addEventListener("DOMContentLoaded",add);})();
 
 (function(){
@@ -3074,7 +3074,13 @@ window.__TBPX={
  BIGFADE:function(x,y){return "<g transform='translate("+x+","+y+")'><circle r='22' fill='#D9A441' class='tbpFlick'/><circle r='34' fill='none' stroke='#D9A441' stroke-width='2' opacity='.4' stroke-dasharray='4 7'/></g>";},
  RAYS:function(x,y,down){return "<g class='tbpPulse' transform='translate("+x+","+y+")"+(down?"":" scale(1,-1)")+"' stroke='#E0C46A' stroke-width='3' stroke-linecap='round'><path d='M0 0 v30 M-22 4 l13 26 M22 4 l-13 26 M-40 14 l22 18 M40 14 l-22 18'/></g>";},
  BABYF:function(x,y,sc){return "<g transform='translate("+x+","+y+") scale("+sc+")'><circle r='17' fill='#F4C9A8'/><circle cx='-17' cy='1' r='5' fill='#F4C9A8' stroke='#D8A87E' stroke-width='1.4'/><path d='M-8 -2 q2 -2.4 4 0 M4 -2 q2 -2.4 4 0' stroke='#7A4A30' stroke-width='1.6' fill='none' stroke-linecap='round'/><path d='M-4 7 q4 3 8 0' stroke='#7A4A30' stroke-width='1.6' fill='none' stroke-linecap='round'/><path d='M-12 -12 a13 13 0 0 1 24 0 q-6 -5 -12 -5 t-12 5Z' fill='#5A3A20'/></g>";},
- CLOUD:function(x,y){return "<g transform='translate("+x+","+y+")' fill='#C9C2CE'><circle r='14'/><circle cx='-16' cy='4' r='10'/><circle cx='15' cy='4' r='11'/><path d='M-9 -9 l5 -6 M2 -12 l4 -7 M11 -7 l6 -5' stroke='#A89FB2' stroke-width='2.4' stroke-linecap='round' fill='none'/></g>";}
+ CAT:function(x,y,sc){return "<g transform='translate("+x+","+y+") scale("+sc+")'><ellipse cx='0' cy='8' rx='20' ry='13' fill='#C9B8A8'/><circle cx='-18' cy='-6' r='10' fill='#C9B8A8'/><path d='M-25 -13 l-3 -8 6 3z M-12 -13 l3 -8 -6 3z' fill='#C9B8A8'/><path d='M18 6 q10 -2 8 -12' stroke='#C9B8A8' stroke-width='5' fill='none' stroke-linecap='round'/><circle cx='-21' cy='-7' r='1.4' fill='#3E2A1E'/><circle cx='-14' cy='-7' r='1.4' fill='#3E2A1E'/><path d='M-20 -2 q2 1.6 4 0' stroke='#3E2A1E' stroke-width='1.2' fill='none'/></g>";},
+ BFLY:function(x,y,sc){return "<g class='tbpPulse' transform='translate("+x+","+y+") scale("+sc+")'><ellipse cx='-7' cy='-3' rx='8' ry='10' fill='#E8A8C8' transform='rotate(-24 -7 -3)'/><ellipse cx='7' cy='-3' rx='8' ry='10' fill='#D98AB8' transform='rotate(24 7 -3)'/><ellipse rx='2.4' ry='8' fill='#6B3F56'/><path d='M-2 -8 l-3 -5 M2 -8 l3 -5' stroke='#6B3F56' stroke-width='1.4' fill='none' stroke-linecap='round'/></g>";},
+ SPKR:function(x,y){return "<g transform='translate("+x+","+y+")'><rect x='-16' y='-26' width='32' height='52' rx='7' fill='#5E5A72'/><circle r='9' fill='#3E3A50'/><circle cy='-16' r='4.5' fill='#3E3A50'/><circle r='3.4' fill='#8E88A6' class='tbpFlick'/></g>";},
+ DRUM:function(x,y){return "<g transform='translate("+x+","+y+")'><rect x='-20' y='-9' width='40' height='24' rx='5' fill='#D9A441'/><ellipse rx='20' ry='7' cy='-9' fill='#FFF6E2' stroke='#B8862A' stroke-width='2'/><path d='M-13 -22 L-3 -11 M14 -23 L4 -11' stroke='#8A5E12' stroke-width='3' stroke-linecap='round'/><circle cx='-13' cy='-22' r='3.4' fill='#8A5E12'/><circle cx='14' cy='-23' r='3.4' fill='#8A5E12'/></g>";},
+ CLOCKS:function(x,y){return "<g transform='translate("+x+","+y+")'><circle r='22' fill='#FFF' stroke='#B0556F' stroke-width='3'/><path d='M0 0 L0 -13 M0 0 L9 5' stroke='#B0556F' stroke-width='3' stroke-linecap='round'/><path d='M-30 -22 l-6 -6 M30 -22 l6 -6' stroke='#B0556F' stroke-width='3.4' stroke-linecap='round'/></g>";},
+ RUNL:function(x,y){return "<path d='M"+x+" "+y+" h-14 M"+x+" "+(y+8)+" h-19 M"+x+" "+(y+16)+" h-12' stroke='#C2557E' stroke-width='3' stroke-linecap='round' opacity='.7'/>";},
+  CLOUD:function(x,y){return "<g transform='translate("+x+","+y+")' fill='#C9C2CE'><circle r='14'/><circle cx='-16' cy='4' r='10'/><circle cx='15' cy='4' r='11'/><path d='M-9 -9 l5 -6 M2 -12 l4 -7 M11 -7 l6 -5' stroke='#A89FB2' stroke-width='2.4' stroke-linecap='round' fill='none'/></g>";}
 };
 window.__TB_PERAGA={
  "T3-01":[
@@ -3183,6 +3189,142 @@ window.__TB_PERAGA={
       FIG("ayah",84,100,1.15,true)+X.HANDP(186,112,1)+X.WOMB(312,120,.96,false)+WPILL(150,50,"assalamualaikum, Nak","tbpPop",0)),
     FR("Menyiapkan makanan, berdoa bersama, meringankan beban Ibu \u2014 sehari penuh kehadiran.",
       FIG("ayah",96,104,1.1,true)+FIG("ibu",206,104,1.1,true)+X.PLATE(322,150,false)+X.RAYS(160,34,false)+MARK(true,398,56))]; }}
+ ],
+ "2Y-02":[
+  {find:"cara utama ia belajar dan mengeksplorasi",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("Berlari, memanjat, melempar \u2014 gerak adalah cara utamanya belajar (Adolph & Tamis-LeMonda).",
+      FIG("anak",206,112,1.25)+X.RUNL(186,116)+"<circle cx='330' cy='168' r='13' fill='#E0589A'/><path d='M96 178 q4 -34 0 -52 m-12 52 q-3 -22 0 -34 m24 34 q3 -22 0 -30' stroke='#7FA86A' stroke-width='5' fill='none' stroke-linecap='round'/>"),
+    FR("Setiap langkah dan jangkauan mengirim data segar ke otaknya.",
+      FIG("anak",150,112,1.2,true)+BRAIN(296,84,true)+"<path class='tbpFlow' d='M196 110 Q246 78 272 86' fill='none' stroke='#D9A441' stroke-width='3.4'/>"+MARK(true,386,56))]; }},
+  {find:"mengubah interaksi sosial",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("Begitu ia BERJALAN, dunianya melebar \u2014 dan caranya bergaul ikut berubah.",
+      FIG("anak",132,124,1.15,true)+X.RUNL(116,128)+FIG("ibu",316,100,1.1)+ARR2(226,118)),
+    FR("Itu berkaitan dengan tumbuhnya bahasa (Walle & Campos 2014) \u2014 meski kaitannya tidak pasti.",
+      FIG("anak",150,118,1.15)+WPILL(238,64,"kata baru","tbpPop",0)+WPILL(310,96,"sapaan","tbpPop",.5)+MARK(true,396,160))]; }},
+  {find:"banyak aktivitas fisik dan sedikit duduk",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("Duduk lama untuk \u201cbelajar\u201d \u2014 bukan cara usia ini bertumbuh.",
+      FIG("anak",150,124,1.1)+"<rect x='118' y='168' width='66' height='9' rx='4' fill='#C9B8A8'/>"+MARK(false,316,84)),
+    FR("WHO: perbanyak aktivitas fisik, kurangi duduk \u2014 belajarnya lewat gerak dan main.",
+      FIG("anak",226,104,1.2,true)+X.RUNL(206,108)+"<circle cx='330' cy='160' r='12' fill='#E0589A'/>"+MARK(true,386,56))]; }}
+ ],
+ "2Y-03":[
+  {find:"berpikir simbolik",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("Pisang ditempelkan ke telinga: \u201chalo?\u201d \u2014 satu benda mewakili benda lain.",
+      FIG("anak",196,112,1.25)+"<path d='M252 84 q16 -12 30 2 q-14 12 -30 -2Z' fill='#F2D060' stroke='#D9B23C' stroke-width='2'/>"+WPILL(316,52,"halo?","tbpPop",.3)),
+    FR("Itulah berpikir simbolik \u2014 tonggak kognitif yang muncul sekitar 18 bulan.",
+      FIG("anak",150,112,1.2,true)+BRAIN(296,84,true)+WPILL(296,140,"simbol","tbpPop",.3)+MARK(true,392,52))]; }},
+  {find:"meredam stres",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("AAP: bermain membangun otak dan fungsi eksekutif \u2014 sampai layak \u201cdiresepkan\u201d.",
+      "<rect x='84' y='52' width='120' height='84' rx='9' fill='#FFF' stroke='#E7B3CD' stroke-width='2.4'/><text x='144' y='84' text-anchor='middle' font-size='12' font-weight='700' fill='#8E3D68'>RESEP</text><text x='144' y='112' text-anchor='middle' font-size='15' font-weight='800' fill='#C23C7E'>BERMAIN</text>"+BRAIN(316,84,true)),
+    FR("Dan bermain meredam stres \u2014 awan beban mengecil saat ia asyik bermain.",
+      FIG("anak",206,118,1.2,true)+"<circle cx='306' cy='166' r='12' fill='#E0589A'/>"+X.CLOUD(356,52)+"<g transform='translate(356,52) scale(.55)' opacity='.5'></g>"+MARK(true,116,60))]; }},
+  {find:"Nabi memfasilitas",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("Bermain bukan buang waktu \u2014 ia fitrah anak.",
+      FIG("anak",176,112,1.2,true)+"<circle cx='276' cy='160' r='12' fill='#E0589A'/><rect x='306' y='140' width='44' height='34' rx='6' fill='#D9A441' opacity='.85'/>"+SPARK(150,64,0)+SPARK(252,60,1)),
+    FR("Dan fitrah itu Nabi fasilitasi \u2014 anak-anak dibiarkan gembira bermain di sekitarnya.",
+      FIG("anak",150,118,1.1,true)+FIG("anak",336,118,1.1,true)+X.HEART(238,64,true)+MARK(true,396,160))]; }}
+ ],
+ "2Y-04":[
+  {find:"gravitasi, bunyi",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("Sendok dijatuhkan\u2026 lagi\u2026 dan lagi \u2014 ia menguji gravitasi dan bunyi.",
+      FIG("anak",150,104,1.2)+"<rect x='216' y='96' width='8' height='30' rx='3' fill='#B8A8B4' class='tbpRise' style='animation-direction:reverse'/><path d='M208 178 h26' stroke='#8E88A6' stroke-width='3' stroke-linecap='round'/>"+WPILL(296,160,"tuk!","tbpPop",.6)),
+    FR("Itulah eksperimen ilmuwan kecil \u2014 keteraturan dunia sedang diuji.",
+      FIG("anak",150,108,1.2,true)+BRAIN(296,84,true)+WPILL(296,142,"sebab \u2192 akibat","tbpPop",.3)+MARK(true,396,52))]; }},
+  {find:"menurunkan eksplorasi",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("Terlalu diajari fungsi mainan \u2014 anak berhenti menjelajah (Bonawitz dkk. 2011).",
+      FIG("ibu",96,100,1.15)+WPILL(196,52,"begini caranya","tbpPop",0)+FIG("anak",316,124,1.05)+MARK(false,396,160)),
+    FR("Beri ruang \u2014 ia menemukan sendiri, dan eksplorasinya menyala.",
+      FIG("ibu",84,100,1.1)+FIG("anak",266,116,1.2,true)+SPARK(316,76,0)+SPARK(338,96,1)+"<rect x='306' y='150' width='40' height='30' rx='6' fill='#D9A441' opacity='.85'/>"+MARK(true,396,52))]; }},
+  {find:"3,5 tahun",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("Ia bisa MENYEBUT \u201csatu dua tiga\u201d \u2014 tetapi paham jumlah baru matang \u00b13,5 tahun.",
+      FIG("anak",150,112,1.2)+WPILL(266,56,"satu dua tiga","tbpPop",0)+"<text x='316' y='130' text-anchor='middle' font-size='26' font-weight='800' fill='#B0556F'>?</text>"),
+    FR("Maka hitung benda NYATA bersamanya \u2014 ciptaan memang penuh ukuran (Al-Qamar 54:49).",
+      FIG("ibu",96,102,1.1,true)+"<circle cx='216' cy='140' r='12' fill='#E25C4A'/><circle cx='252' cy='140' r='12' fill='#E25C4A'/><circle cx='288' cy='140' r='12' fill='#E25C4A'/>"+WPILL(252,84,"satu\u2026 dua\u2026 tiga","tbpPop",.3)+MARK(true,386,56))]; }}
+ ],
+ "2Y-05":[
+  {find:"bawaan manusia",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("Ada ketukan \u2014 tubuh kecilnya ikut bergoyang.",
+      FIG("anak",216,112,1.25,true)+"<text x='116' y='76' font-size='22' fill='#D9A441'>\u266A</text><text x='150' y='56' font-size='18' fill='#D9A441'>\u266A</text><text x='316' y='66' font-size='20' fill='#D9A441'>\u266A</text>"),
+    FR("Merespons irama itu bawaan manusia (Zentner & Eerola 2010).",
+      FIG("anak",206,112,1.2,true)+X.DOTROW(136,176,6)+MARK(true,376,56))]; }},
+  {find:"bukan audio pasif",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("Memutar \u201cmusik klasik\u201d lalu berharap pintar \u2014 audio pasif bukan jalannya.",
+      X.SPKR(126,108)+FIG("anak",296,124,1.05)+MARK(false,396,56)),
+    FR("Yang bermanfaat: bermusik AKTIF dan BERSAMA (Gerry & Trainor 2012).",
+      FIG("ibu",106,100,1.12,true)+FIG("anak",306,118,1.12,true)+X.DRUM(216,152)+"<text x='216' y='62' text-anchor='middle' font-size='20' fill='#D9A441'>\u266A \u266A</text>"+MARK(true,396,52))]; }},
+  {find:"menatap mulut penyanyi",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("Saat Ibu bernyanyi, ia menyimak lebih lama \u2014 dan menatap mulut penyanyinya (Trehub).",
+      FIG("ibu",116,100,1.18,true)+FIG("anak",316,120,1.1)+"<path d='M286 122 Q216 96 158 104' fill='none' stroke='#B8A8B4' stroke-width='2' stroke-dasharray='3 5'/><text x='150' y='62' font-size='20' fill='#D9A441'>\u266A</text>"),
+    FR("Itu jembatan menuju bahasa \u2014 dan suaramu sendiri sudah kaya.",
+      FIG("ibu",116,100,1.15,true)+WPILL(236,60,"kata","tbpRise",0)+WPILL(286,76,"nada","tbpRise",.8)+BRAIN(356,96,true)+MARK(true,396,166))]; }}
+ ],
+ "2Y-06":[
+  {find:"lewat indra secara langsung",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("Menyentuh tanah, mencium daun, mendengar rintik \u2014 ia berpikir lewat indranya.",
+      FIG("anak",196,116,1.2,true)+"<path d='M96 178 q4 -30 0 -46 m-11 46 q-3 -20 0 -30' stroke='#7FA86A' stroke-width='5' fill='none' stroke-linecap='round'/>"+X.BFLY(316,64,1.1)),
+    FR("Dunia nyata adalah kelas indranya \u2014 langsung, bukan lewat layar.",
+      FIG("anak",150,116,1.15,true)+BRAIN(296,84,true)+MARK(true,392,52)+SPARK(256,140,0))]; }},
+  {find:"menjanjikan, bukan jaminan",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("Main di alam berkait dengan perhatian, motorik, dan ketenangan yang lebih baik (Chawla 2015)\u2026",
+      FIG("anak",206,118,1.2,true)+"<path d='M96 178 q6 -44 0 -64 m-14 64 q-4 -28 0 -40 m28 40 q4 -26 0 -34' stroke='#7FA86A' stroke-width='5' fill='none' stroke-linecap='round'/>"+X.BFLY(306,60,1)+X.HEART(366,108,true)),
+    FR("\u2026buktinya MENJANJIKAN \u2014 bukan jaminan. Kita lakukan karena baik dan menggembirakan.",
+      FIG("anak",206,118,1.15,true)+WPILL(116,60,"perhatian","tbpPop",0)+WPILL(230,52,"motorik","tbpPop",.4)+WPILL(336,60,"tenang","tbpPop",.8)+MARK(true,396,166))]; }},
+  {find:"menumbuhkan rahmah",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("Mengelus lembut \u2014 kasih pada makhluk itu berpahala (HR Bukhari no. 3321).",
+      FIG("anak",170,108,1.2,true)+X.CAT(286,150,1.15)+X.HANDP(236,124,.8)+X.HEART(346,64,true)),
+    FR("Kekejaman dicela (HR Muslim no. 2242) \u2014 kelembutan ini menumbuhkan rahmah di hatinya.",
+      X.CAT(206,150,1.15)+X.HEART(206,64,true)+MARK(true,346,84)+SPARK(266,98,0))]; }}
+ ],
+ "2Y-07":[
+  {find:"otak pengaturnya belum matang",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("Emosinya BESAR, rem otaknya belum matang \u2014 itulah tantrum, bukan kenakalan.",
+      X.HEART(166,96,false)+"<circle cx='166' cy='96' r='40' fill='none' stroke='#D86A8A' stroke-width='2' opacity='.4' class='tbpPulse'/>"+BRAIN(316,96,false)+WPILL(316,150,"rem: belum jadi","tbpPop",.3)),
+    FR("Diregulasi BERSAMA \u2014 ditemani, bukan dihukum keras \u2014 badainya surut.",
+      FIG("ibu",176,104,1.18,true)+FIG("anak",286,124,1.05,true)+ARR2(232,120)+X.CLOUD(376,52)+MARK(true,86,56))]; }},
+  {find:"investasi, bukan manja",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("Menanggapi tangisnya dengan hangat \u2014 apakah itu memanjakan?",
+      FIG("anak",166,120,1.15)+X.CLOUD(116,52)+FIG("ibu",316,100,1.12)+"<text x='396' y='76' text-anchor='middle' font-size='26' font-weight='800' fill='#B0556F'>?</text>"),
+    FR("Respons sensitif membangun rasa aman dan regulasi \u2014 INVESTASI, bukan manja (Eisenberg dkk. 1998).",
+      FIG("ibu",186,100,1.15,true)+FIG("anak",296,122,1.05,true)+X.HEART(242,52,true)+MARK(true,396,160))]; }},
+  {find:"pribadi yang terpisah",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("\u201cTidak!\u201d \u2026 \u201cAku sendiri!\u201d \u2014 dorongan otonomi yang sehat.",
+      FIG("anak",216,116,1.25)+WPILL(136,56,"tidak!","tbpPop",0)+WPILL(306,56,"aku sendiri!","tbpPop",.5)),
+    FR("Ia sedang menemukan dirinya sebagai pribadi yang terpisah \u2014 khas tahun kedua.",
+      FIG("ibu",136,100,1.12)+FIG("anak",316,116,1.15,true)+"<path d='M226 60 V176' stroke='#E7B3CD' stroke-width='2.4' stroke-dasharray='4 6'/>"+MARK(true,396,56))]; }}
+ ],
+ "2Y-08":[
+  {find:"peniruan tertunda",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("Hari ini ia hanya MELIHAT \u2014 dan merekam.",
+      FIG("ibu",136,100,1.18,true)+WPILL(136,46,"assalamualaikum","tbpPop",0)+FIG("anak",316,122,1.05)+"<path d='M286 120 Q226 96 176 102' fill='none' stroke='#B8A8B4' stroke-width='2' stroke-dasharray='3 5'/>"),
+    FR("Esoknya ia MEMUTAR ULANG \u2014 peniruan tertunda sejak 9\u201314 bulan (Bandura).",
+      MOON(76,46,.9)+FIG("anak",206,114,1.2,true)+WPILL(206,52,"assalamualaikum","tbpPop",.3)+MARK(true,366,60))]; }},
+  {find:"instruksi keras bukan pendorongnya",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("Drilling dan instruksi keras \u2014 bukan itu yang menumbuhkan akhlaq (Warneken & Tomasello 2013).",
+      FIG("ibu",116,100,1.15)+WPILL(216,52,"AYO ULANGI!","tbpPop",0)+FIG("anak",316,128,.98)+MARK(false,396,160)),
+    FR("Teladankan, lalu dampingi dengan lembut \u2014 ia mengikuti dengan senang.",
+      FIG("ibu",136,100,1.15,true)+FIG("anak",306,120,1.08,true)+ARR2(222,116)+X.HEART(222,52,true)+MARK(true,396,56))]; }},
+  {find:"dari yang dekat",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("Cara Nabi: singkat, di momen nyata \u2014 \u201cBismillah, tangan kanan, dari yang dekat\u201d (HR Bukhari dan Muslim).",
+      FIG("anak",146,112,1.15,true)+"<ellipse cx='286' cy='156' rx='52' ry='15' fill='#FFF' stroke='#E7B3CD' stroke-width='2.4'/><circle cx='270' cy='150' r='7' fill='#E8C58A'/><circle cx='298' cy='152' r='6' fill='#DDB070'/>"+WPILL(296,62,"Bismillah","tbpPop",0)),
+    FR("Bukan ceramah panjang \u2014 adab menempel pada kejadiannya.",
+      FIG("ibu",116,100,1.12,true)+FIG("anak",296,118,1.08,true)+WPILL(206,52,"tangan kanan, ya","tbpPop",.2)+MARK(true,392,56))]; }}
+ ],
+ "2Y-09":[
+  {find:"apa yang akan terjadi berikutnya",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("Hari balita penuh transisi \u2014 tanpa pola, tiap pindah terasa mengagetkan.",
+      FIG("anak",206,118,1.15)+"<text x='116' y='66' text-anchor='middle' font-size='24' font-weight='800' fill='#B0556F'>?</text><text x='306' y='60' text-anchor='middle' font-size='24' font-weight='800' fill='#B0556F'>?</text>"),
+    FR("Urutan yang bisa diduga memberi rasa aman dan melatih regulasi (Selman & Dilworth-Bart 2024).",
+      "<ellipse cx='106' cy='106' rx='30' ry='12' fill='#FFF' stroke='#E7B3CD' stroke-width='2.2'/><circle cx='216' cy='104' r='13' fill='#E0589A'/>"+MOON(326,102,1.1)+"<path class='tbpFlow' d='M142 106 H196 M236 106 H300' stroke='#D9A441' stroke-width='3.4' fill='none'/>"+MARK(true,396,56)+FIG("anak",206,166,.8,true))]; }},
+  {find:"responsif dan lentur",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("Bukan jadwal militer per menit \u2014 aturan kaku justru bisa kontraproduktif.",
+      X.CLOCKS(160,104)+WPILL(160,160,"07:00 \u00b7 07:15 \u00b7 07:30","tbpPop",0)+MARK(false,326,84)),
+    FR("Yang dibutuhkan: RITME yang responsif dan lentur \u2014 mengikuti anak.",
+      X.ARCDAY(230,150,320)+MARK(true,402,52))]; }},
+  {find:"sesuai kemampuan",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){var X=window.__TBPX;return [
+    FR("Amal kecil yang langgeng paling dicintai (HR Bukhari 6464; Muslim 782).",
+      X.DOTROW(140,104,7)+SPARK(196,150,0)+SPARK(256,156,1)+MARK(true,366,60)),
+    FR("Terlewat sehari? Kembali esok \u2014 sesuai kemampuan (HR Bukhari 43), lembut pada diri dan anak.",
+      X.DOTROW(120,104,4)+"<circle cx='224' cy='104' r='6.5' fill='none' stroke='#D9A441' stroke-width='2' stroke-dasharray='3 4'/><circle class='tbpPop' style='animation-delay:.6s' cx='250' cy='104' r='6.5' fill='#D9A441'/>"+X.HEART(330,100,true))]; }}
  ],
  "2Y-01":[
   {find:"bukan cukup TV",fr:function(FR,FIG,TV,BRAIN,WPILL,ARR2,MARK,BOOK,MOON,SPARK){return [
@@ -3679,7 +3821,7 @@ function renderAll(){ renderStats(); renderMap(); if(!$("#viewExplore").classLis
   routeFromHash(false);
   if("serviceWorker" in navigator && (location.protocol==="https:"||location.hostname==="localhost")){
     try{
-      var KV="tb.swv",CUR="tb-v5-9";
+      var KV="tb.swv",CUR="tb-v5-10";
       if(localStorage.getItem(KV)!==CUR){localStorage.setItem(KV,CUR);
         if(window.caches)caches.keys().then(function(ks){ks.forEach(function(k){if(k!==CUR)caches.delete(k);});});
         if(navigator.serviceWorker.getRegistrations)navigator.serviceWorker.getRegistrations().then(function(rs){rs.forEach(function(r){if(r.active&&r.active.scriptURL.indexOf("sw.js")<0)r.unregister();});});
