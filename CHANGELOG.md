@@ -1,5 +1,11 @@
 # CHANGELOG — TARBIYAH
 
+## v5.9.0 · 12 Juni 2026 — Peraga Materi: Fase Prenatal lengkap
+- Sapuan fase pertama tuntas: 19 peraga film penjelasan tertanam di titik kontennya pada keenam modul Prenatal — T3-01 (jendela pendengaran; suara Ibu yang minim teredam per Voegtline 2013; pembiasaan yang jujur soal mekanisme), T3-02 (tendangan sebagai latihan otot-saraf; respons sentuhan pada USG 4D per Marx & Nagy 2015; kewaspadaan penurunan gerak), T3-03 (stres berat sebagai pengaruh bukan vonis; dzikir-murottal yang menenangkan; meminta bantuan adalah kekuatan), T3-04 (piring-plasenta-otak per PMC8234848; cukup dan seimbang bukan berlebihan; kejujuran bukti kurma), T3-05 (doa sebagai ikhtiar hati; hadis niat; tahnik-aqiqah; ikhtilaf azan disajikan dua sisi tanpa vonis), T3-06 (empat penanda waktu; konsistensi di atas intensitas; kehadiran Ayah).
+- Mesin peraga disempurnakan: penambatan dua-lewat — jawaban FAQ diprioritaskan sebelum bagian induknya, sehingga peraga muncul persis di titik penjelasannya.
+- Pustaka bentuk prenatal baru: rahim dan janin, gelombang suara, detak jantung, telapak tangan, piring gizi, kurma, busur hari, timbangan ikhtilaf, dan tanda waspada medis.
+- Lencana v5.9.0. Service worker tb-v5-9.
+
 ## v5.8.0 · 12 Juni 2026 — Film Murni di 23 Panggung + Peraga Materi (percontohan)
 - Interaksi panggung DIBUANG TOTAL sesuai keputusan: tidak ada lagi tombol Tahan, tuas, tanda tanya, kartu/pad yang bisa dipencet, ataupun penanda ketuk. Yang tersisa hanya dalil, suara, dan Putar ulang.
 - Seluruh 23 panggung kini film peraga murni: berputar otomatis dari pembuka sampai momen kemenangannya (akar mekar, genta berbunyi, pelangi muncul, perahu tiba di mercusuar, lentera menyala, zona hijau terjaga), dengan keterangan langkah bernomor — lalu tombol ⟲ Putar ulang yang memutar bersih dari awal.

@@ -2,7 +2,7 @@
    Prinsip: TIDAK ADA precache yang bisa menggagalkan instalasi;
    dokumen & JSON selalu network-first; aset berat stale-while-revalidate;
    skipWaiting + clients.claim agar versi baru langsung berkuasa. */
-const VER = "tb-v5-8";
+const VER = "tb-v5-9";
 self.addEventListener("install", e => { self.skipWaiting(); });
 self.addEventListener("activate", e => {
   e.waitUntil(caches.keys()
