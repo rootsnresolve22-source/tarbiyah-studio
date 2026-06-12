@@ -1,5 +1,21 @@
 # CHANGELOG — TARBIYAH
 
+## v5.7.0 · 12 Juni 2026 — SINEMA Penuh: Tonton Dulu, Lalu Giliranmu — di 23 Panggung
+- Gelembung Ilustrasi singkat v5.5 dicabut dari keempat tab (salah model & penempatan, sesuai koreksi).
+- SELURUH 23 panggung kini membuka diri dengan demonstrasi otomatis ala video: keterangan langkah bernomor (Tonton 1/3–1/4) berganti sendiri sambil mekanik panggung benar-benar bergerak memperlihatkan sebab-akibat materi — lalu tombol GILIRANMU dengan label gamblang fungsi setiap kontrol. Demonstrasi tidak pernah mencuri kemenanganmu: penyelesaian selalu disisakan untuk tanganmu.
+- P-01 dirombak total: empat kartu kebiasaan nyata → teladan baik mengalir ke akar dan mekar jadi bunga bernilai; contoh buruk melayukan daun; tuas angin mengujinya.
+- Diorama prenatal kini tiga sinema berbeda: T3-01 suara merambat ke rahim, T3-03 pola bacaan berulang dikenali janin, T3-05 belaian dijawab tendangan.
+- Kerapihan dua mode: gelembung Adegan Teladan tak lagi menimpa figur; panggung tab Baca diberi tinggi layak di layar lebar; caption & label SINEMA bermargin rapi dan tak pernah menutupi tokoh.
+- Lencana v5.7.0. Service worker tb-v5-7.
+
+## v5.6.0 · 12 Juni 2026 — SINEMA Ronde-1: Tonton Dulu, Lalu Giliranmu
+- Arah dikoreksi sesuai klarifikasi: gelembung Ilustrasi singkat v5.5 DICABUT dari keempat tab (salah model dan salah penempatan).
+- Kerangka SINEMA tertanam di mesin taman, keluarga, dan diorama: panggung membuka diri dengan DEMONSTRASI otomatis ala video — keterangan langkah bernomor (Tonton 1/4 dst) berganti sendiri, sebab-akibat materi terlihat mata — lalu tombol GILIRANMU dengan label jelas fungsi setiap kontrol.
+- Percontohan-1 T3-01: Ibu membaca → gelombang suara terlihat merambat menembus rahim → detak janin melambat → sentuhan perut dijawab tendangan kecil — baru kendali diserahkan padamu.
+- Percontohan-2 P-01 DIROMBAK TOTAL: empat kartu kebiasaan nyata (jujur saat ditelepon, menepati janji, lembut saat lelah, vs menyuruh bohong) — teladan baik terlihat mengalir ke akar, menebalkannya, mekar jadi bunga bernama nilai; contoh buruk membuat daun layu; tuas angin menguji pohon yang berakar.
+- Kerapihan: gelembung Adegan Teladan (tab Main) tidak lagi menimpa figur — area dialog dibatasi tinggi dan panggung diberi ruang figur.
+- Lencana v5.6.0. Service worker tb-v5-6.
+
 ## v5.5.0 · 12 Juni 2026 — Panggung Ala-Video di Empat Tahap
 - Mesin sceneTeaser: panggung adegan otomatis — dialog bergulir sendiri tiap 3 detik, figur menyala bergiliran, berulang tanpa perlu diketuk; menghormati prefers-reduced-motion.
 - Dianyam ke SELURUH perjalanan tiap modul: KENALI (Cuplikan kisah modul ini), BACA (Ilustrasi singkat di bawah materi), KUIS layar selesai (Ulang sekilas teladannya), dan SELESAI (Kisah penutup) — di samping Adegan Teladan interaktif penuh yang tetap di tab Main.
