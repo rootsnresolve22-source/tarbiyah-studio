@@ -1,5 +1,11 @@
 # CHANGELOG — TARBIYAH
 
+## v6.0.1 · 12 Juni 2026 — AUDIT FORENSIK + perbaikan injeksi peraga
+- Audit forensik menyeluruh dijalankan: 23/23 modul boot tanpa satu pun error konsol, dan ke-71 peraga disimulasikan injeksinya pada modul masing-masing. Ditemukan satu cacat tersembunyi — di modul 2Y-01, tiga dari lima peraga gagal terpasang (tanpa error) karena penambatnya berada di prosa section yang bersarang sehingga bertabrakan pada simpul yang sama.
+- Perbaikan mesin peraga: jalur cadangan kini memilih elemen terkecil (paragraf) yang memuat penambat lalu menyisipkan film tepat setelahnya, alih-alih menempel pada section terluar. Jalur utama (jawaban FAQ) yang dipakai 22 modul lain tidak tersentuh. Hasil: 71/71 peraga terpasang sempurna di semua modul.
+- Simulasi injeksi peraga kini menjadi bagian permanen rangkaian uji rilis — penambat yang “ada di teks” tidak lagi cukup; ia wajib benar-benar terpasang saat dijalankan.
+- Lencana v6.0.1. Service worker tb-v6-1.
+
 ## v6.0.0 · 12 Juni 2026 — RILIS-PUBLIK KIT
 - Halaman KREDIT & SUMBER: lencana versi di pojok kanan-bawah kini dapat diklik (“v6.0.0 · kredit”) dan membuka lembar atribusi lengkap — batas adab (bukan fatwa, bukan pengganti nasihat profesional, ikhtilaf berimbang), sumber wahyu (Tanzil Uthmani; terjemahan independen; tafsir Ibn Katsir, ath-Thabari, al-Qurthubi, as-Sa’di; takhrij via sunnah.com dan dataset fawazahmed0), audio (tilawah Mishary Rashid Alafasy via everyayah.com), rujukan sains kunci, tipografi SIL-OFL, dan kredit pengembangan.
 - Pembersihan rilis-publik: sisa teks Inggris bilingual lama di modul PP (“Our two roles”, “Our first steps”) dihapus dari sumbernya — aplikasi kini Bahasa Indonesia murni.
